@@ -13,10 +13,10 @@ Once you've got those three installed, we're going to start by drawing a static 
 
 Create main.asm in your text editor of choice; you can use anything you'd like. I'll be using Visual Studio. You can do "touch main.asm" in Git Bash if your Text Editor doesn't allow you to make an .asm File. You'll need these lines of code for every VMU Application, so paste them in to begin:
 
-  ;=======================;
-  ;	Prepare Application	;
-  ;=======================;
-  .org	$00
+  	;=======================;
+	;  Prepare Application	;
+	;=======================;
+  	.org	$00
 	jmpf	start
 
 	.org	$03
@@ -49,13 +49,13 @@ Create main.asm in your text editor of choice; you can use anything you'd like. 
 	.org	$4b
 	clr1	p3int,0
 	clr1	p3int,1
-  reti
+	reti
 
-  ;nop_irq:
-  ;	reti
+	;nop_irq:
+	;reti
 
 	.org	$130	
-  t1int:
+	t1int:
 	push	ie
 	clr1	ie,7
 	not1	ext,0
@@ -65,7 +65,7 @@ Create main.asm in your text editor of choice; you can use anything you'd like. 
 
 	.org	$1f0
 
-  goodbye:	
+	goodbye:	
 	not1	ext,0
 	jmpf	goodbye
 
