@@ -74,6 +74,8 @@ We can discuss what these do later; for now you don't need to worry about what t
 
 Now, we want to `.include` the LibPerspective  Library to our Program. You can do this by pasting the Library into your Directory: And then using .include to add its Binary in main.asm:
 
+	.include ../lib/libperspective.asm
+
 Now that we have everything ready, we can write our first bit of code! To start, we will do something analogous to "Hello World." Well, sort of. Writing text to the Screen is not as easy on the VMU as it is on other platforms. Lots of Games write text and scroll it, but to be honest with you I don't know how to do that. But, with LibPerspective, drawing to the screen is easy as pie! Specifically, we will be using the `P_Draw_Background_Constant` Macro to draw an image to the full screen. All we need to do is draw out the text that we want to write, as a Bitmap in Assembly. You can do this in your Text Editor. I like to CTRL+F for 1 and then hit the Insert Key and draw. 
 
 The Format that Libperspective expects is is a 6-By-32 Array of 8-Byte (1-Bit) Words, matching the 48-By-32 Resolution of the VMU's Screen. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. P_Draw_Yes_OK
