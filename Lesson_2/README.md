@@ -10,8 +10,8 @@ The X-Coordinate and Y-Coordinate determine where onscreen our Sprite will be dr
 	;   Define Variables:   ;
 	;=======================;
   	...
-	test_sprite_x			=		$6		; 1 Byte
-  	test_sprite_y			=		$7		; 1 Byte
+	test_sprite_x			=	$6		; 1 Byte
+  	test_sprite_y			=	$7		; 1 Byte
   	test_sprite_sprite_address	=	$8		; 2 Bytes
 
 Now that we have allocated where in Memory these will be, let's assign the actual Numbers and Image to them:
@@ -25,10 +25,10 @@ Now that we have allocated where in Memory these will be, let's assign the actua
 Note that we have four variables here; the "<" and ">" for the Sprite Address are the two halves of the Image. The X- and Y-Coordinates count to the right and downward as the numbers increase:
 
 *Image*
-X--->|
-     |
-     V
-     Y
+	X--->|
+	     |
+	     V
+	     Y
      
 So, we're ready to Draw our Sprite!
 
