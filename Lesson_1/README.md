@@ -4,9 +4,9 @@ Hello, and welcome to the VMU Beginner's Development Tutorial!
 
 To start, you'll need these 3 things:
 
-- WaterBear: 	This Assembler is awesome.
-- LibPerspective:	I don't know how to draw to the screen without it.
-- ElysianVMU: This is the best VMU Emulator out there, and has handy tools for Developers.
+- [WaterBear](https://wtetzner.github.io/waterbear/): 	This Assembler is awesome.
+- [LibPerspective](https://slum.online/dreamcast/):	I don't know how to draw to the screen without it.
+- [ElysianVMU](http://evmu.elysianshadows.com/): This is the best VMU Emulator out there, and has handy tools for Developers.
 
 Once you've got those three installed, we're going to start by drawing a static image to the screen. Let's create and compile our first VMU Program!
 (main.asm)
