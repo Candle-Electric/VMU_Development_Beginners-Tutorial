@@ -24,11 +24,7 @@ Now that we have allocated where in Memory these will be, let's assign the actua
 
 Note that we have four variables here; the "<" and ">" for the Sprite Address are the two halves of the Image. The X- and Y-Coordinates count to the right and downward as the numbers increase:
 
-*Image*
-	X--->|
-	     |
-	     V
-	     Y
+![The X- And Y-Coordinates For LibPerspective's Screen Drawing Functions Go To The Right And Down, Respectively.](./img/Lesson2_Coordinates.png)
      
 So, we're ready to Draw our Sprite!
 
