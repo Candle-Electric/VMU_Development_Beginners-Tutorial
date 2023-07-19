@@ -11,7 +11,19 @@ To start, you'll need these 3 things:
 Once you've got those three installed, we're going to start by drawing a static image to the screen. Let's create and compile our first VMU Program!
 (main.asm)
 
-Create main.asm in your text editor of choice; you can use anything you'd like. I'll be using Visual Studio. You can do "touch main.asm" in Git Bash if your Text Editor doesn't allow you to make an .asm File. You'll need these lines of code for every VMU Application, so paste them in to begin:
+Create main.asm in your text editor of choice; you can use anything you'd like. I'll be using Visual Studio. You can do `touch main.asm` in Git Bash if your Text Editor doesn't allow you to make an `.asm` File. Once our blank file is created, we'll need to paste in a few things before we start coding. Namely, we'll need to reference a Header File, include our External Libraries, and paste in the Start Macro. 
+
+Header Files include things like the name of the VMU Game/Application, a small description, and the byte data for the Animated Icon, all of which is viewable in the Dreamcast BIOS's "File" Tab. We'll learn how these work later; for now, i've included a template [GameHeader.i](https://github.com/Candle-Electric/VMU_Development_Beginners-Tutorial/blob/main/Lesson_1/GameHeader.i) for the tutorial. We can "include" it with the `.include` command, like so:
+
+	.include "GameHeader.i"
+
+ We'll be coding in Assembly, so if you're unfamiliar with Machine Language, we'll learn a bit as we go. WaterBear's [Instructions Page](https://wtetzner.github.io/waterbear/instructions.html) is a super valuable resource. The general syntax in assembly will be `instruction argument1, argument2, argument3...`. `.include` starts with a dot/period, as we can see, since it is a [Directive.](https://wtetzner.github.io/waterbear/directives.html#include) We can use it to include our other External Libraries, such as LibPerspective, which we'll be using to draw to the screen, SFR.I, which is used for the VMU's **S**pecial **F**unction **R**egisters, and LibKCommon, which LibPerspective requires. All of the files referenced in the `.include` statments will need to be located in your directory at the listed address. Let's Create a "`lib`" Folder in our File Explorer, download the Files from [LibPerspective's HomePage](https://slum.online/dreamcast/) or [this lesson page](https://github.com/Candle-Electric/VMU_Development_Beginners-Tutorial/blob/main/Lesson_1/lib/), paste them into our Directory, and include them.
+
+ 	.include "./lib/libperspective.asm 
+  	.include "./lib/libkcommon.asm"
+   	.include "./lib/sfr.i"
+
+Next, let's input the Start Macro. This comes in two parts, preparing the application and starting it off. We can section off the two halves using semicolons, which are the Comment Character in VMU Assembly. Let's start with the "Prepare Application" Chunk -- You'll need these lines of code for every VMU Application, so paste them in to begin:
 
   	;=======================;
 	;  Prepare Application	;
@@ -70,11 +82,25 @@ Create main.asm in your text editor of choice; you can use anything you'd like. 
 	jmpf	goodbye
 
 
-We can discuss what these do later; for now you don't need to worry about what they do under the hood. To be honest, I still don't know what a lot of them do! 
+We can discuss what these do later; for now you don't need to worry about what they do under the hood. To be honest, I still don't know what a lot of them do! Next, we'll do the same thing with the `start` Macro, and paste it in like so:
 
-Now, we want to `.include` the LibPerspective  Library to our Program. You can do this by pasting the Library into your Directory: And then using .include to add its Binary in main.asm:
+	;=======================;
+	; Main program
+	;=======================;
+	start:
+		clr1 ie,7
+		mov #$a1,ocr
+		mov #$09,mcr
+		mov #$80,vccr
+		clr1 p3int,0
+		clr1 p1,7
+		mov #$ff,p3
+    		set1    ie,7
 
-	.include ../lib/libperspective.asm
+When we write our own code, we'll be doing so inside our Main Loop, similar to the one you'll see in Languages like C++ or C#. To "Loop" it, we'll simply jump back to the start of said Loop when it ends, using the [`jmpf` Instruction](https://wtetzner.github.io/waterbear/instructions.html#jmpf):
+
+	Main_Loop:
+		jmpf Main_Loop
 
 Now that we have everything ready, we can write our first bit of code! To start, we will do something analogous to "Hello World." Well, sort of. Writing text to the Screen is not as easy on the VMU as it is on other platforms. Lots of Games write text and scroll it, but to be honest with you I don't know how to do that. But, with LibPerspective, drawing to the screen is easy as pie! Specifically, we will be using the `P_Draw_Background_Constant` Macro to draw an image to the full screen. All we need to do is draw out the text that we want to write, as a Bitmap in Assembly. You can do this in your Text Editor. I like to CTRL+F for 1 and then hit the Insert Key and draw. 
 
