@@ -156,8 +156,16 @@ This adds the image to LibPerspective's WRAM/XRAM Screen Buffer. To draw everyth
 		P_Blit_Screen
 		jmpf Main_Loop
 
-Now that our code is ready, let's use WaterBear to build it!
+Now that our code is ready, let's [use WaterBear to build it](https://github.com/wtetzner/waterbear#Usage)! 
 
-	waterbear.exe assemble...
+	waterbear assemble main.asm -o Lesson_1.vms
+
+The Syntax, as seen in the above command, is `waterbear assemble [Assembly Filename] -o [Output File]`, where the Output File is our final, executable VMU Application, in the .VMS File Format. Note that you will need to [Create A Shortcut](https://askubuntu.com/questions/660327/set-shortcut-for-executable-program-from-terminal) to run it in the above manner. You can also supply the Paths directly, if you prefer to take that route:
+
+	C:/VMU/WaterBear/waterbear.exe assemble C:/VMU/Code/MyFirstGame/main.asm -o C:/VMU/Games/Lesson_1.vms
+
+Similarly, the Compiler will be looking for `main.asm` in the Directory you're running the Assemble Command from if you don't supply a Path, and the Output File will similarly be Created in that same place.
+
+We'll be using ElysianVMU now to see our code in action! Simply open up the Emulator, and "Open" the File we made:
 
 Running it, you can now see the image that you drew!
