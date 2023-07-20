@@ -141,6 +141,23 @@ The Format that Libperspective expects is is a 6-By-32 Array of 8-Byte (1-Bit) W
 	.byte	%00000000,%00000000,%00000000,%00000000,%00000000,%00000000
 	.byte	%00000000,%00000000,%00000000,%00000000,%00000000,%00000000
 
-To fill in Pixels, simply replace the zeroes with ones. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. P_Draw_Yes_OK
+To fill in Pixels, simply replace the zeroes with ones. Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
 
-Now that our code is ready, let's use WaterBear to build it! Running it, you can now see the image that you drew!
+	.include Hello_World_BackGround.asm
+
+The syntax to draw a static image to the full screen with LibPerspective is `P_Draw_Background_Constant` followed by the name of the image being referenced. So, in our case, it's:
+
+	P_Draw_Background_Constant Hello_World_BackGround
+
+This adds the image to LibPerspective's WRAM/XRAM Screen Buffer. To draw everything in that Buffer at the end of each Frame, we need to Blit the Screen. LibPerspective does this for us with `P_Blit_Screen`. So, we want to call that at the end of our Main Loop, after we draw our background image. Thus, our Main Loop will look like this:
+
+	Main_Loop:
+    		P_Draw_Background_Constant Hello_World_BackGround
+		P_Blit_Screen
+    		jmpf Main_Loop
+
+Now that our code is ready, let's use WaterBear to build it!
+
+	waterbear.exe assemble...
+
+Running it, you can now see the image that you drew!
