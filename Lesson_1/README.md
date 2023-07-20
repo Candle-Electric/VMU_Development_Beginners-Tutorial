@@ -95,7 +95,7 @@ We can discuss what these do later; for now you don't need to worry about what t
 		clr1 p3int,0
 		clr1 p1,7
 		mov #$ff,p3
-    		set1    ie,7
+		set1    ie,7
 
 When we write our own code, we'll be doing so inside our Main Loop, similar to the one you'll see in Languages like C++ or C#. To "Loop" it, we'll simply jump back to the start of said Loop when it ends, using the [`jmpf` Instruction](https://wtetzner.github.io/waterbear/instructions.html#jmpf):
 
@@ -152,9 +152,9 @@ The syntax to draw a static image to the full screen with LibPerspective is `P_D
 This adds the image to LibPerspective's WRAM/XRAM Screen Buffer. To draw everything in that Buffer at the end of each Frame, we need to Blit the Screen. LibPerspective does this for us with `P_Blit_Screen`. So, we want to call that at the end of our Main Loop, after we draw our background image. Thus, our Main Loop will look like this:
 
 	Main_Loop:
-    		P_Draw_Background_Constant Hello_World_BackGround
+		P_Draw_Background_Constant Hello_World_BackGround
 		P_Blit_Screen
-    		jmpf Main_Loop
+		jmpf Main_Loop
 
 Now that our code is ready, let's use WaterBear to build it!
 
