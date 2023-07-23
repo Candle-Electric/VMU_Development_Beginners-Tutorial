@@ -104,6 +104,8 @@ When we write our own code, we'll be doing so inside our Main Loop, similar to t
 
 Now that we have everything ready, we can write our first bit of code! To start, we will do something analogous to "Hello World." Well, sort of. Writing text to the Screen is not as easy on the VMU as it is on other platforms. Lots of Games write text and scroll it, but to be honest with you I don't know how to do that. But, with LibPerspective, drawing to the screen is easy as pie! Specifically, we will be using the `P_Draw_Background_Constant` Macro to draw an image to the full screen. All we need to do is draw out the text that we want to write, as a Bitmap in Assembly. You can do this in your Text Editor. I like to CTRL+F for 1 and then hit the Insert Key and draw. 
 
+![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_DrawingWithInsertKey.png)
+
 The Format that Libperspective expects is is a 6-By-32 Array of 8-Byte (1-Bit) Words, matching the 48-By-32 Resolution of the VMU's Screen. Preceding the Image itself is the Name of the Assembly File, with a Colon. A template, blank white screen, `Example_Blank_Screen.asm`, would look like this:
 
 	Example_Blank_Screen:
@@ -272,8 +274,16 @@ The Syntax, as seen in the above command, is `waterbear assemble [Assembly Filen
 
 	C:/VMU/WaterBear/waterbear.exe assemble C:/VMU/Code/MyFirstGame/main.asm -o C:/VMU/Games/Lesson_1.vms
 
+Here's an example of how I do it:
+
+![This is how I compile with WaterBear and File Paths.](./article_images/Lesson1_GitBash.png)
+
 Similarly, the Compiler will be looking for `main.asm` in the Directory you're running the Assemble Command from if you don't supply a Path, and the Output File will similarly be Created in that same place.
 
 We'll be using ElysianVMU now to see our code in action! Simply open up the Emulator, and "Open" the File we made:
 
+![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_ElysianVMU.png)
+
 Running it, you can now see the image that you drew!
+
+![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_YouDidIt.png)
