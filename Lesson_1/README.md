@@ -4,9 +4,9 @@ Hello, and welcome to the VMU Beginner's Development Tutorial!
 
 To start, you'll need these 3 things:
 
-- [WaterBear](https://wtetzner.github.io/waterbear/): 	This Assembler is awesome.
-- [LibPerspective](https://slum.online/dreamcast/):	I don't know how to draw to the screen without it.
-- [ElysianVMU](http://evmu.elysianshadows.com/): This is the best VMU Emulator out there, and has handy tools for Developers.
+- [WaterBear](https://wtetzner.github.io/waterbear/), by Walter Tetzner: 	This Assembler is awesome, as is its Documentation. It also provides a Disassembler to help you analyze existing VMU Programs' Code.
+- [LibPerspective](https://slum.online/dreamcast/), by Kresna Susila:	This is an amazing Graphics Library for the VMU. I don't know how to draw to the screen without it.
+- [ElysianVMU](http://evmu.elysianshadows.com/), by Falco Girgis: This is the best VMU Emulator out there, and has handy tools for Developers. We'll be seeing them in action in later lessons.
 
 Once you've got those three installed, we're going to start by drawing a static image to the screen. Let's create and compile our first VMU Program!
 (main.asm)
@@ -143,7 +143,7 @@ The Format that Libperspective expects is is a 6-By-32 Array of 8-Byte (1-Bit) W
 	.byte	%00000000,%00000000,%00000000,%00000000,%00000000,%00000000
 	.byte	%00000000,%00000000,%00000000,%00000000,%00000000,%00000000
 
-To fill in Pixels, simply replace the zeroes with ones. Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
+To fill in Pixels, simply replace the zeroes with ones. You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
 
 	.include Hello_World_BackGround.asm
 
