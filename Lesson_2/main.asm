@@ -11,7 +11,7 @@
 ;=======================;
 ;   Include Libraries   ;
 ;=======================;
-.include "./lib/libperspective.asm
+.include "./lib/libperspective.asm"
 .include "./lib/libkcommon.asm"
 .include "./lib/sfr.i"
 
