@@ -4,9 +4,22 @@
 ;=======================;
 
 ;=======================;
-;	Include Libraries	;
+;VMU Application Header ;
 ;=======================;
+.include "GameHeader.i"
+
+;=======================;
+;   Include Libraries   ;
+;=======================;
+.include "./lib/libperspective.asm
+.include "./lib/libkcommon.asm"
 .include "./lib/sfr.i"
+
+;=======================;
+;     Include Images    ;
+;=======================;
+.include		"./Hello_World_BackGround.asm"
+.include		"./Example_Sprite.asm"
 
 ;=======================;
 ;   Define Variables:   ;
@@ -30,9 +43,9 @@ T_BTN_DOWN1              equ     1
 T_BTN_UP1                equ     0
 
 ;=======================;
-;	Prepare Application	;
+;  Prepare Application  ;
 ;=======================;
-    .org	$00
+	.org	$00
 	jmpf	start
 
 	.org	$03
@@ -65,7 +78,7 @@ T_BTN_UP1                equ     0
 	.org	$4b
 	clr1	p3int,0
 	clr1	p3int,1
-    reti
+	reti
 
 ;nop_irq:
 ;	reti
@@ -85,14 +98,8 @@ goodbye:
 	not1	ext,0
 	jmpf	goodbye
 
-
 ;=======================;
-;VMU Application Header ;
-;=======================;
-.include "GameHeader.i"
-
-;=======================;
-; Main program
+;     Main Program      ;
 ;=======================;
 start:
 	clr1 ie,7
@@ -102,7 +109,7 @@ start:
 	clr1 p3int,0
 	clr1 p1,7
 	mov #$ff,p3
-    set1    ie,7
+	set1 ie,7
 ; Set Sprite Addresses
 	mov	#20, test_sprite_x
 	mov	#12, test_sprite_y
@@ -111,32 +118,24 @@ start:
 
 Main_Loop:
 ; Check Input
-    callf   Get_Input ; This Function Is In LibKCommon.ASM
-    ld	p3
+	callf   Get_Input ; This Function Is In LibKCommon.ASM
+	ld	p3
 .Check_Up
-    bp  acc, T_BTN_UP1, .Check_Down
+	bp	acc, T_BTN_UP1, .Check_Down
 	dec	test_sprite_y
 .Check_Down
-    bp  acc, T_BTN_DOWN1, .Check_Left
+	bp	acc, T_BTN_DOWN1, .Check_Left
 	inc	test_sprite_y
 .Check_Left
-    bp  acc, T_BTN_LEFT1, .Check_Right
+	bp	acc, T_BTN_LEFT1, .Check_Right
 	dec	test_sprite_x
 .Check_Right
-    bp  acc, T_BTN_RIGHT1, .Draw_Screen
+	bp	acc, T_BTN_RIGHT1, .Draw_Screen
 	inc	test_sprite_x
 .Draw_Screen
-    P_Draw_Background_Constant Hello_World_BackGround
+	P_Draw_Background_Constant Hello_World_BackGround
 	P_Draw_Sprite	test_sprite_sprite_address, test_sprite_x, test_sprite_y
 	P_Blit_Screen
-    jmpf Main_Loop
-
-;=======================;
-;  Include Images/Libs  ;
-;=======================;
-    .include        "./lib/libperspective.asm"
-    .include        "./lib/libkcommon.asm"
-    .include        "./Hello_World_BackGround.asm"
-	.include		"./Example_Sprite.asm"
+	jmpf Main_Loop
 
 	.cnop	0,$200		; Pad To An Even Number Of Blocks
