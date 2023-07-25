@@ -84,7 +84,7 @@ Depending on which X/Y Coordinates you used, the Sprite may look a little funky,
 
 ## Capturing User Input
 
-We'll be calling on LibKCommon, which we've already included for its use with LibPerspective, to capture the Button Inputs from our Game's User. Specifically, its `Get_Input` Command will be very useful for us. It takes no arguments, and fills in the `p3` Variable, which we then move to our `acc` Variable. `acc` is one of the VMU's Default Registers, and we will be using it a lot. It's an 8-Bit Word, not unlike the ones we were filling in for our example sprite earlier. And the VMU has 8 Buttons -- the Four Cardinal Directions, A, B, Mode, And Sleep. `Get_Input` will fill in the 8 bits of `acc` depending on which buttons are pressed when it is called. Our most significant bit, the seventh, is on the far left. Zero, the least significat bit, is on the far right. So, from Bit 0 to Bit 7, we have Up, Down, Left, Right, A, B, Mode, And Sleep, in that order. Let's add these as Constants, before the Start Macro:
+We'll be calling on LibKCommon, which we've already included for its use with LibPerspective, to capture the Button Inputs from our Game's User. Specifically, its `Get_Input` Command will be very useful for us. It takes no arguments, and fills in the `p3` Variable, which we then move to our `acc` Variable. `acc` is one of the VMU's Default Registers, and we will be using it a lot. It's an 8-Bit Word, not unlike the ones we were filling in for our example sprite earlier. And the VMU has 8 Buttons -- the Four Cardinal Directions, A, B, Mode, And Sleep. The Word will be 255 by default, meaning that all of the bits will be filled if nothing is pressed. `Get_Input` will empty the 8 bits of `acc` depending on which buttons are pressed when it is called. Our most significant bit, the seventh, is on the far left. Zero, the least significat bit, is on the far right. So, from Bit 0 to Bit 7, we have Up, Down, Left, Right, A, B, Mode, And Sleep, in that order. Let's add these as Constants, before the Start Macro:
 
 	;=======================;
 	;       Constants       ;
@@ -109,7 +109,7 @@ Since they go right-to-left in increasing order, `acc` will look like this with 
 
 Since having a button pressed when `Get_Input` is called will fill the respective bit, `acc` would look like this if we were pressing Diagonally Up-Left and A while `Get_Input` was called:
 
-![ACC with Up, Left, and A pressed.](./img/Lesson2_GetInputACCGraph.png)
+![ACC with Up, Left, and A pressed.](./img/Lesson2_GetInputACCGraph_FilledIn.png)
 
 Thus, we can use WaterBear's [`bp`](https://wtetzner.github.io/waterbear/instructions.html#bp) and [`bn`](https://wtetzner.github.io/waterbear/instructions.html#bn) Functions, which check whether a Bit is Set or Cleared, respectively, to move our Sprite in various ways according to which Buttons are Pressed/Held. As we can see in the WaterBear Documentation, the Syntax is `bp variable, bit_number, .where_to_jump_to`. In other words, when we call `bp` or `bn`, we follow it with whose Bit we're checking, which of the 8 Bits we're checking, and where we want to jump to if it's set or empty (for `bp` and `bn`, respectively.). 
 Let's dive back into our Main Loop and call `Get_Input` before we check for an "Up" Input. We'll do all this before we draw our Sprite and Background:
@@ -125,7 +125,7 @@ The `[ld](https://wtetzner.github.io/waterbear/instructions.html#ld) p3` call ta
 
 	bp	acc, T_BTN_UP1, .Draw_Screen
 
-So, in this above line, we will "Jump" to the `.Draw_Screen` Section of our code if the "Up" button isn't pressed. That means that we will code our desired behavior for when that up button is pressed in between our `bp` call and the .Draw_Screen marker. We know from earlier in this lesson that the X-Y Coordinates move to the right and downward, respectively, as their numbers increase, right? So, to move our Sprite upward on the screen when that direection is pressed, we can decrement our Y-Value with [`dec`](https://wtetzner.github.io/waterbear/instructions.html#dec). The Syntax for this one is easy, as you simply specify whose value you want to decrease by 1:
+So, in this above line, we will "Jump" to the `.Draw_Screen` Section of our code if the "Up" button isn't pressed, A.K.A. if the 0-Bit of `p3`/`acc` is filled in. That means that we will code our desired behavior for when that up button is pressed in between our `bp` call and the `.Draw_Screen` marker. We know from earlier in this lesson that the X-Y Coordinates move to the right and downward, respectively, as their numbers increase, right? So, to move our Sprite upward on the screen when that direection is pressed, we can decrement our Y-Value with [`dec`](https://wtetzner.github.io/waterbear/instructions.html#dec). The Syntax for this one is easy, as you simply specify whose value you want to decrease by 1:
 
 	dec	test_sprite_y
 
