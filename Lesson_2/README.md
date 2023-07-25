@@ -1,7 +1,10 @@
-# Lesson 2
-## Drawing Sprites And Capturing User Input
+# Lesson 2: Drawing Sprites And Capturing User Input
 
-Now that we have learned how to draw an Image to the Full Screen, we can start to draw smaller Sprites as well! To do so, we will call on LibPerspective once again. The Syntax to Draw A Sprite is as follows:
+Now that we have learned how to draw an Image to the Full Screen, we can start to draw smaller Sprites as well! To do so, we will call on LibPerspective once again. 
+
+## Drawing Sprites
+
+The Syntax to Draw A Sprite is as follows:
 
 	P_Draw_Sprite sprite_address, sprite_x_coordinate, sprite_y_coordinate
 
@@ -47,8 +50,12 @@ As we can see, these are assigned after our Start Macro, but before the Main Loo
 So, we're ready to Draw our Sprite!
 
 	  .Draw_Screen
-     		P_Draw_Background_Constant Hello_World_BackGround
+		P_Draw_Background_Constant Hello_World_BackGround
 	   	P_Draw_Sprite	test_sprite_sprite_address, test_sprite_x, test_sprite_y
 		P_Blit_Screen
 
-Depending on which X/Y Coordinates you used, the Sprite may look a little funky, or cut off. We'll discuss why that is in a bit. Next, we'll learn how to Capture User Input and Move our Sprite!
+Depending on which X/Y Coordinates you used, the Sprite may look a little funky, or cut off. We'll discuss why that is in a bit. Next, we'll learn how to Capture User Input and Move our Sprite! 
+
+## Capturing User Input
+
+We'll be calling on LibKCommon, which we've already included for its use with LibPerspective, to capture the Button Inputs from our Game's User. Specifically, its `Get_Input` Command will be very useful for us. It takes no arguments, and fills in the `acc` Variable.
