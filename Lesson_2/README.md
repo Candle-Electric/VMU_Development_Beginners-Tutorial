@@ -121,7 +121,7 @@ Let's dive back into our Main Loop and call `Get_Input` before we check for an "
   	.Draw_Screen
    	...
 
-The [`ld`](https://wtetzner.github.io/waterbear/instructions.html#ld)` call in `ld p3` takes the value of `p3`, which `Get_Input` populated, and moves it into `acc`, which we will then be calling on to see if "Up" is pressed at the current Frame:
+The [`ld`](https://wtetzner.github.io/waterbear/instructions.html#ld) call in `ld p3` takes the value of `p3`, which `Get_Input` populated, and moves it into `acc`, which we will then be calling on to see if "Up" is pressed at the current Frame:
 
 	bp	acc, T_BTN_UP1, .Draw_Screen
 
