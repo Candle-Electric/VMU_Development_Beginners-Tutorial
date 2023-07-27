@@ -84,7 +84,7 @@ Depending on which X/Y Coordinates you used, the Sprite may look a little funky,
 
 ## Capturing User Input
 
-We'll be calling on LibKCommon, which we've already included for its use with LibPerspective, to capture the Button Inputs from our Game's User. Specifically, its `Get_Input` Command will be very useful for us. It takes no arguments, and fills in the `p3` Variable, which we then move to our `acc` Variable. `acc` is one of the VMU's Default Registers, and we will be using it a lot. It's an 8-Bit Word, not unlike the ones we were filling in for our example sprite earlier. And the VMU has 8 Buttons -- the Four Cardinal Directions, A, B, Mode, And Sleep. The Word will be 255 by default, meaning that all of the bits will be filled if nothing is pressed. `Get_Input` will empty the 8 bits of `acc` depending on which buttons are pressed when it is called. Our most significant bit, the seventh, is on the far left. Zero, the least significat bit, is on the far right. So, from Bit 0 to Bit 7, we have Up, Down, Left, Right, A, B, Mode, And Sleep, in that order. Let's add these as Constants, before the Start Macro:
+We'll be calling on LibKCommon, which we've already included for its use with LibPerspective, to capture the Button Inputs from our Game's User.Specifically, its `Get_Input` Command will be very useful for us.  We'll also be learning a bit more Assembly Code in this step. `Get_Input` takes no arguments, and fills in the `p3` Variable, which we then move to our `acc` Variable. `acc` is one of the VMU's Default Registers, and we will be using it a lot. It's an 8-Bit Word, not unlike the ones we were filling in for our example sprite earlier. And the VMU has 8 Buttons -- the Four Cardinal Directions, A, B, Mode, And Sleep. The Word will be 255 by default, meaning that all of the bits will be filled if nothing is pressed. `Get_Input` will empty the 8 bits of `acc` depending on which buttons are pressed when it is called. Our most significant bit, the seventh, is on the far left. Zero, the least significat bit, is on the far right. So, from Bit 0 to Bit 7, we have Up, Down, Left, Right, A, B, Mode, And Sleep, in that order. Let's add these as Constants, before the Start Macro:
 
 	;=======================;
 	;       Constants       ;
@@ -121,7 +121,7 @@ Let's dive back into our Main Loop and call `Get_Input` before we check for an "
   	.Draw_Screen
    	...
 
-The `[ld](https://wtetzner.github.io/waterbear/instructions.html#ld) p3` call takes the value of `p3`, which `Get_Input` populated, and moves it into `acc`, which we will be calling on to see if "Up" is pressed at the current Frame:
+The [`ld`](https://wtetzner.github.io/waterbear/instructions.html#ld)` call in `ld p3` takes the value of `p3`, which `Get_Input` populated, and moves it into `acc`, which we will then be calling on to see if "Up" is pressed at the current Frame:
 
 	bp	acc, T_BTN_UP1, .Draw_Screen
 
