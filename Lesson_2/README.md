@@ -47,7 +47,7 @@ As we can see, these are assigned after our Start Macro, but before the Main Loo
 
 ![The X- And Y-Coordinates For LibPerspective's Screen Drawing Functions Go To The Right And Down, Respectively.](./img/Lesson2_Coordinates.png)
 
-The format for drawing sprites is pretty much the same as the one we used to draw our background in the previous lesson, but just smaller height and width. You can use any dimesions you want, but the `.byte` statements will all need the full 8 digits in the X-Drection, with ones out of the range being ignored. We'll practice that later though; for now, here's another Template for our Example Sprite:
+The format for drawing sprites is pretty much the same as the one we used to draw our background in the previous lesson, but just smaller height and width. You can use any dimesions you want, but the `.byte` statements will all need the full 8 digits in the X-Drection, with ones out of the range being ignored. We'll practice that later though; for now, here's another Template for our Example Sprite, which we will name `Example_Sprite.asm`:
 
 	Example_Sprite:
 		.byte	8,8
