@@ -14,15 +14,15 @@ Systems such as the NES or Sega Genesis allow a transparency in sprites' pallett
 
 What will change is how we feed the data into our sprite address. We'll need to double our drawing, and basically make a border that fits our sprite inside its boundaries and append that to our existing sprite. This will often take us outside the 8x8 dimesions we set earlier, which is not an issue. You'll just need to make sure that each horizontal line has all 8 bytes, and is separated by a comma; vertically, any dimension is fine. For example, a 9x7 square would be masked like this:
 
-    .byte %10000000,%10000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000
-    .byte %00000000,%00000000  
-    .byte %10000000,%10000000  
+    .byte %10000000,%11111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111
+    .byte %00000000,%01111111  
+    .byte %10000000,%11111111  
     .byte %00000000,%00000000    
     .byte %01111111,%00000000
     .byte %01111111,%00000000
