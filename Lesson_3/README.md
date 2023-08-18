@@ -1,4 +1,4 @@
-![image](https://github.com/Candle-Electric/VMU_Development_Beginners-Tutorial/assets/109983451/bdf3be0e-506a-4a30-b739-663ff6f63d03)# Lesson 3: Masking Sprites And Handling Collision
+# Lesson 3: Masking Sprites And Handling Collision
 
 When we left off at Lesson 2, we learned how to draw a sprite onto the screen, but it behaved erratically, looking odd when we moved it using the D-Pad. This is due to the way that the VMU's screen is arranged, in its 6-by-48 array of 8-pixel lines. Using `P_Draw_Sprite` will cut off everything outside of the horizontal line where we set the X-point of our sprite coordinates. This makes sense when we think about how we drew our sprites: 
 
