@@ -59,4 +59,27 @@ Our result will be 11, or 00001011 in Binary. Since that leftmost digit is a zer
         ; It's Greater Than!
     .example_over
 
-We'll be doing just that to check the collision of our test sprite with the screen's boundaries.
+We'll be doing just that to check the collision of our test sprite with the screen's boundaries. We already have a section for each of the four Cardinal Directions in our Main Loop, so let's start off by adding the collison for the Top:
+
+    Main_Loop:
+    ; Check Input
+	    callf   Get_Input ; This Function Is In LibKCommon.ASM
+	    ld	p3
+    .Check_Up
+        bp	acc, T_BTN_UP1, .Check_Down
+        ld test_sprite_y
+        sub #1
+	bp acc, 7, .Check_Down
+	    dec	test_sprite_y
+    .Check_Down
+	    bp	acc, T_BTN_DOWN1, .Check_Left
+	    inc	test_sprite_y
+    .Check_Left
+	    bp	acc, T_BTN_LEFT1, .Check_Right
+	    dec	test_sprite_x
+    .Check_Right
+	    bp	acc, T_BTN_RIGHT1, .Draw_Screen
+	    inc	test_sprite_x
+    .Draw_Screen
+
+You'll need to adjust for the dimensions of your sprite.
