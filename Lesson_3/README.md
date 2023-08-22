@@ -83,3 +83,55 @@ We'll be doing just that to check the collision of our test sprite with the scre
     .Draw_Screen
 
 You'll need to adjust for the dimensions of your sprite.
+
+Now, when we move our sprite around, it is bounded by the top of the screen:
+
+It can still move offscreen past the other three sides of the screen, though, so let's finish coding our collision detection there. Note that we are using acc for the collision calculations now, so we will need to `ld p3` again in each block! Otherwise, our controls won't work properly since the bits we want to check for button presses will be overwritten by said collision subtraction values.
+
+		...
+	Main_Loop:
+		; Check Input
+		callf Get_Input ; This Function Is In LibKCommon.ASM
+		ld p3
+	.Check_Up
+		bp acc, T_BTN_UP1, .Check_Down
+		ld test_sprite_y
+		sub #1
+		bp acc, 7, .Check_Down
+		dec test_sprite_y
+	.Check_Down
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_DOWN1, .Check_Left
+		ld test_sprite_y
+		sub #24
+		bn acc, 7, .Check_Left
+		inc test_sprite_y
+	.Check_Left
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_LEFT1, .Check_Right
+		ld test_sprite_x
+		sub #2
+		bp acc, 7, .Check_Right
+		dec test_sprite_x
+	.Check_Right
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_RIGHT1, .Draw_Screen
+		ld test_sprite_x
+		sub #40
+		bn acc, 7, .Draw_Screen
+		inc test_sprite_x
+	.Draw_Screen
+		...
+
+And as before, you will need to adjust for the size of your sprite. One way to streamline this, as seen in LibPerspective's Example Demos, is to create and define variables for the Sprite Size:
+
+	sprite_size_x	=	$10
+ 	sprite_size_y	=	$11
+  	...
+	mov #11, sprite_size_x
+ 	mov #9, sprite_size_y
+    
+Now, we should only be able to move our sprite within the confines of the screen boundaries:
