@@ -25,11 +25,11 @@
 ;=======================;
 ;   Define Variables:   ;
 ;=======================;
-p3_pressed				=		$4		; 1 Byte (For LibKCommon)
+p3_pressed			=		$4		; 1 Byte (For LibKCommon)
 p3_last_input			=		$5		; 1 Byte (For LibKCommon)
 test_sprite_x			=		$6		; 1 Byte
 test_sprite_y			=		$7		; 1 Byte
-test_sprite_sprite_address	=	$8		; 2 Bytes
+test_sprite_sprite_address	=		$8		; 2 Bytes
 
 ;=======================;
 ;       Constants       ;
@@ -38,7 +38,7 @@ T_BTN_SLEEP				equ		7
 T_BTN_MODE				equ		6
 T_BTN_B1				equ		5
 T_BTN_A1				equ		4
-T_BTN_RIGHT1			equ		3
+T_BTN_RIGHT1				equ		3
 T_BTN_LEFT1				equ		2
 T_BTN_DOWN1				equ		1
 T_BTN_UP1				equ		0
