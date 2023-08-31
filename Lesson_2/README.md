@@ -47,7 +47,7 @@ As we can see, these are assigned after our Start Macro, but before the Main Loo
 
 ![The X- And Y-Coordinates For LibPerspective's Screen Drawing Functions Go To The Right And Down, Respectively.](./img/Lesson2_Coordinates.png)
 
-The format for drawing sprites is pretty much the same as the one we used to draw our background in the previous lesson, but just smaller height and width. You can use any dimesions you want, but the `.byte` statements will all need the full 8 digits in the X-Drection, with ones out of the range being ignored. We'll practice that later though; for now, here's another Template for our Example Sprite, which we will name `Example_Sprite.asm`:
+The format for drawing sprites is pretty much the same as the one we used to draw our background in the previous lesson, but just smaller height and width. You can use any dimesions you want, but the `.byte` statements will all need the full 8 digits in the X-Direction, with ones out of the range being ignored. We'll practice that later though, with more details to come in Lesson 3; for now, here's another Template for our Example Sprite, which we will name `Example_Sprite.asm`:
 
 	Example_Sprite:
 		.byte	8,8
@@ -60,7 +60,20 @@ The format for drawing sprites is pretty much the same as the one we used to dra
 		.byte	%00000000
 		.byte	%00000000
      
-Just like last time, you can draw whatever you like. We'll then need to `.include` our sprite image. Let's make a section for that, after our included libraries:
+For instance, I've drawn this Smiley Face:
+
+	Example_Sprite:
+		.byte	8,8
+		.byte	%01111110
+		.byte	%10000001
+		.byte	%10100101
+		.byte	%10000001
+		.byte	%10100101
+		.byte	%10011001
+		.byte	%10000001
+		.byte	%01111110
+
+Just like last time, you can draw whatever you like! We'll then need to `.include` our sprite image. Let's make a section for that, after our included libraries:
 
 	;=======================;
 	;   Include Libraries   ;
