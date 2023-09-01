@@ -30,7 +30,7 @@ What will change is how we feed the data into our sprite address. We'll need to 
     .byte %01111111,%11000000
     .byte %01111111,%11000000
     .byte %01111111,%11000000
-    .byte %01111111,%1000000
+    .byte %01111111,%10000000
     .byte %00000000,%00000000
 
 Every pixel in the sprite will need to be contained and bordered on all sides by a pixel in the mask. In other words, the mask will need to be the same size as the sprite, + 1 pixel in every up, down, left, and right direction:
