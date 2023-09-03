@@ -3,7 +3,7 @@
 ;-------------------------------------------------------------------------------
 	.org    $200
     
-    .byte   "VMU Dev Lesson 1 "             ; 16 bytes
+    .byte   "VMU Dev Lesson 2 "             ; 16 bytes
 	.byte   "VMU Beginners' Tutorial #1."   ; 32 byte
     ; Thanks To Marcus, Sebastian, And Tyro For Header Format!
 
