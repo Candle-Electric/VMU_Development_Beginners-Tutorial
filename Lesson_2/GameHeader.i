@@ -1,11 +1,11 @@
 ;-------------------------------------------------------------------------------
-; ROM info
+; ROM Info
 ;-------------------------------------------------------------------------------
 	.org    $200
     
-    .byte   "VMU Dev Lesson 2 "             ; 16 bytes
-	.byte   "VMU Beginners' Tutorial #1."   ; 32 byte
-    ; Thanks To Marcus, Sebastian, And Tyro For Header Format!
+	.byte   "VMU Dev Lesson 2 "             ; 16 bytes
+	.byte   "VMU Beginners' Tutorial #2."   ; 32 byte
+	; Thanks To Marcus, Sebastian, And Tyro For Header Format!
 
 	.org    $240
 
