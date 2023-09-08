@@ -35,6 +35,8 @@ What will change is how we feed the data into our sprite address. We'll need to 
 
 The top half is the "Mask," which is surrounded by 1s/black pixels, conversely to the original sprite we created previously, whose border was 0s/whitespace. Every pixel in the sprite will need to be contained and bordered on all sides by a pixel in the mask. In other words, the mask will need to be the same size as the sprite, + 1 pixel in every up, down, left, and right direction:
 
+![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Masking_Example_Animation_Start.png)
+
 I've noticed that the right-side border needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary.
 
 ## Collision
