@@ -37,7 +37,9 @@ The top half is the "Mask," which is surrounded by 1s/black pixels, conversely t
 
 ![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Masking_Example_Animation_Start.png)
 
-I've noticed that the right-side border needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary.
+I've noticed that the right-side border needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary. In other words, visually speaking:
+
+![Graphic Detailing The Requirement For A Column To The Right Of The Masked Sprite.](./Article_Images/Masking_Example_Animation_Start.png)
 
 ## Collision
 
