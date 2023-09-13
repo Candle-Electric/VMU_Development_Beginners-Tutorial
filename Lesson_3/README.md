@@ -14,32 +14,47 @@ Systems such as the NES or Sega Genesis allow a transparency in sprites' pallett
 
 What will change is how we feed the data into our sprite address. We'll need to double our drawing, and basically make a border that fits our sprite inside its boundaries and append that to our existing sprite. This will often take us outside the 8x8 dimesions we set earlier, which is not an issue. You'll just need to make sure that each horizontal line has all 8 bytes, and is separated by a comma; vertically, any dimension is fine. For example, a 9x7 square would be masked like this:
 
-    .byte %10000000,%00111111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111
-    .byte %00000000,%00011111  
-    .byte %10000000,%00111111  
-    .byte %00000000,%00000000    
-    .byte %01111111,%11000000
-    .byte %01111111,%11000000
-    .byte %01111111,%11000000
-    .byte %01111111,%11000000
-    .byte %01111111,%11000000
-    .byte %01111111,%11000000
-    .byte %01111111,%10000000
-    .byte %00000000,%00000000
+    Player_Car_B_Mask:
+    	.byte	11,9
+    	.byte %10000000,%00111111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111
+    	.byte %00000000,%00011111  
+    	.byte %10000000,%00111111  
+    	.byte %00000000,%00000000    
+    	.byte %01111111,%11000000
+    	.byte %01111111,%11000000
+    	.byte %01111111,%11000000
+    	.byte %01111111,%11000000
+    	.byte %01111111,%11000000
+    	.byte %01111111,%11000000
+    	.byte %01111111,%10000000
+    	.byte %00000000,%00000000
 
-The top half is the "Mask," which is surrounded by 1s/black pixels, conversely to the original sprite we created previously, whose border was 0s/whitespace. Every pixel in the sprite will need to be contained and bordered on all sides by a pixel in the mask. In other words, the mask will need to be the same size as the sprite, + 1 pixel in every up, down, left, and right direction:
+The top half is the "Mask," which is surrounded by 1s/black pixels, conversely to the original sprite we created previously, whose border was 0s/whitespace. Note that it's the dimensions of the _Mask_ Half specifically that we want to define above the sprite data. Every pixel in the bottom sprite will need to be contained and bordered on all sides by a pixel in the mask. In other words, the mask will need to be the same size as the sprite, + 1 pixel in every up, down, left, and right direction:
 
 ![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Masking_Example_Animation_Start.png)
 
 I've noticed that the right-side border needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary. In other words, visually speaking:
 
 ![Graphic Detailing The Requirement For A Column To The Right Of The Masked Sprite.](./Article_Images/Masking_Example_Right_Column_Explanation_Graphic.png)
+
+Since we're dealing with a lot of Image Files now, let's make a New Folder for them. We can do this via the O.S. File Explorer or with Git Bash:
+
+	; *Navigate To Your Root Directory*
+	mkdir img
+
+I'll call mine "img" for this tutorial, but you can give it any name you like; just remember to keep it consistent when you reference its path in your code. Let's also move our existing `.asm` images in there. Then, we'll `.include` our Image Assemblies with the New Folder's Path.
+
+	;=======================;
+	;     Include Images    ;
+	;=======================;
+	.include		"./img/Hello_World_BackGround.asm"
+	.include		"./img/Example_Sprite_Mask.asm"
 
 ## Collision
 
