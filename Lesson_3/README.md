@@ -472,3 +472,63 @@ And as before, you will need to adjust for the size of your sprite. One way to s
 </details>
 
 Now, we should only be able to move our sprite within the confines of the screen boundaries:
+
+One thing to note is that what we've learned so far largely mirrors the example code in the LibPerspective example directory, specifically `demo_spritebounce.asm`. It can be found by downloading the [LibPerspective Library](https://slum.online/dreamcast/) and checking the `src/` Folder, but here's a snippet of the Main Loop to help show a bit of it to you:
+
+	.demo_loop
+			clr1    ocr, 5
+			; If sprite x = 0, reset x flag
+			ld      sb_spr_x_loc
+			bnz     .skip_x_reset
+			clr1    sb_spr_flags, 0
+	.skip_x_reset
+			; If sprite x + sprite x size = 48, set x flag
+			add     sb_spr_x_size
+			sub     #48
+			bnz     .skip_x_set
+			set1    sb_spr_flags, 0
+	.skip_x_set
+	
+			; If sprite y = 0, reset y flag
+			ld      sb_spr_y_loc
+			bnz     .skip_y_reset
+			clr1    sb_spr_flags, 1
+	.skip_y_reset
+			; If sprite y + sprite y size = 32, set y flag
+			add     sb_spr_y_size
+			sub     #32
+			bnz     .skip_y_set
+			set1    sb_spr_flags, 1
+	.skip_y_set
+	
+			; Update X pos
+			bn      sb_spr_flags, 0, .inc_x
+			dec     sb_spr_x_loc
+			dec     sb_spr_x_loc
+	.inc_x
+			inc     sb_spr_x_loc
+	
+			; Update Y pos
+			bn      sb_spr_flags, 1, .inc_y
+			dec     sb_spr_y_loc
+			dec     sb_spr_y_loc
+	.inc_y
+			inc     sb_spr_y_loc
+	
+			; Draw the sprite to the screen
+			P_Draw_Background_Constant img_background
+			P_Draw_Sprite_Mask sb_spr_address, sb_spr_x_loc, sb_spr_y_loc
+			P_Blit_Screen
+	
+			set1    ocr, 5
+	
+			; Generic input code to move between demos
+			call    Get_Input
+			mov     #Button_A, acc
+			call    Check_Button_Pressed
+			bz      .not_a
+			ret
+	.not_a
+			jmp     .demo_loop
+
+Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out!
