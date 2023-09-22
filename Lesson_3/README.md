@@ -473,7 +473,7 @@ And as before, you will need to adjust for the size of your sprite. One way to s
 
 Now, we should only be able to move our sprite within the confines of the screen boundaries:
 
-One thing to note is that what we've learned so far largely mirrors the example code in the LibPerspective example directory, specifically `demo_spritebounce.asm`. It can be found by downloading the [LibPerspective Library](https://slum.online/dreamcast/) and checking the `src/` Folder, but here's a snippet of the Main Loop to help show a bit of it to you:
+One thing to note is that what we've learned so far largely mirrors the example code in the LibPerspective example directory, specifically `demo_spritebounce.asm`. It's the first of the Example Demos seen when booting up LibPerspective's Compiled `main.asm`, and presents the user with a masked sprite, which moves diagonally around the screen and then bounces off the edges when collision with the borders is detected. The code can be found by downloading the [LibPerspective Library](https://slum.online/dreamcast/) and checking the `src/` Folder, but here's a snippet of the Main Loop to help show a bit of it to you:
 
 	.demo_loop
 			clr1    ocr, 5
@@ -531,4 +531,6 @@ One thing to note is that what we've learned so far largely mirrors the example 
 	.not_a
 			jmp     .demo_loop
 
-Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out!
+Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far -- masked sprites, collision, etc. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out -- In fact, I learned everything I've taught you so far from these demos!
+
+Stick around for Lesson 4, where we'll switch gears to drawing numbers and handling menus/scene changes.
