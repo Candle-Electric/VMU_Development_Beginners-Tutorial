@@ -531,6 +531,6 @@ One thing to note is that what we've learned so far largely mirrors the example 
 	.not_a
 			jmp     .demo_loop
 
-Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far -- masked sprites, collision, etc. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out -- In fact, I learned everything I've taught you so far from these demos!
+Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far -- masked sprites, collision, etc. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out! In fact, I learned everything I've taught you so far from these demos!
 
 Stick around for Lesson 4, where we'll switch gears to drawing numbers and handling menus/scene changes.
