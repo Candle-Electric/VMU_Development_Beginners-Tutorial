@@ -11,7 +11,7 @@
 ;=======================;
 ;   Include Libraries   ;
 ;=======================;
-.include "./lib/libperspective.asm 
+.include "./lib/libperspective.asm"
 .include "./lib/libkcommon.asm"
 .include "./lib/sfr.i"
 
@@ -96,10 +96,8 @@ Main_Loop:
 	jmpf Main_Loop
 
 ;=======================;
-;  Include Images/Libs  ;
+;    Include  Images    ;
 ;=======================;
-	.include        "./lib/libperspective.asm"
-	.include        "./lib/libkcommon.asm"
 	.include        "./Hello_World_BackGround.asm"
 
 	.cnop	0,$200		; Pad To An Even Number Of Blocks
