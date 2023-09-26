@@ -173,7 +173,7 @@ Your Final `main.asm` File should now look something like this:
 	;=======================;
 	;   Include Libraries   ;
 	;=======================;
-	.include "./lib/libperspective.asm 
+	.include "./lib/libperspective.asm" 
 	.include "./lib/libkcommon.asm"
 	.include "./lib/sfr.i"
 	
@@ -258,10 +258,8 @@ Your Final `main.asm` File should now look something like this:
 		jmpf Main_Loop
 	
 	;=======================;
-	;  Include Images/Libs  ;
+	;    Include  Images    ;
 	;=======================;
-		.include        "./lib/libperspective.asm"
-		.include        "./lib/libkcommon.asm"
 		.include        "./Hello_World_BackGround.asm"
 	
 		.cnop	0,$200		; Pad To An Even Number Of Blocks
