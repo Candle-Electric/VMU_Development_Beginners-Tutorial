@@ -2,4 +2,10 @@
 
 Right now, our code is booting directly into its "Gameplay" State. However, when you play a Finished Retail Game, it starts up with a Main Menu before diving in, right? Let's learn how to do that in our VMU code!
 
-For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `ld p3`. We've been using the latter, which will "hold" the button, as we've seen with our moving sprite onscreen. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. 
+For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `ld p3`. We've been using the latter, which will "hold" the button, as we've seen with our moving sprite onscreen. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be drawing out our text as `.asm` sprites, and drawing them in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
+
+Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
+
+Now that our New Graphics are ready, let's make a new scene for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done.
+
+Although drawing text is outside my skill level, I do know how to draw numbers on-the-fly from live numbers in memory.
