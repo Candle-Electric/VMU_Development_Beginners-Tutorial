@@ -443,7 +443,10 @@ And as before, you will need to adjust for the size of your sprite. One way to s
 		ld p3
 		bp acc, T_BTN_DOWN1, .Check_Left
 		ld test_sprite_y
-		sub #24
+		sub #24 ; Because my sprite is 8 pixels tall. Alternately, you can do:
+  		; ld test_sprite_y
+    		; add sprite_size_y
+      		; sub #32 ; VMU Screen Is 32 Pixels Tall
 		bn acc, 7, .Check_Left
 		inc test_sprite_y
 	.Check_Left
@@ -459,7 +462,10 @@ And as before, you will need to adjust for the size of your sprite. One way to s
 		ld p3
 		bp acc, T_BTN_RIGHT1, .Draw_Screen
 		ld test_sprite_x
-		sub #40
+		sub #40 ; Because my sprite is 8 pixels wide. Alternately, you can do:
+  		; ld test_sprite_x
+    		; add sprite_size_x
+      		; sub #48 ; The VMU's Screen Is 48 Pixels Wide
 		bn acc, 7, .Draw_Screen
 		inc test_sprite_x
 	.Draw_Screen
@@ -531,6 +537,6 @@ One thing to note is that what we've learned so far largely mirrors the example 
 	.not_a
 			jmp     .demo_loop
 
-Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far -- masked sprites, collision, etc. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out! In fact, I learned everything I've taught you so far from these demos!
+Other than the `ret` to leave the Loop and the `set1`/`clr1 ocr,5` calls to set the Oscillation Rate (which we'll get to later.), you'll notice that this has everything we've learned so far: masked sprites, collision, etc. There is much more to learn in that Folder -- these example programs by Kresna Susila are an amazing resource, and I highly recommend checking them out! In fact, I learned everything I've taught you so far from these demos!
 
 Stick around for Lesson 4, where we'll switch gears to drawing numbers and handling menus/scene changes.
