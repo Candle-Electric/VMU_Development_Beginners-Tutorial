@@ -6,6 +6,14 @@ For menus, we're going to start off with a key distinction; namely, that between
 
 Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
 
-Now that our New Graphics are ready, let's make a new scene for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done.
+Now that our New Graphics are ready, let's make a new scene for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`:
+
+Since we have 3 characters and 3 stages to choose from, let's create the logic for those now:
+
+  .draw_character_selection
+  .draw_character_1_selected
+    bn .selection_flags, 0, .draw_character_2_selected
+  .draw_character_2_selected
+  ...
 
 Although drawing text is outside my skill level, I do know how to draw numbers on-the-fly from live numbers in memory.
