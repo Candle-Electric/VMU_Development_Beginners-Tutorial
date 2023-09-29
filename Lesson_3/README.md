@@ -56,7 +56,7 @@ I'll call mine "img" for this tutorial, but you can give it any name you like; j
 	.include		"./img/Hello_World_BackGround.asm"
 	.include		"./img/Example_Sprite_Mask.asm"
 
-Once we've made those changes, let's rebuild our code in WaterBear. As mentioned before, it hasn't changed much since Lesson 2. In case you need it, here's the full code file:
+Once we've made those changes, let's rebuild our code in WaterBear. As mentioned before, it hasn't changed much since Lesson 2 (the `.include` Statement now pointing to the Masked Sprite and its requisite call to `P_Draw_Sprite_Mask` instead of `P_Draw_Sprite` are the only changes to `main.asm`.). In case you need it, here's the full code file:
 
 <details>
   <summary>Final "Masked Sprite" Code File</summary>
