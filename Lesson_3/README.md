@@ -12,7 +12,7 @@ Systems such as the NES or Sega Genesis allow a transparency in sprites' pallett
 
     P_Draw_Sprite_Mask sprite_x, sprite_y, sprite_address
 
-What will change is how we feed the data into our sprite address. We'll need to double our drawing, and basically make a border that fits our sprite inside its boundaries and append that to our existing sprite. This will often take us outside the 8x8 dimesions we set earlier, which is not an issue. You'll just need to make sure that each horizontal line has all 8 bytes, and is separated by a comma; vertically, any dimension is fine. For example, a 9x7 square would be masked like this:
+What will change is how we feed the data into our sprite address. We'll need to double our drawing, and basically make a border with inverted colors that fits our sprite inside its boundaries and append that to our existing sprite. This will often take us outside the 8x8 dimesions we set earlier, which is not an issue. You'll just need to make sure that each horizontal line has all 8 bytes, and is separated by a comma; vertically, any dimension is fine. For example, a 9x7 square would be masked like this:
 
     Player_Car_B_Mask:
     	.byte	11,9
@@ -37,7 +37,7 @@ What will change is how we feed the data into our sprite address. We'll need to 
 
 The top half is the "Mask," which is surrounded by 1s/black pixels, conversely to the original sprite we created previously, whose border was 0s/whitespace. Note that it's the dimensions of the _Mask_ Half specifically that we want to define above the sprite data. Every pixel in the bottom sprite will need to be contained and bordered on all sides by a pixel in the mask. In other words, the mask will need to be the same size as the sprite, + 1 pixel in every up, down, left, and right direction:
 
-![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Masking_Example_Animation_Start.png)
+![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Sprite_Masking_Tutorial_Guide_Animation.gif)
 
 I've noticed that the right-side border needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary. In other words, visually speaking:
 
