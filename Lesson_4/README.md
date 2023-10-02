@@ -10,10 +10,10 @@ Now that our New Graphics are ready, let's make a new scene for the menu, separa
 
 Since we have 3 characters and 3 stages to choose from, let's create the logic for those now:
 
-  .draw_character_selection
-  .draw_character_1_selected
+    .draw_character_selection
+    .draw_character_1_selected
     bn .selection_flags, 0, .draw_character_2_selected
-  .draw_character_2_selected
-  ...
+    .draw_character_2_selected
+    ...
 
 Although drawing text is outside my skill level, I do know how to draw numbers on-the-fly from live numbers in memory.
