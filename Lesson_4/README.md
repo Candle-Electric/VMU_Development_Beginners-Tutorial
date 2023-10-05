@@ -8,7 +8,27 @@ Let's have two options on our selection screen. We know how to draw sprites and 
 
 Now that our New Graphics are ready, let's make a new scene for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`:
 
-Since we have 3 characters and 3 stages to choose from, let's create the logic for those now:
+Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. Speaking in Pseudo-Code, it will look something like this:
+
+* Is the "Character" Row Selected?
+    * Yes:
+        * Is the Cursor on Character 1?
+            * `P_Draw_Sprite Character_1_Highlighted
+        * Is it Character 2?
+            * `P_Draw_Sprite Character_2_Highlighted
+        * Is it Character 3?
+            * `P_Draw_Sprite Character_2_Highlighted
+    * No:
+        * Did the User choose Character 1?
+            * `P_Draw_Sprite Character_1_Not_Highlighted
+        * ...Or Character 2?
+            * `P_Draw_Sprite Character_2_Not_Highlighted
+        * ..._Or_ Character 3?
+            * `P_Draw_Sprite Character_3_Not_Highlighted
+* Is the "Stage" Row Selected?
+    * Repeat the Above. ^     
+
+With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
     .draw_character_selection
     .draw_character_1_selected
