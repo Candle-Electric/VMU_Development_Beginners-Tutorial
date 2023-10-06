@@ -56,7 +56,7 @@ Main_Menu:
   bnz .Character_3_Not_Highlighted
   mov #<Not_Highlighted_2>, character_selection_sprite_address+1
   jmpf .Handle_Stage_Selection_text
-.Character_1_Not_Highlighted
+.Character_3_Not_Highlighted
   ld Character_Flags
   sub #3
   bnz  .Handle_Stage_Selection_text
