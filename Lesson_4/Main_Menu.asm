@@ -100,9 +100,18 @@ Main_Menu:
   sub #3
   bnz  .Draw_Screen
   mov #<Not_Highlighted_3>, stage_selection_sprite_address+1
+.Handle_OK_Button_Text
+.Draw_OK_Button_Highlighted
+	bn Cursor_Flags, 2, .Draw_OK_Button_Not_Highlighted
+	mov #<Highlighted, ok_button_sprite_address+1
+	jmpf .Draw_Screen
+.Draw_OK_Button_Not_Highlighted
+	bp Cursor_Flags, 2, .Draw_Screen
+	mov #<Not_Highlighted, ok_button_sprite_address+1
 .Draw_Screen
 	P_Draw_Background_Constant Main_Menu_BackGround
 	P_Draw_Sprite character_selection_sprite_address, #8, #8
 	P_Draw_Sprite stage_selection_sprite_address, #16, #16
+	P_Draw_Sprite ok_button_sprite_address, #8, #24
 	P_Blit_Screen
 	jmpf Main_Menu
