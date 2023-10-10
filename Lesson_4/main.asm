@@ -26,6 +26,7 @@
 ;  Include  Code Files  ;
 ;=======================;
 .include		"./Cursor_Gameplay.asm"
+.include		"./Main_Menu.asm"
 
 ;=======================;
 ;   Define Variables:   ;
@@ -115,7 +116,7 @@ start:
 	set1 ie,7
 
 Main_Loop:
-	; callf	Main_Menu
+	callf	Main_Menu
 	callf	Cursor_Gameplay
 	jmpf Main_Loop
 
