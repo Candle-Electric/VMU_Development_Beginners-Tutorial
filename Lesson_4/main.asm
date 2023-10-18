@@ -21,6 +21,7 @@
 .include		"./img/Hello_World_BackGround.asm"
 .include		"./img/Example_Sprite.asm"
 .include		"./img/Example_Sprite_Mask.asm"
+.include		"./img/ExampleBG_City.asm"
 
 ;=======================;
 ;  Include  Code Files  ;
