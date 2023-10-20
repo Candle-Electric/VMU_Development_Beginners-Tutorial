@@ -34,9 +34,6 @@
 ;=======================;
 p3_pressed					=		$4		; 1 Byte (For LibKCommon)
 p3_last_input				=		$5		; 1 Byte (For LibKCommon)
-test_sprite_x				=		$6		; 1 Byte
-test_sprite_y				=		$7		; 1 Byte
-test_sprite_sprite_address	=		$8		; 2 Bytes
 
 ;=======================;
 ;       Constants       ;
