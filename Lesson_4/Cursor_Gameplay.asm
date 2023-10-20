@@ -1,13 +1,18 @@
 ;=======================;
 ;       Gameplay        ;
 ;=======================;
+; start:	Cursor_Gameplay:
+	test_sprite_x				=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
+	test_sprite_y				=		$7		; 1 Byte
+	test_sprite_sprite_address	=		$8		; 2 Bytes
+
 ; Set Sprite Addresses
 	mov	#20, test_sprite_x
 	mov	#12, test_sprite_y
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 
-Cursor_Gameplay:
+Cursor_Gameplay: ; Rename To Cursor_Gameplay_Loop:
 ; Check Input
 	callf Get_Input ; This Function Is In LibKCommon.ASM
 	ld p3
