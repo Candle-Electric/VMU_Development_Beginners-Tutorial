@@ -6,14 +6,20 @@
 ;   Define Variables:   ;
 ;=======================;
 cursor_flags				= $6 ; 1 Byte
-character_selection_sprite_address 	= $7 ; 2 Bytes
-stage_selection_sprite_sprite_address	= $9 ; 2 Bytes
+character_text_sprite_address		= $7 ; 2 Bytes
+character_selection_sprite_address 	= $9 ; 2 Bytes
+stage_text_sprite_address		= $11 ; 2 Bytes
+stage_selection_sprite_sprite_address	= $13 ; 2 Bytes
 
 ;=======================;
 ; Set Sprite Addresses  ;
 ;=======================;
-mov	#<Character_Select_1_Highlighted, character_selection_sprite_address
-mov	#>Character_Select_1_Highlighted, character_selection_sprite_address+1
+; Character_Flag Will Already Be Set From Main.ASM When We Get Here, So We'll Need To Set This Before The Loop:
+.Initialize_Character_1
+	mov	#<Character_Select_1_Highlighted, character_selection_sprite_address
+	mov	#>Character_Select_1_Highlighted, character_selection_sprite_address+1
+.Initialize_Character_2
+.Initialize_Character_3
 
 ;=======================;
 ;       Main Loop       ;
@@ -25,6 +31,10 @@ Main_Menu:
 .Handle_Character_Selection_Text
 .Cursor_On_Character_Select
   bn  Cursor_Flags, 0, .Cursor_Not_On_Character_Select ; Load Flag -- Is It Selected? If So, Which Character?
+.Handle_Character_Highlighted_Text
+  ; P_Draw_Sprite ... ; Draw "Character:," Highlighted ; (We'll Switch It To "Player:" For Space.).
+.Handle_Character_Not_Highlighted_Text
+  ; P_Draw_Sprite
 .Character_1_Highlighted
   ld Character_Flags
   sub #1
