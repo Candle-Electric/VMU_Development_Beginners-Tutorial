@@ -16,10 +16,46 @@ stage_selection_sprite_sprite_address	= $13 ; 2 Bytes
 ;=======================;
 ; Character_Flag Will Already Be Set From Main.ASM When We Get Here, So We'll Need To Set This Before The Loop:
 .Initialize_Character_1
+	ld	character_flags
+	bnz	.Intialize_Character_2
 	mov	#<Character_Select_1_Highlighted, character_selection_sprite_address
 	mov	#>Character_Select_1_Highlighted, character_selection_sprite_address+1
+	jmpf 	.Initialize_Stage_1
 .Initialize_Character_2
+	ld	character_flags
+	sub	#1
+	bnz	.Intialize_Character_3
+	mov	#<Character_Select_2_Highlighted, character_selection_sprite_address
+	mov	#>Character_Select_2_Highlighted, character_selection_sprite_address+1
+	jmpf 	.Initialize_Stage_1
 .Initialize_Character_3
+	ld	character_flags
+	sub	#2
+	bnz	.Intialize_Stage_1
+	mov	#<Character_Select_3_Highlighted, character_selection_sprite_address
+	mov	#>Character_Select_3_Highlighted, character_selection_sprite_address+1
+.Initialize_Stage_1
+	ld	stage_flags
+	bnz	.Initialize_Stage_2
+	mov	#<Stage_Select_1_Highlighted, stage_selection_sprite_address
+	mov	#>Stage_Select_1_Highlighted, stage_selection_sprite_address+1
+	jmpf	.Initialize_OK_Button
+.Initialize_Stage_2
+	ld	stage_flags
+	sub	#1
+	bnz	.Initialize_Stage_3
+	mov	#<Stage_Select_2_Highlighted, stage_selection_sprite_address
+	mov	#>Stage_Select_2_Highlighted, stage_selection_sprite_address+1
+	jmpf	.Initialize_OK_Button
+.Initialize_Stage_3
+	ld	stage_flags
+	sub	#2
+	bnz	.Initialize_OK_Button
+	mov	#<Stage_Select_3_Highlighted, stage_selection_sprite_address
+	mov	#>Stage_Select_3_Highlighted, stage_selection_sprite_address+1
+.Initialize_OK_Button
+	mov	#<OK_Button_Not_Highlighted, ok_button_sprite_address
+	mov	#>OK_Button_Not_Highlighted, ok_button_sprite_address+1
 
 ;=======================;
 ;       Main Loop       ;
