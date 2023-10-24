@@ -12,6 +12,11 @@ stage_text_sprite_address		= $11 ; 2 Bytes
 stage_selection_sprite_sprite_address	= $13 ; 2 Bytes
 
 ;=======================;
+; Initialize Variables  ;
+;=======================;
+mov #0, cursor_flags
+
+;=======================;
 ; Set Sprite Addresses  ;
 ;=======================;
 ; Character_Flag Will Already Be Set From Main.ASM When We Get Here, So We'll Need To Set This Before The Loop:
@@ -62,8 +67,72 @@ stage_selection_sprite_sprite_address	= $13 ; 2 Bytes
 ;=======================;
 Main_Menu:
 ; Check Input
+.Check_Up
+	callf Get_Input
+	ld p3
+	bp acc, T_BTN_UP1, .Check_Down
+	inc cursor_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+.Check_Down
+	callf Get_Input
+	ld p3
+	bp acc, T_BTN_DOWN1, .Check_Left
+	dec cursor_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+.Check_Left
 	callf Get_Input ; This Function Is In LibKCommon.ASM
 	ld p3
+	bp acc, T_BTN_LEFT1, .Check_Right
+.Left_Character_Select
+	ld cursor_flags
+	bnz .Left_Stage_Select
+	dec character_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+.Left_Stage_Select
+	ld cursor_flags
+	sub #1
+	bnz .Handle_Cursor_Variables_Overflow
+	dec character_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+.Check_Right
+	callf Get_Input ; This Function Is In LibKCommon.ASM
+	ld p3
+	bp acc, T_BTN_RIGHT1, .Check_OK_Button
+.Right_Character_Select
+	ld cursor_flags
+	bnz .Right_Stage_Select
+	inc character_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+.Right_Stage_Select
+	ld cursor_flags
+	sub #1
+	bnz .Handle_Cursor_Variables_Overflow
+	inc character_flags
+	jmpf .Handle_Cursor_Variables_Overflow
+; .O.K>. Button:
+	; ld cursor_flags
+	; sub #2
+	; bnz .Handle_Cursor_Variables_Overflow
+	; callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
+	; bp acc, T_BTN_A1/B1, .Handle_Cursor_Variables_Overflow
+	; ret
+.Handle_Cursor_Variables_Overflow
+.Check_Cursor_Overflow
+	ld cursor_flags
+	sub #1
+	sub #3
+	bp acc, 7, .Check_Character_Select_Overflow
+	mov #0, cursor_flags
+.Check_Character_Select_Overflow
+	ld character_flags
+	sub #3
+	bp acc, 7, .Check_Stage_Select_Overflow
+	mov #0, character_flags
+.Check_Stage_Select_Overflow
+	ld stage_flags
+	sub #3
+	bp acc, 7, .Handle_Character_Selection_Text
+	mov #0, stage_flags
 .Handle_Character_Selection_Text
 .Cursor_On_Character_Select
   bn  Cursor_Flags, 0, .Cursor_Not_On_Character_Select ; Load Flag -- Is It Selected? If So, Which Character?
