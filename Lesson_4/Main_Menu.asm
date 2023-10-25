@@ -117,22 +117,39 @@ Main_Menu:
 	; bp acc, T_BTN_A1/B1, .Handle_Cursor_Variables_Overflow
 	; ret
 .Handle_Cursor_Variables_Overflow
-.Check_Cursor_Overflow
+.Check_Cursor_Overflow_Up
+	ld cursor_flags
+	sub #3
+	bp acc, 7, .Check_Cursor_Overflow_Down
+	mov #0, cursor_flags
+	jmpf .Check_Character_Select_Overflow_Up
+.Check_Cursor_Overflow_Down
 	ld cursor_flags
 	sub #1
-	sub #3
-	bp acc, 7, .Check_Character_Select_Overflow
-	mov #0, cursor_flags
-.Check_Character_Select_Overflow
+	bn acc, 7, .Check_Character_Select_Overflow
+	mov #3, cursor_flags
+.Check_Character_Select_Overflow_Up
 	ld character_flags
 	sub #3
-	bp acc, 7, .Check_Stage_Select_Overflow
+	bp acc, 7, .Check_Character_Select_Overflow_Down
 	mov #0, character_flags
-.Check_Stage_Select_Overflow
+	jmpf .Check_Stage_Select_Overflow_Up
+.Check_Character_Select_Overflow_Down
+	ld character_flags
+	sub #1
+	bn acc, 7, .Check_Stage_Select_Overflow_Up
+	mov #3, character_flags
+.Check_Stage_Select_Overflow_Up
 	ld stage_flags
 	sub #3
-	bp acc, 7, .Handle_Character_Selection_Text
+	bp acc, 7, .Check_Stage_Select_Overflow_Down
 	mov #0, stage_flags
+	jmpf .Handle_Character_Selection_Text
+.Check_Stage_Select_Overflow_Down
+	ld stage_flags
+	sub #1
+	bn acc, 7, .Handle_Character_Selection_Text
+	mov #3, stage_flags
 .Handle_Character_Selection_Text
 .Cursor_On_Character_Select
   bn  Cursor_Flags, 0, .Cursor_Not_On_Character_Select ; Load Flag -- Is It Selected? If So, Which Character?
