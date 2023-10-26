@@ -14,7 +14,7 @@ stage_selection_sprite_sprite_address	= $13 ; 2 Bytes
 ;=======================;
 ; Initialize Variables  ;
 ;=======================;
-mov #0, cursor_flags
+mov #0, cursor_flags ; When The User "Pauses" To The Menu, We'll Always Put The Cursor On The Top Option. Character_Flags And Stage_Flags Will Be Inherited, As They're Already Set In Memory In Main.ASM Or In Cursor_Gameplay.ASM.
 
 ;=======================;
 ; Set Sprite Addresses  ;
@@ -102,20 +102,22 @@ Main_Menu:
 	ld cursor_flags
 	bnz .Right_Stage_Select
 	inc character_flags
-	jmpf .Handle_Cursor_Variables_Overflow
+	jmpf .Check_OK_Button
 .Right_Stage_Select
 	ld cursor_flags
 	sub #1
 	bnz .Handle_Cursor_Variables_Overflow
 	inc character_flags
+.Check_OK_Button
+	ld cursor_flags
+	sub #2
+	bnz .Handle_Cursor_Variables_Overflow
+	callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
+	bn acc, T_BTN_A1, .Click_OK
+	bn acc, T_BTN_B1, .Click_OK
 	jmpf .Handle_Cursor_Variables_Overflow
-; .O.K>. Button:
-	; ld cursor_flags
-	; sub #2
-	; bnz .Handle_Cursor_Variables_Overflow
-	; callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
-	; bp acc, T_BTN_A1/B1, .Handle_Cursor_Variables_Overflow
-	; ret
+.Click_OK
+	ret
 .Handle_Cursor_Variables_Overflow
 .Check_Cursor_Overflow_Up
 	ld cursor_flags
