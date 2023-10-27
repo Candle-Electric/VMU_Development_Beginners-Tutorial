@@ -68,21 +68,30 @@ mov #0, cursor_flags ; When The User "Pauses" To The Menu, We'll Always Put The 
 Main_Menu:
 ; Check Input
 .Check_Up
-	callf Get_Input
-	ld p3
-	bp acc, T_BTN_UP1, .Check_Down
+	; callf Get_Input
+	; ld p3
+	; bp acc, T_BTN_UP1, .Check_Down
+	mov #Button_Up, acc ; Via LibKCommon
+	callf Check_Button_Pressed
+	bz .Check_Down
 	inc cursor_flags
 	jmpf .Handle_Cursor_Variables_Overflow
 .Check_Down
-	callf Get_Input
-	ld p3
-	bp acc, T_BTN_DOWN1, .Check_Left
+	; callf Get_Input
+	; ld p3
+	; bp acc, T_BTN_DOWN1, .Check_Left
+	mov #Button_Down, acc
+	callf Check_Button_Pressed
+	bz .Check_Left
 	dec cursor_flags
 	jmpf .Handle_Cursor_Variables_Overflow
 .Check_Left
-	callf Get_Input ; This Function Is In LibKCommon.ASM
-	ld p3
-	bp acc, T_BTN_LEFT1, .Check_Right
+	; callf Get_Input ; This Function Is In LibKCommon.ASM
+	; ld p3
+	; bp acc, T_BTN_LEFT1, .Check_Right
+	mov #Button_Left, acc
+	callf Check_Button_Pressed
+	bz .Check_Right
 .Left_Character_Select
 	ld cursor_flags
 	bnz .Left_Stage_Select
@@ -95,9 +104,12 @@ Main_Menu:
 	dec character_flags
 	jmpf .Handle_Cursor_Variables_Overflow
 .Check_Right
-	callf Get_Input ; This Function Is In LibKCommon.ASM
-	ld p3
-	bp acc, T_BTN_RIGHT1, .Check_OK_Button
+	; callf Get_Input ; This Function Is In LibKCommon.ASM
+	; ld p3
+	; bp acc, T_BTN_RIGHT1, .Check_OK_Button
+	mov #Button_Right, acc
+	callf Check_Button_Pressed
+	bz .Check_OK_Button
 .Right_Character_Select
 	ld cursor_flags
 	bnz .Right_Stage_Select
@@ -112,9 +124,15 @@ Main_Menu:
 	ld cursor_flags
 	sub #2
 	bnz .Handle_Cursor_Variables_Overflow
-	callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
-	bn acc, T_BTN_A1, .Click_OK
-	bn acc, T_BTN_B1, .Click_OK
+	; callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
+	; bn acc, T_BTN_A1, .Click_OK
+	; bn acc, T_BTN_B1, .Click_OK
+	mov #Button_A, acc
+	callf Check_Button_Pressed
+	bnz .Click_OK
+	mov #Button_B, acc
+	callf Check_Button_Pressed
+	bnz .Click_OK
 	jmpf .Handle_Cursor_Variables_Overflow
 .Click_OK
 	ret
