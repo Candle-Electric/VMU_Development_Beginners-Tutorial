@@ -41,9 +41,14 @@ Since we have 3 characters and 3 stages to choose from, let's create the logic f
         * ..._Or_ Character 3?
             * `P_Draw_Sprite Character_3_Not_Highlighted
 * Is the "Stage" Row Selected?
-    * Repeat the Above. ^     
+    * Repeat the Above. ^
+* Is The "Done" Button Row Selected?
+        * Yes:
+              * Draw Done_Button_Highlighted
+        * No:
+              * Draw Done_Button_Not_Highlighted  
 
-With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
+To determine where the Cursor is and what is selected, we'll use Flags. With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
     .draw_character_selection
     .draw_character_1_selected
