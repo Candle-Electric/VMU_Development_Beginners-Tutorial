@@ -43,10 +43,10 @@ Since we have 3 characters and 3 stages to choose from, let's create the logic f
 * Is the "Stage" Row Selected?
     * Repeat the Above. ^
 * Is The "Done" Button Row Selected?
-        * Yes:
-              * Draw Done_Button_Highlighted
-        * No:
-              * Draw Done_Button_Not_Highlighted  
+    * Yes:
+        * Draw Done_Button_Highlighted
+    * No:
+        * Draw Done_Button_Not_Highlighted  
 
 To determine where the Cursor is and what is selected, we'll use Flags. With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
