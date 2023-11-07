@@ -48,7 +48,13 @@ Since we have 3 characters and 3 stages to choose from, let's create the logic f
     * No:
         * Draw Done_Button_Not_Highlighted  
 
-To determine where the Cursor is and what is selected, we'll use Flags. With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
+To determine where the Cursor is and what is selected, we'll use Flags. We could use one "Flag" variable, using each Bit to represent an option, but since we have three characters and three stages to choose from, rather than a binary "On/Off" switch for these options, we'll give each its own Flag, in addition to one more for the Menu's Cursor:
+
+      character_flag      =      $15 ; 1 Byte
+      stage_flag          =      $16 ; 1 Byte
+      cursor_flag         =      $17 ; 1 Byte
+
+With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
     .draw_character_selection
     .draw_character_1_selected
@@ -56,4 +62,6 @@ To determine where the Cursor is and what is selected, we'll use Flags. With our
     .draw_character_2_selected
     ...
 
-Although drawing text is outside my skill level, I do know how to draw numbers on-the-fly from live numbers in memory.
+   ## Drawing Digits
+
+Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory.
