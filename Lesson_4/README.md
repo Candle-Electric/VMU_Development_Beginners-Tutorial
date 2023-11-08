@@ -13,6 +13,54 @@ We have our `main.asm`, which is the File we've been Building so far. Therein, w
 
 We're going to move what used to be in `Main_Loop` to a New Code File, where we will be calling its Loop as seen above. Our Gameplay at the moment is akin to Dragging a Mouse Cursor around the Screen, so let's call it `Cursor_Gameplay`. `Main_Menu` is where we'll be coding our new, well, Main Menu! Let's move our old Main Loop to `Cursor_Gameplay` first. This should be as simple as Copy-Pasting it into a New File; just make sure to change the Function Name and `jmpf` at the end to Jump to `Cursor_Gameplay`, rather than `Main_Loop` as it was before:
 
+<details>
+  <summary>Cursor_Gameplay.asm</summary>
+
+	;=======================;
+	;    Cursor Gameplay    ;
+	;=======================;
+	
+	Cursor_Gameplay:
+	; Check Input
+		callf Get_Input ; This Function Is In LibKCommon.ASM
+		ld p3
+	.Check_Up
+		bp acc, T_BTN_UP1, .Check_Down
+		ld test_sprite_y
+		sub #1
+		bp acc, 7, .Check_Down
+		dec test_sprite_y
+	.Check_Down
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_DOWN1, .Check_Left
+		ld test_sprite_y
+		sub #24
+		bn acc, 7, .Check_Left
+		inc test_sprite_y
+	.Check_Left
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_LEFT1, .Check_Right
+		ld test_sprite_x
+		sub #2
+		bp acc, 7, .Check_Right
+		dec test_sprite_x
+	.Check_Right
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_RIGHT1, .Draw_Screen
+		ld test_sprite_x
+		sub #40
+		bn acc, 7, .Draw_Screen
+		inc test_sprite_x
+	.Draw_Screen
+		P_Draw_Background_Constant Hello_World_BackGround
+		P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
+		P_Blit_Screen
+		jmpf Cursor_Gameplay
+</details>
+
 Let's also move our Variable Declarations to our new `Cursor_Gameplay` File, while we're at it. Since the X-Position, Y-Position, and Sprite Addresses are only going to be used in this section of the code, we can pull them out from `main.asm` and declare them here. For variables that we want to remain consistent throughout each "Scene," however (E.G., which character is selected -- when the User goes back to the Menu, we want that character highlighted.), we'll declare them in `main.asm` and make sure not to assign other variables to the `$`-Addresses they occupy.
 
 ## Handling Menus
