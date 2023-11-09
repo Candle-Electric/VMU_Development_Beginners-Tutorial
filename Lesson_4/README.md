@@ -61,7 +61,68 @@ We're going to move what used to be in `Main_Loop` to a New Code File, where we 
 		jmpf Cursor_Gameplay
 </details>
 
-Let's also move our Variable Declarations to our new `Cursor_Gameplay` File, while we're at it. Since the X-Position, Y-Position, and Sprite Addresses are only going to be used in this section of the code, we can pull them out from `main.asm` and declare them here. For variables that we want to remain consistent throughout each "Scene," however (E.G., which character is selected -- when the User goes back to the Menu, we want that character highlighted.), we'll declare them in `main.asm` and make sure not to assign other variables to the `$`-Addresses they occupy.
+Let's also move our Variable Declarations to our new `Cursor_Gameplay` File, while we're at it. Since the X-Position, Y-Position, and Sprite Addresses are only going to be used in this section of the code, we can pull them out from `main.asm` and declare them here. For variables that we want to remain consistent throughout each "Scene," however (E.G., which character is selected -- when the User goes back to the Menu, we want that character highlighted.), we'll declare them in `main.asm` and make sure not to assign other variables to the `$`-Addresses they occupy. Since setting these variables will happen outside of the Gameplay Loop (I.E. we don't want to initialize them every Frame.), let's rename `Cursor_Gameplay:` to `Cursor_Gameplay_Loop:`, and use `Cursor_Gameplay:` the way we use `start:` in `main.asm`. Let's make sure to change the `jmpf` to target `Cursor_Gameplay_Loop` accordingly, as well. It should look like this when you're done:
+
+<details>
+  <summary>Cursor_Gameplay.asm, with Variable Initialization and the Renamed Gameplay Loop</summary>
+
+	;=======================;
+	;    Cursor Gameplay    ;
+	;=======================;
+
+	Cursor_Gameplay:
+		test_sprite_x			=		$6		; 1 Byte
+		test_sprite_y			=		$7		; 1 Byte
+		test_sprite_sprite_address	=		$8		; 2 Bytes
+
+	; Set Sprite Addresses
+		mov	#20, test_sprite_x
+		mov	#12, test_sprite_y
+		mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+ 
+	Cursor_Gameplay_Loop:
+	; Check Input
+		callf Get_Input ; This Function Is In LibKCommon.ASM
+		ld p3
+	.Check_Up
+		bp acc, T_BTN_UP1, .Check_Down
+		ld test_sprite_y
+		sub #1
+		bp acc, 7, .Check_Down
+		dec test_sprite_y
+	.Check_Down
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_DOWN1, .Check_Left
+		ld test_sprite_y
+		sub #24
+		bn acc, 7, .Check_Left
+		inc test_sprite_y
+	.Check_Left
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_LEFT1, .Check_Right
+		ld test_sprite_x
+		sub #2
+		bp acc, 7, .Check_Right
+		dec test_sprite_x
+	.Check_Right
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_RIGHT1, .Draw_Screen
+		ld test_sprite_x
+		sub #40
+		bn acc, 7, .Draw_Screen
+		inc test_sprite_x
+	.Draw_Screen
+		P_Draw_Background_Constant Hello_World_BackGround
+		P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
+		P_Blit_Screen
+		jmpf Cursor_Gameplay_Loop
+</details>
+
+This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of them as "Local Variables" in this sense. Keeping every Declaration in `main.asm` has its benefits as well though, and we'll talk about that trade-off later in this lesson.
 
 ## Handling Menus
 
