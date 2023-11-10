@@ -173,4 +173,4 @@ With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
    ## Drawing Digits
 
-Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory.
+Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory. We can take our numbers, and calculate the Remainders of the Base-10 Digits to draw the Sprites accordingly.
