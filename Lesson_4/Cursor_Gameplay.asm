@@ -1,18 +1,35 @@
 ;=======================;
 ;       Gameplay        ;
 ;=======================;
-; start:	Cursor_Gameplay:
-	test_sprite_x				=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
-	test_sprite_y				=		$7		; 1 Byte
+Cursor_Gameplay:
+	test_sprite_x			=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
+	test_sprite_y			=		$7		; 1 Byte
 	test_sprite_sprite_address	=		$8		; 2 Bytes
 
 ; Set Sprite Addresses
 	mov	#20, test_sprite_x
 	mov	#12, test_sprite_y
+.Draw_Example_Character_1
+	ld	character_flags
+	bnz	.Draw_Example_Character_2
+	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+	jmpf	Cursor_Gameplay_Loop
+.Draw_Example_Character_2
+	ld	character_flags
+	sub	#1
+	bnz	.Draw_Example_Character_3
+	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+	jmpf	Cursor_Gameplay_Loop
+.Draw_Example_Character_3
+	ld	character_flags
+	sub	#2
+	bnz	.Cursor_Gameplay_Loop
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 
-Cursor_Gameplay: ; Rename To Cursor_Gameplay_Loop:
+Cursor_Gameplay_Loop:
 ; Check Input
 	callf Get_Input ; This Function Is In LibKCommon.ASM
 	ld p3
@@ -50,4 +67,4 @@ Cursor_Gameplay: ; Rename To Cursor_Gameplay_Loop:
 	P_Draw_Background_Constant Hello_World_BackGround
 	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
 	P_Blit_Screen
-	jmpf Cursor_Gameplay
+	jmpf Cursor_Gameplay_Loop
