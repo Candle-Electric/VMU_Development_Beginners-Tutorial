@@ -58,13 +58,37 @@ Cursor_Gameplay_Loop:
 .Check_Right
 	callf Get_Input
 	ld p3
-	bp acc, T_BTN_RIGHT1, .Draw_Screen
+	bp acc, T_BTN_RIGHT1, .Check_Buttons
 	ld test_sprite_x
 	sub #40
 	bn acc, 7, .Draw_Screen
 	inc test_sprite_x
+.Check_Buttons ; Return To The "Main Menu/Pause Menu" If The Player Presses A Or B
+	callf Get_Input
+	ld p3
+	bn acc, T_BTN_A1, .Return_To_Menu
+	bn acc, T_BTN_B1, .Return_To_Menu
+	jmpf .Draw_Screen
+.Return_To_Menu
+	ret ; Leave `Cursor_Gameplay.ASM` And Return To `Main_Menu.ASM`, As Per `Main.ASM`'s Main Loop.
 .Draw_Screen
+.Draw_Example_Stage_1
+	ld stage_flags
+	bnz .Draw_Example_Stage_2
 	P_Draw_Background_Constant Hello_World_BackGround
+	jmpf .Draw_Character
+.Draw_Example_Stage_2
+	ld stage_flags
+	sub #1
+	bnz .Draw_Example_Stage_3
+	P_Draw_Background_Constant Hello_World_BackGround
+	jmpf .Draw_Character
+.Draw_Example_Stage_3
+	ld stage_flags
+	sub #2
+	bnz .Draw_Character
+	P_Draw_Background_Constant Hello_World_BackGround
+.Draw_Character
 	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
 	P_Blit_Screen
 	jmpf Cursor_Gameplay_Loop
