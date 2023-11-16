@@ -165,11 +165,97 @@ To determine where the Cursor is and what is selected, we'll use Flags. We could
 
 With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 
-    .draw_character_selection
-    .draw_character_1_selected
-    bn .selection_flags, 0, .draw_character_2_selected
-    .draw_character_2_selected
-    ...
+	.Character_1_Highlighted
+		ld Character_Flags
+		sub #1
+		bnz .Character_2_Highlighted
+		mov #<Highlighted_1>, character_selection_sprite_address+1
+		jmpf .Handle_Stage_Selection_Text
+	.Character_2_Highlighted
+		ld Character_Flags
+		sub #2
+		bnz .Character_3_Highlighted
+		mov #<Highlighted_2>, character_selection_sprite_address+1
+		jmpf .Handle_Stage_Selection_Text
+	.Character_3_Highlighted
+		ld Character_Flags
+		sub #3
+		bnz .Handle_Stage_Selection_Text ; Just In Case
+		mov #<Highlighted_3>, character_selection_sprite_address+1
+		jmpf .Handle_Stage_Selection_Text
+	.Cursor_Not_On_Character_Select  
+	.Character_1_Not_Highlighted
+		ld Character_Flags
+		sub #1
+		bnz .Character_2_Not_Highlighted
+		mov #<Not_Highlighted_1>, character_selection_sprite_address+1
+		jmpf .Handle_Stage_Selection_text
+	.Character_2_Not_Highlighted
+		ld Character_Flags
+		sub #2
+		bnz .Character_3_Not_Highlighted
+		mov #<Not_Highlighted_2>, character_selection_sprite_address+1
+		jmpf .Handle_Stage_Selection_text
+	.Character_3_Not_Highlighted
+		ld Character_Flags
+		sub #3
+		bnz  .Handle_Stage_Selection_text
+		mov #<Not_Highlighted_3>, character_selection_sprite_address+1
+	.Handle_Stage_Selection_Text
+	.Cursor_On_Stage_Select
+		bn  Cursor_Flags, 1, .Cursor_Not_On_Stage_Select
+		.Stage_1_Highlighted
+		ld Stage_Flags
+		sub #1
+		bnz .Stage_2_Highlighted
+		mov #<Highlighted_1>, stage_selection_sprite_address+1
+		jmpf .Draw_Screen
+	.Stage_2_Highlighted
+		ld Stage_Flags
+		sub #2
+		bnz .Stage_3_Highlighted
+		mov #<Highlighted_2>, stage_selection_sprite_address+1
+		jmpf .Draw_Screen
+	.Stage_3_Highlighted
+		ld Stage_Flags
+		sub #3
+		bnz .Draw_Screen ; Just In Case
+		mov #<Highlighted_3>, stage_selection_sprite_address+1
+		jmpf .Draw_Screen
+	.Cursor_Not_On_Stage_Select  
+	.Stage_1_Not_Highlighted
+		ld Stage_Flags
+		sub #1
+		bnz .Stage_2_Not_Highlighted
+		mov #<Not_Highlighted_1>, stage_selection_sprite_address+1
+		jmpf .Draw_Screen
+	.Stage_2_Not_Highlighted
+		ld Stage_Flags
+		sub #2
+		bnz .Stage_3_Not_Highlighted
+		mov #<Not_Highlighted_2>, stage_selection_sprite_address+1
+		jmpf .Draw_Screen
+	.Stage_3_Not_Highlighted
+		ld Stage_Flags
+		sub #3
+		bnz  .Draw_Screen
+		mov #<Not_Highlighted_3>, stage_selection_sprite_address+1
+	.Handle_OK_Button_Text ; Note: May Change These To "Start" And "Resume," Depending On If The User Has Come From Boot-Up Or From "Pausing."
+	.Draw_OK_Button_Highlighted
+		ld Cursor_Flags
+		sub #2
+		bnz .Draw_OK_Button_Not_Highlighted
+		mov #<OK_Button_Highlighted, ok_button_sprite_address
+		mov #>OK_Button_Highlighted, ok_button_sprite_address+1
+		jmpf .Draw_Screen
+	.Draw_OK_Button_Not_Highlighted
+		ld Cursor_Flags
+		sub #2
+		bz .Draw_Screen
+		mov #<OK_Button, ok_button_sprite_address
+		mov #>OK_Button, ok_button_sprite_address+1
+	.Draw_Screen
+    	...
 
    ## Drawing Digits
 
