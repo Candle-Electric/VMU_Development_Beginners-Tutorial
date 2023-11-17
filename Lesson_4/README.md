@@ -126,7 +126,19 @@ This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of the
 
 ## Handling Menus
 
-For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `ld p3`. We've been using the latter, which will "hold" the button, as we've seen with our moving sprite onscreen. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be drawing out our text as `.asm` sprites, and drawing them in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
+For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`. We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
+
+		mov 	#Button_B, acc
+		callf 	Check_Button_Pressed
+		bz 	.we_did_not_press_b
+	.we_pressed_b
+ 		; Do whatever the B button does!
+	.we_did_not_press_b
+ 		; The user didn't press B...Go about your business as usual!
+
+This time, we'll be providing the button in question to the `acc` register, using the very handy definitions provided to us by LibKCommon. `Check_Button_Pressed` will then overwrite `acc` with a 0 or 1, reflecting whether or not the button is depressed. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bz` or `bnz` with it without sparing a single extra clock cycle.
+
+We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be drawing out our text as `.asm` sprites, and drawing them in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
 
 Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
 
