@@ -175,7 +175,29 @@ To determine where the Cursor is and what is selected, we'll use Flags. We could
       stage_flag          =      $16 ; 1 Byte
       cursor_flag         =      $17 ; 1 Byte
 
-With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
+This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. With our skeleton laid out, let's translate it into our Main Menu Assembly Code!Let's say we have three rows of options on our menu. This is how we'd check User Input for the second one on our list:
+
+	.Check_Example_Option
+ 		ld example_cursor_flag
+   		sub #1 ; Make sure we're on the second option
+		bnz .Check_Another_Example_Option ; Get Outta Here if we're not
+	.Check_Example_Option_Left
+		mov #Button_Left, acc
+  		callf Check_Button_Pressed ; Did the User Press The "Left" Button While on this Option?
+		bnz .Check_Example_Option_Left ; If not, check if they Pressed "Right."
+		dec example_option_flag ; If so, -1 to the Option's Flag!
+	.Check_Example_Option_Right
+ 		mov #Button_Right, acc ; Do the same for the "Right Button Press" Side. 
+   		callf Check_Button_Pressed
+		bnz .Check_Another_Example_Option
+		inc example_option_flag ; Since this time it's a Right Press, we'll +1 the Flag!
+	.Check_Another_Example_Option ; Repeat the process for our next Row in the Cursor's List.
+  		ld example_cursor_flag
+		sub #2
+		bnz .Check_Another_ANOTHER_Example_Option
+	...
+
+ With that example under our belts, let's flesh it out with the "Characters" and "Stages" will be choosing from for our Example Code.
 
 	.Character_1_Highlighted
 		ld Character_Flags
