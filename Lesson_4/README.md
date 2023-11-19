@@ -175,7 +175,7 @@ To determine where the Cursor is and what is selected, we'll use Flags. We could
       stage_flag          =      $16 ; 1 Byte
       cursor_flag         =      $17 ; 1 Byte
 
-This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. With our skeleton laid out, let's translate it into our Main Menu Assembly Code!Let's say we have three rows of options on our menu. This is how we'd check User Input for the second one on our list:
+This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
 
 	.Check_Example_Option
  		ld example_cursor_flag
