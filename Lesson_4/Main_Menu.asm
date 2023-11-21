@@ -267,7 +267,7 @@ Main_Menu:
 	mov #<OK_Button, ok_button_sprite_address
 	mov #>OK_Button, ok_button_sprite_address+1
 .Draw_Screen
-	P_Draw_Background_Constant Main_Menu_BackGround
+	P_Draw_Background_Constant Main_Menu_BG
 	P_Draw_Sprite character_selection_sprite_address, #8, #8
 	P_Draw_Sprite stage_selection_sprite_address, #16, #16
 	P_Draw_Sprite ok_button_sprite_address, #8, #24
