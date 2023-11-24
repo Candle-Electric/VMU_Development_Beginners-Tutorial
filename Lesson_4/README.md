@@ -4,14 +4,14 @@
 
 Right now, our code is booting directly into its "Gameplay" State. However, when you play a Finished Retail Game, it starts up with a Main Menu before diving in, right? Let's learn how to do that in our VMU code!
 
-We have our `main.asm`, which is the File we've been Building so far. Therein, we jump right into our "Gameplay" Loop. Now, we're going to switch `main.asm`'s `Main_Loop` to loop through the _other_ sections of our Code. In this Lesson, those two Sections will be a Main Menu, where we can change some Options before playing, and the Gameplay Loop that we've been coding up until now. `main.asm` will still contain all of the Application Preparation and Instantiation From Lesson 1; it's what's inside that `Main_Loop` that we'll be moving:
+We have our `main.asm`, which is the File we've been Building so far in WaterBear, and where we've been adding all of our Assembly Code. Therein, we jump right into our "Gameplay" Loop. Having everything all in one place can get overwhelming quickly, though. Now, we're going to split everything up into a few separate Assembly Files, and then switch `main.asm`'s `Main_Loop` to loop through the _other_ sections of our Code. In this Lesson, those two Sections will be a Main Menu, where we can change some Options before playing, and the Gameplay Loop that we've been coding up until now. `main.asm` will still contain all of the Application Preparation and Instantiation From Lesson 1; it's what's inside that `Main_Loop` that we'll be moving. Starting now, `Main_Loop` will simply be used to Loop through the other Assembly Code Files:
 
       Main_Loop:
          call Main_Menu
          call Cursor_Gameplay
          jmpf Main_Loop
 
-We're going to move what used to be in `Main_Loop` to a New Code File, where we will be calling its Loop as seen above. Our Gameplay at the moment is akin to Dragging a Mouse Cursor around the Screen, so let's call it `Cursor_Gameplay`. `Main_Menu` is where we'll be coding our new, well, Main Menu! Let's move our old Main Loop to `Cursor_Gameplay` first. This should be as simple as Copy-Pasting it into a New File; just make sure to change the Function Name and `jmpf` at the end to Jump to `Cursor_Gameplay`, rather than `Main_Loop` as it was before:
+We're going to move what _used_ to be in `Main_Loop` to a New Code File.  Our "Gameplay" at the moment is akin to Dragging a Mouse Cursor around the Screen, so let's call it `Cursor_Gameplay`. Then, we can call it in `Main_Loop` as seen above. `Main_Menu` is where we'll be coding our new, well, Main Menu! Let's move our old Main Loop to `Cursor_Gameplay` first. This should be as simple as Copy-Pasting it into a New File; just make sure to change the Function Name and `jmpf` at the end to Jump to `Cursor_Gameplay`, rather than `Main_Loop` as it was before:
 
 <details>
   <summary>Cursor_Gameplay.asm</summary>
