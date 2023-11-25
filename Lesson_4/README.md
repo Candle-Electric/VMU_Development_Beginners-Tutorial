@@ -11,7 +11,7 @@ We have our `main.asm`, which is the File we've been Building so far in WaterBea
          call Cursor_Gameplay
          jmpf Main_Loop
 
-We're going to move what _used_ to be in `Main_Loop` to a New Code File.  Our "Gameplay" at the moment is akin to Dragging a Mouse Cursor around the Screen, so let's call it `Cursor_Gameplay`. Then, we can call it in `Main_Loop` as seen above. `Main_Menu` is where we'll be coding our new, well, Main Menu! Let's move our old Main Loop to `Cursor_Gameplay` first. This should be as simple as Copy-Pasting it into a New File; just make sure to change the Function Name and `jmpf` at the end to Jump to `Cursor_Gameplay`, rather than `Main_Loop` as it was before:
+We're going to move what _used_ to be in `Main_Loop` to a New Code File.  Our "Gameplay" at the moment is akin to Dragging a Mouse Cursor around the Screen, so let's name it `Cursor_Gameplay`. Then, we can call it in `Main_Loop` as seen above. `Main_Menu` is where we'll be coding our new, well, Main Menu! Let's move our old Main Loop to `Cursor_Gameplay` first. This should be as simple as Copy-Pasting it into a New File; just make sure to change the Function Name and `jmpf` at the end to Jump to `Cursor_Gameplay`, rather than `Main_Loop` as it was before:
 
 <details>
   <summary>Cursor_Gameplay.asm</summary>
