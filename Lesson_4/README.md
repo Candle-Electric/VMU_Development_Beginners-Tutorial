@@ -138,11 +138,11 @@ For menus, we're going to start off with a key distinction; namely, that between
 
 This time, we'll be providing the button in question to the `acc` register, using the very handy definitions provided to us by LibKCommon. `Check_Button_Pressed` will then overwrite `acc` with a 0 or 1, reflecting whether or not the button is depressed. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bz` or `bnz` with it without sparing a single extra clock cycle.
 
-We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be drawing out our text as `.asm` sprites, and drawing them in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
+We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be storing our text as `.asm` sprites, and drawing them out in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
 
 Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
 
-Now that our New Graphics are ready, let's make a new scene for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`:
+We can then draw up a "Header" Text for the top of the screen, and a "Go" Button at the bottom of the screen for when the User wants to confirm their choices and continue to the "Gameplay" Loop. Now that our New Graphics are ready, let's make a new "scene" in `Main_Menu.asm` for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`:
 
 Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. Speaking in Pseudo-Code, it will look something like this:
 
