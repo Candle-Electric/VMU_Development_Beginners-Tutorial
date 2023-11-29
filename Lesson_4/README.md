@@ -137,7 +137,23 @@ For menus, we're going to start off with a key distinction; namely, that between
 	.we_did_not_press_b
  		; The user didn't press B...Go about your business as usual!
 
-This time, we'll be providing the button in question to the `acc` register, using the very handy definitions provided to us by LibKCommon. `Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. Looking at the code that Kresna wrote for this Function, we can get a nice glimpse into how it works. The `p3` register is complemented by `p3_pressed_last`, which stores which buttons were "On" during the last frame. A Bitwise "And" Call then determines which was pressed this frame, but not last frame, ensuring that held buttons are skipped over:
+This time, we'll be providing the button in question to the `acc` register, using the very handy definitions provided to us by LibKCommon. 
+
+<details>
+  <summary>Button Definitions Via lib/libkcommon.asm:</summary>	
+	
+	; Nicer names for button masks
+	Button_Up               equ     %00000001
+	Button_Down             equ     %00000010
+	Button_Left             equ     %00000100
+	Button_Right            equ     %00001000
+	Button_A                equ     %00010000
+	Button_B                equ     %00100000
+	Button_Mode             equ     %01000000
+	Button_Sleep            equ     %10000000
+ </details>
+
+`Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. Looking at the code that Kresna wrote for this Function, we can get a nice glimpse into how it works. The `p3` register is complemented by `p3_pressed_last`, which stores which buttons were "On" during the last frame. A Bitwise "And" Call then determines which was pressed this frame, but not last frame, ensuring that held buttons are skipped over:
 
 One important thing to note is that since `p3_pressed_last` is populated during the Get_Input call, we must make sure that we are only calling `Get_Input` once per frame, I.E. once per Loop (or `Main_Loop`, `Cursor_Gameplay_Loop, Etc.). Otherwise, `p3_pressed_last` will be overwritten with the same button-press matrix twice in one frame, breaking the `Check_Button_Pressed` Function and effectively breaking every button. 
 
