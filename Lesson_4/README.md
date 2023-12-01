@@ -122,7 +122,19 @@ Let's also move our Variable Declarations to our new `Cursor_Gameplay` File, whi
 		jmpf Cursor_Gameplay_Loop
 </details>
 
-This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of them as "Local Variables" in this sense. Keeping every Declaration in `main.asm` has its benefits as well though, and we'll talk about that trade-off later in this lesson.
+This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of them as "Local Variables" in this sense. Keeping every Declaration in `main.asm` has its benefits as well though, and we'll talk about that trade-off later in this lesson. Next, we'll learn how to switch between these code files that we've laid out in our `main.asm`. We'll be doing so with the `ret` Function. When `ret` is called inside one of our `.asm` Files, we'll move to the next one in our `main.asm` List. So, if we wanted to move out from `Cursor_Gameplay.asm` with the B Button, we'd do:
+
+	Cursor_Gameplay_Loop:
+		; Check Input
+		callf Get_Input ; This Function Is In LibKCommon.ASM
+		ld p3
+	.Check_B
+    		bp acc, T_BTN_B1, Check_Up
+      		ret
+	.Check_Up
+  		...
+
+So, if we don't press the B Button, we'll continue on with our `Cursor_Gameplay_Loop`, and if we do, we'll move on to the next call in our `Main_Loop`, which brings us back up to `Main_Menu`. Let's write up a new code file for `Main_Menu` next!
 
 ## Handling Menus
 ### Check_Button_Pressed
