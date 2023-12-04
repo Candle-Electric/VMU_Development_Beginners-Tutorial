@@ -211,6 +211,7 @@ To determine where the Cursor is and what is selected, we'll use Flags. We could
 
 This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
 
+		callf Get_Input
 	.Check_Example_Option
  		ld example_cursor_flag
    		sub #1 ; Make sure we're on the second option
@@ -218,12 +219,12 @@ This way, we can increment our option flags using our newly-learned `Check_Butto
 	.Check_Example_Option_Left
 		mov #Button_Left, acc
   		callf Check_Button_Pressed ; Did the User Press The "Left" Button While on this Option?
-		bnz .Check_Example_Option_Left ; If not, check if they Pressed "Right."
+		bn acc, #Button_Left, .Check_Example_Option_Left ; If not, check if they Pressed "Right."
 		dec example_option_flag ; If so, -1 to the Option's Flag!
 	.Check_Example_Option_Right
  		mov #Button_Right, acc ; Do the same for the "Right Button Press" Side. 
    		callf Check_Button_Pressed
-		bnz .Check_Another_Example_Option
+		bn acc, #Button_Right, .Check_Another_Example_Option
 		inc example_option_flag ; Since this time it's a Right Press, we'll +1 the Flag!
 	.Check_Another_Example_Option ; Repeat the process for our next Row in the Cursor's List.
   		ld example_cursor_flag
