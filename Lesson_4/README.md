@@ -326,6 +326,41 @@ With that example under our belts, let's flesh it out with some additions by cap
 	.Draw_Screen
     	...
 
+Now that we have our Menu in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
+
+	Cursor_Gameplay:
+		test_sprite_x			=		$6		; 1 Byte
+		test_sprite_y			=		$7		; 1 Byte
+		test_sprite_sprite_address	=		$8		; 2 Bytes
+
+	; Set Sprite Addresses
+		mov	#20, test_sprite_x
+		mov	#12, test_sprite_y
+	.Draw_Example_Character_1
+		ld	character_flags
+		bnz	.Draw_Example_Character_2
+		mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+		jmpf	Cursor_Gameplay_Loop
+	.Draw_Example_Character_2
+		ld	character_flags
+		sub	#1
+		bnz	.Draw_Example_Character_3
+		mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+		jmpf	Cursor_Gameplay_Loop
+	.Draw_Example_Character_3
+		ld	character_flags
+		sub	#2
+		bnz	.Cursor_Gameplay_Loop
+		mov	#<Example_Sprite_Mask, test_sprite_sprite_address
+		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+	.Set_Stage_Background
+ 		ld	stage_flags
+   		...
+	Cursor_Gameplay_Loop:
+ 		...
+
    ## Drawing Digits
 
 Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory. We can take our numbers, and calculate the Remainders of the Base-10 Digits to draw the Sprites accordingly.
