@@ -363,4 +363,32 @@ Now that we have our Menu in place, let's wire everything up so that the Set Fla
 
    ## Drawing Digits
 
-Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory. We can take our numbers, and calculate the Remainders of the Base-10 Digits to draw the Sprites accordingly.
+Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory. We can take our numbers, and calculate the Remainders of the Base-10 Digits to draw the Sprites accordingly. Caluclating these Remainders is easy thanks to LibPerspective's `div` [Function](https://wtetzner.github.io/waterbear/instructions.html#div), which as we can see from its Documentation stores the remainder of a division in the `b` Register. There are two new things we'll be learning by calling `div`; firstly, we'll be introduced to the `b` and `c` Registers, and secondly, we'll be dealing with a 16-Bit Number for the first time. Verbatim from [Walter](https://github.com/wtetzner)'s Documentation, "The div instruction treats the acc and c registers as a single 16-bit argument, where acc makes up the high 8 bits, and c the low 8 bits. This 16-bit argument is divided by the b register, resulting in 16-bit quotient and an 8-bit remainder. The high 8 bits of the quotient is stored in the acc register, and the low 8 bits is stored in the c register. The b register contains the remainder." So, as an example, to divide 100 by 10, we'd do:
+
+	mov #0, acc
+	mov #100, c
+	mov #10, b
+	div
+	; Now, our resulting values would be:
+	ld acc
+		; 10
+  	ld c
+		; 0
+	ld b
+		; 0
+
+This is a simple example though, since it makes use of neither the Remainder nor the Full 16-Bit Combined Dividend Value. An 8-Bit Number can span from 0 to 255. So, an example 16-Bit Number would be 302. Let's divide it by 3, since we will then have a remainder. We'll need to convert our Base-10 Numbers into Binary to do so:
+
+ 	255 | + 0 + 0 + 32 + 0 + 8 + 4 + 2 + 1 
+ 				    __________
+	 		      0000000100101111
+	  
+	mov %00000001, acc
+	mov %00101111, c
+	mov #3, b
+	div
+	; acc = 0
+	; c = 30
+	; b = 2
+
+We can then draw up our 10 Digits, and call on them accordingly after running `div` with a Divisor of 10 for each "Column" of our Number.
