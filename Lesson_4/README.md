@@ -392,3 +392,36 @@ This is a simple example though, since it makes use of neither the Remainder nor
 	; b = 2
 
 To figure out how this works, we can look back at that Quote from the WaterBear Documentation. `acc` is the high 8 bits and `c` is the low 8 bits of our 16-Bit Number. That means that of the total possible value of 65535 (2^16, minus one for 0), `c` represents the smallest 1-255, and `acc` represents the other 65,280. In other words, the 16-Bit Number is one long Binary Entry, and `c` represents the last 8 digits, on the right, whereas `acc` conversely represents the first 8 digits, on the left. We can then draw up our 10 Digits, and call on them accordingly after running `div` with a Divisor of 10 for each "Column" of our Number.
+
+	ones_digit	=	$1a
+	tens_digit	=	$1b
+	hundreds_digit	=	$1c
+	thousands_digit	=	$1d
+	score		=	$1e
+ 
+ 	...
+  
+	ld score
+	st c
+	mov #0, acc
+	mov #10, b
+	div
+	ld b
+	st ones_digit
+	mov #0, acc
+	mov #10, b
+	div
+	ld b
+	st tens_digit
+	mov #0, acc
+	mov #10, b
+	div
+	ld b
+	st hundreds_digit    
+	mov #0, acc
+	mov #10, b
+	div
+	ld b
+	st thousands_digit
+
+     	
