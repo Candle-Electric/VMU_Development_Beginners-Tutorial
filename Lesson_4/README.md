@@ -424,4 +424,27 @@ To figure out how this works, we can look back at that Quote from the WaterBear 
 	ld b
 	st thousands_digit
 
-     	
+With our digits stored in these four addresses, we can make our first Function and call it for each of them to draw the full number. Much like a `Main_Loop`, we can do this by naming it and following it with a colon:
+
+	Draw_Digit:
+	.Digit_0  
+		ld c
+		bnz .Digit_1
+		mov #<Digit_0, acc
+		mov #>Digit_0, acc+1
+	.Digit_1
+		ld c
+		sub #1
+		bnz .Digit_2
+		mov #<Digit_1, acc
+		mov #>Digit_1, acc+1
+	.Digit_2
+		...
+
+There are `%Macros` in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
+
+	ld ones_digit
+	st c
+ 	callf Draw_Digit
+	
+We could similarly use `b` to determine where to draw each digit.
