@@ -430,21 +430,29 @@ With our digits stored in these four addresses, we can make our first Function a
 	.Digit_0  
 		ld c
 		bnz .Digit_1
-		mov #<Digit_0, acc
-		mov #>Digit_0, acc+1
+		mov #<Digit_0, b
+		mov #>Digit_0, c
+  		jmpf .Digit_Decided
 	.Digit_1
 		ld c
 		sub #1
 		bnz .Digit_2
-		mov #<Digit_1, acc
-		mov #>Digit_1, acc+1
+		mov #<Digit_1, b
+		mov #>Digit_1, c
+  		jmpf .Digit_Decided
 	.Digit_2
 		...
+  	.Digit_Decided
+   		ret
 
 There are `%Macros` in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
 	ld ones_digit
 	st c
- 	callf Draw_Digit
+	callf Draw_Digit
+	ld b
+	st ones_digit_sprite_address
+	ld c
+	st ones_digit_sprite_address+1
 	
-We could similarly use `b` to determine where to draw each digit.
+We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit.
