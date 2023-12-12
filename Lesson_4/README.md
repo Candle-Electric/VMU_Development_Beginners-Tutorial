@@ -455,4 +455,23 @@ There are `%Macros` in addition to Functions, which can have parameters as part 
 	ld c
 	st ones_digit_sprite_address+1
 	
-We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit.
+We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit. Let's assign a Sprite Address for each, as seen above:
+
+	thousands_digit_sprite_address = $2a 
+	hundreds_digit_sprite_address  = $2c
+	tens_digit_sprite_address      = $2e
+	ones_digit_sprite_address      = $30
+
+Then, we can draw each 8-Pixel * 8-Pixel Digit in a Row:
+
+	mov #8, b
+	mov #0, c
+	P_Draw_Sprite thousands_digit_sprite_address, b, c
+	mov #16, b
+	P_Draw_Sprite hundreds_digit_sprite_address, b, c
+	mov #24, b
+	P_Draw_Sprite tens_digit_sprite_address, b, c
+	mov #32, b
+	P_Draw_Sprite ones_digit_sprite_address, b, c
+
+ In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics.
