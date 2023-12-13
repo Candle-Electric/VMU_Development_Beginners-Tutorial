@@ -144,7 +144,7 @@ For menus, we're going to start off with a key distinction; namely, that between
 		callf	Get_Input
 		mov 	#Button_B, acc
 		callf 	Check_Button_Pressed
-		bn 	acc, #Button_B, .we_did_not_press_b
+		bn 	acc, 5, .we_did_not_press_b ; Button B is the 5th (Base-Zero) Bit, Or %00100000. More on this below!
 	.we_pressed_b
  		; Do whatever the B button does!
 	.we_did_not_press_b
@@ -219,12 +219,12 @@ This way, we can increment our option flags using our newly-learned `Check_Butto
 	.Check_Example_Option_Left
 		mov #Button_Left, acc
   		callf Check_Button_Pressed ; Did the User Press The "Left" Button While on this Option?
-		bn acc, #Button_Left, .Check_Example_Option_Left ; If not, check if they Pressed "Right."
+		bn acc, 2, .Check_Example_Option_Left ; If not, check if they Pressed "Right." "Left" is Bit #2.
 		dec example_option_flag ; If so, -1 to the Option's Flag!
 	.Check_Example_Option_Right
  		mov #Button_Right, acc ; Do the same for the "Right Button Press" Side. 
    		callf Check_Button_Pressed
-		bn acc, #Button_Right, .Check_Another_Example_Option
+		bn acc, 3, .Check_Another_Example_Option ; "Right" is Bit #3.
 		inc example_option_flag ; Since this time it's a Right Press, we'll +1 the Flag!
 	.Check_Another_Example_Option ; Repeat the process for our next Row in the Cursor's List.
   		ld example_cursor_flag
