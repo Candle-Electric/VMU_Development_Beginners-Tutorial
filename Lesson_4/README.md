@@ -234,6 +234,11 @@ This way, we can increment our option flags using our newly-learned `Check_Butto
 
 With that example under our belts, let's flesh it out with some additions by capturing some User Input and moving that Cursor to cycle through the "Characters" and "Stages" we'll be choosing from for our Example Code. With "Up" and "Down" Button Presses, we can simply Decrement and Increment our `cursor_flag` Variable, respectively. For Left and Right, we can do the same for our Option Variables, but we'll first need to check where our `cursor_flag` is so we know which one to edit.
 
+We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around.
+
+For The Input:
+And For The Graphics:
+
 	.Character_1_Highlighted
 		ld Character_Flags
 		sub #1
