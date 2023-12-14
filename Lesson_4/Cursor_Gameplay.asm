@@ -10,24 +10,24 @@ Cursor_Gameplay:
 	mov	#20, test_sprite_x
 	mov	#12, test_sprite_y
 .Draw_Example_Character_1
-	ld	character_flags
+	; ld	character_flags
 	bnz	.Draw_Example_Character_2
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	jmpf	Cursor_Gameplay_Loop
 .Draw_Example_Character_2
-	ld	character_flags
+	; ld	character_flags
 	sub	#1
 	bnz	.Draw_Example_Character_3
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	jmpf	Cursor_Gameplay_Loop
 .Draw_Example_Character_3
-	ld	character_flags
-	sub	#2
-	bnz	.Cursor_Gameplay_Loop
-	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
-	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+	; ld	character_flags
+	; sub	#2
+	; bnz	Cursor_Gameplay_Loop
+	mov	#<Example_Sprite_HeroChao_Mask, test_sprite_sprite_address
+	mov	#>Example_Sprite_HeroChao_Mask, test_sprite_sprite_address+1
 
 Cursor_Gameplay_Loop:
 ; Check Input
