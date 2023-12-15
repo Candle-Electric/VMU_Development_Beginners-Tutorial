@@ -234,7 +234,30 @@ This way, we can increment our option flags using our newly-learned `Check_Butto
 
 With that example under our belts, let's flesh it out with some additions by capturing some User Input and moving that Cursor to cycle through the "Characters" and "Stages" we'll be choosing from for our Example Code. With "Up" and "Down" Button Presses, we can simply Decrement and Increment our `cursor_flag` Variable, respectively. For Left and Right, we can do the same for our Option Variables, but we'll first need to check where our `cursor_flag` is so we know which one to edit.
 
-We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around.
+We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around. For the Former:
+
+	; Check Min/Max
+	.Check_Left
+		mov #Button_Left, acc
+		callf Check_Button_Pressed
+		bn acc, 2, .Check_Right
+	.Decrement_Example_Variable_MinMax
+		ld example_variable
+		bz .Example_Done
+		dec example_variable
+		jmpf .Example_Done
+	.Check_Right
+		mov #Button_Right, acc
+		callf Check
+		bn acc, 3, .Example_Done
+	.Increment_Example_Variable_MinMax
+		ld example_variable
+		sub #2
+		bz .Example_Done
+		inc example_variable
+	.Example_Done
+
+And for the Latter: 
 
 For The Input:
 
