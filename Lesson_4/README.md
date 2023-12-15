@@ -237,6 +237,97 @@ With that example under our belts, let's flesh it out with some additions by cap
 We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around.
 
 For The Input:
+
+	; Check Input
+	.Check_Up
+		callf Get_Input ; Only Call This Once Per Frame
+		mov #Button_Up, acc
+		callf Check_Button_Pressed
+		bn acc, 0, .Check_Down
+		ld cursor_flags
+		bz .Reset_Cursor_Overflow_Up
+		dec cursor_flags
+		jmpf .Handle_Character_Selection_Text
+	.Reset_Cursor_Overflow_Up
+		mov #2, cursor_flags
+		jmpf .Handle_Character_Selection_Text
+	.Check_Down
+		mov #Button_Down, acc
+		callf Check_Button_Pressed
+		bn acc, 1, .Check_Left ; bnz .Check_Left
+		ld cursor_flags
+		sub #2
+		bz .Reset_Cursor_Overflow_Down
+		inc cursor_flags
+		jmpf .Handle_Character_Selection_Text
+	.Reset_Cursor_Overflow_Down
+		mov #0, cursor_flags
+		jmpf .Handle_Character_Selection_Text
+	.Check_Left
+		mov #Button_Left, acc
+		callf Check_Button_Pressed
+		bn acc, 2, .Check_Right ; bnz .Check_Right
+	.Left_Character_Select
+		ld cursor_flags
+		bnz .Left_Stage_Select
+		ld character_flags
+		bnz .decrement_character_flags
+		mov #2, character_flags
+		jmpf .Handle_Character_Selection_Text
+	.decrement_character_flags
+		dec character_flags
+		jmpf .Handle_Character_Selection_Text
+	.Left_Stage_Select
+		ld cursor_flags
+		sub #1 ; #2 ; WHY???
+		bnz .Handle_Character_Selection_Text
+		ld stage_flags
+		bnz .decrement_stage_flags
+		mov #2, stage_flags
+		jmpf .Handle_Character_Selection_Text
+	.decrement_stage_flags
+		dec stage_flags
+		jmpf .Handle_Character_Selection_Text
+	.Check_Right
+		mov #Button_Right, acc
+		callf Check_Button_Pressed
+		bn acc, 3, .Check_OK_Button ; bnz .Check_OK_Button
+	.Right_Character_Select
+		ld cursor_flags
+		; sub #1
+		bnz .Right_Stage_Select
+		ld character_flags
+		sub #2
+		bnz .increment_character_flags
+		mov #0, character_flags
+		jmpf .Check_OK_Button
+	.increment_character_flags
+		inc character_flags
+		jmpf .Check_OK_Button
+	.Right_Stage_Select
+		ld cursor_flags
+		sub #1 ; #2
+		bnz .Handle_Character_Selection_Text
+		ld stage_flags
+		sub #2
+		bnz .increment_stage_flags
+		mov #0, stage_flags
+		jmpf .Check_OK_Button
+	.increment_stage_flags
+		inc stage_flags
+	.Check_OK_Button
+		ld cursor_flags
+		sub #2
+		bnz .Handle_Character_Selection_Text
+		callf Get_Input
+		ld p3
+		bp acc, T_BTN_A1, .Return_To_Menu
+		bp acc, T_BTN_B1, .Return_To_Menu
+		jmpf .Handle_Character_Selection_Text
+	.Return_To_Menu
+		mov #0, cursor_flags
+		ret
+
 And For The Graphics:
 
 	.Character_1_Highlighted
