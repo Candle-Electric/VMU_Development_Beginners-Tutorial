@@ -259,6 +259,33 @@ We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that
 
 And for the Latter: 
 
+	; Check And Loop Around
+	.Check_Left
+		mov #Button_Left, acc
+		callf Check_Button_Pressed
+		bn acc, 2, .Check_Right
+	.Decrement_Example_Variable
+		ld example_variable
+		bz .Loop_Decremented_Example_Variable
+		dec example_variable
+		jmpf .Example_Done
+ 	.Loop_Decremented_Example_Variable
+ 		mov #2, example_variable
+		jmpf .Example_Done
+	.Check_Right
+		mov #Button_Right, acc
+		callf Check
+		bn acc, 3, .Example_Done
+	.Increment_Example_Variable
+		ld example_variable
+		sub #2
+		bz .Example_Done
+		inc example_variable
+ 		jmpf .Example_Done
+	.Loop_Decremented_Example_Variable
+ 		mov #0, example_variable
+	.Example_Done
+
 For The Input:
 
 	; Check Input
