@@ -257,7 +257,7 @@ We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that
 		inc example_variable
 	.Example_Done
 
-And for the Latter: 
+For this style of menu, we can imagine Left/Right Arrows when our Options are Highlighted. At the Minimum, the Left Arrow would disappear. At the Maximum, the Right Arrow would no longer be visible. And now for the Latter, Looping Around, we could imagine that those Arrows are always present, and that we'd wrap around to the other end when going below or above our minimum or maximum: 
 
 	; Check And Loop Around
 	.Check_Left
@@ -286,7 +286,7 @@ And for the Latter:
  		mov #0, example_variable
 	.Example_Done
 
-For The Input:
+So, now we can do both the Coding and Graphics for each Option. For The Input:
 
 	; Check Input
 	.Check_Up
