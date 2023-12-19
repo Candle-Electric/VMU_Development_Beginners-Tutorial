@@ -77,6 +77,7 @@ mov #0, stage_flags
 ;=======================;
 ;       Main Loop       ;
 ;=======================;
+Main_Menu_Loop:
 .Handle_Cursor_Variables_Overflow
 .Check_Cursor_Overflow_Up
 	; ld cursor_flags
@@ -356,4 +357,4 @@ mov #0, stage_flags
 	mov #24, c
 	P_Draw_Sprite ok_button_sprite_address, b, c ; #8, #24
 	P_Blit_Screen
-	jmpf Main_Menu
+	jmpf Main_Menu_Loop
