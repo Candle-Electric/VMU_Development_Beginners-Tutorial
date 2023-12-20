@@ -176,9 +176,22 @@ We're going to handle our menu with sprite images, in the same format we've been
 
 Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
 
-We can then draw up a "Header" Text for the top of the screen, and a "Go" Button at the bottom of the screen for when the User wants to confirm their choices and continue to the "Gameplay" Loop. Now that our New Graphics are ready, let's make a new "scene" in `Main_Menu.asm` for the menu, separate from our Gameplay Loop! we can switch between them by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`:
+We can then draw up a "Header" Text for the top of the screen, and a "Go" Button at the bottom of the screen for when the User wants to confirm their choices and continue to the "Gameplay" Loop. Now that our New Graphics are ready, let's make a new "scene" in `Main_Menu.asm` for the menu, separate from our Gameplay Loop!
 
-Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. Speaking in Pseudo-Code, it will look something like this:
+	Main_Menu:
+	; Initialiaze Variables
+	...
+
+	Main_Menu_Loop:
+		callf Get_Input
+		mov 	#Button_A, acc
+		callf 	Check_Button_Pressed
+		bn 	acc, 5, .keep_looping
+		ret
+	.keep_looping
+		jmpf Main_Menu_Loop
+
+We can instantiate everything in the "Start" Section, after the initial `Main_Menu:` Header, and then Create A New `Main_Menu_Loop` to Cycle through. We can then switch between this New File and `Cursor_Gameplay.asm` by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`. Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. Speaking in Pseudo-Code, it will look something like this:
 
 * Is the "Character" Row Selected?
     * Yes:
