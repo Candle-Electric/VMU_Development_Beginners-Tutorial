@@ -191,32 +191,7 @@ We can then draw up a "Header" Text for the top of the screen, and a "Go" Button
 	.keep_looping
 		jmpf Main_Menu_Loop
 
-We can instantiate everything in the "Start" Section, after the initial `Main_Menu:` Header, and then Create A New `Main_Menu_Loop` to Cycle through. We can then switch between this New File and `Cursor_Gameplay.asm` by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`. Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. Speaking in Pseudo-Code, it will look something like this:
-
-* Is the "Character" Row Selected?
-    * Yes:
-        * Is the Cursor on Character 1?
-            * `P_Draw_Sprite Character_1_Highlighted
-        * Is it Character 2?
-            * `P_Draw_Sprite Character_2_Highlighted
-        * Is it Character 3?
-            * `P_Draw_Sprite Character_2_Highlighted
-    * No:
-        * Did the User choose Character 1?
-            * `P_Draw_Sprite Character_1_Not_Highlighted
-        * ...Or Character 2?
-            * `P_Draw_Sprite Character_2_Not_Highlighted
-        * ..._Or_ Character 3?
-            * `P_Draw_Sprite Character_3_Not_Highlighted
-* Is the "Stage" Row Selected?
-    * Repeat the Above. ^
-* Is The "Done" Button Row Selected?
-    * Yes:
-        * Draw Done_Button_Highlighted
-    * No:
-        * Draw Done_Button_Not_Highlighted  
-
-To determine where the Cursor is and what is selected, we'll use Flags. We could use one "Flag" variable, using each Bit to represent an option, but since we have three characters and three stages to choose from, rather than a binary "On/Off" switch for these options, we'll give each its own Flag, in addition to one more for the Menu's Cursor:
+We can instantiate everything in the "Start" Section, after the initial `Main_Menu:` Header, and then Create A New `Main_Menu_Loop` to Cycle through. We can then switch between this New File and `Cursor_Gameplay.asm` by calling the `ret` Command when the requisite Loop is done. This will take us to the next "Scene" in the List we have in `main.asm`. Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. To determine where the Cursor is and what is selected, we'll use Flags. We could use one "Flag" variable, using each Bit to represent an option, but since we have three characters and three stages to choose from, rather than a binary "On/Off" switch for these options, we'll give each its own Flag, in addition to one more for the Menu's Cursor:
 
       character_flag      =      $15 ; 1 Byte
       stage_flag          =      $16 ; 1 Byte
@@ -391,7 +366,32 @@ So, now we can do both the Coding and Graphics for each Option. For The Input:
 		mov #0, cursor_flags
 		ret
 
-And For The Graphics:
+And For The Graphics, we'll want to draw sprites depending on which options are highlighted. Speaking in Pseudo-Code, it will look something like this:
+
+* Is the "Character" Row Selected?
+    * Yes:
+        * Is the Cursor on Character 1?
+            * `P_Draw_Sprite Character_1_Highlighted`
+        * Is it Character 2?
+            * `P_Draw_Sprite Character_2_Highlighted`
+        * Is it Character 3?
+            * `P_Draw_Sprite Character_2_Highlighted`
+    * No:
+        * Did the User choose Character 1?
+            * `P_Draw_Sprite Character_1_Not_Highlighted`
+        * ...Or Character 2?
+            * `P_Draw_Sprite Character_2_Not_Highlighted`
+        * ..._Or_ Character 3?
+            * `P_Draw_Sprite Character_3_Not_Highlighted`
+* Is the "Stage" Row Selected?
+    * Repeat the Above. ^
+* Is The "Done" Button Row Selected?
+    * Yes:
+        * `P_Draw_Sprite Done_Button_Highlighted`
+    * No:
+        * `P_Draw_Sprite Done_Button_Not_Highlighted `
+
+To Answer these Questions in Code, we can simply check our Flag Variables. So, translating that pseudocode to our `Main_Menu` Code, we'd have:
 
 	.Character_1_Highlighted
 		ld Character_Flags
