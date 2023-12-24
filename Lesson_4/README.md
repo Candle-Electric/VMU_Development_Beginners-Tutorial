@@ -621,7 +621,7 @@ We could similarly use `b` and `c` as return values, without needing to allocate
 	tens_digit_sprite_address      = $2e
 	ones_digit_sprite_address      = $30
 
-Then, we can draw each 8-Pixel * 8-Pixel Digit in a Row:
+Then, we can draw each 8-Pixel * 8-Pixel Digit in a Row, keeping the Y-Position Constant while Moving the X-Position:
 
 	mov #8, b
 	mov #0, c
