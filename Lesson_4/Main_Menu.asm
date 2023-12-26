@@ -6,7 +6,7 @@ Main_Menu:
 ;=======================;
 ;   Define Variables:   ;
 ;=======================;
-cursor_flags				= $6 ; 1 Byte
+cursor_flags				= $26 ; 1 Byte
 character_text_sprite_address		= $7 ; 2 Bytes
 character_selection_sprite_address 	= $9 ; 2 Bytes
 stage_text_sprite_address		= $11 ; 2 Bytes
@@ -78,40 +78,6 @@ mov #0, stage_flags
 ;       Main Loop       ;
 ;=======================;
 Main_Menu_Loop:
-.Handle_Cursor_Variables_Overflow
-.Check_Cursor_Overflow_Up
-	; ld cursor_flags
-	; sub #3
-	; bn acc, 7, .Check_Cursor_Overflow_Down
-	; mov #0, cursor_flags
-	; jmpf .Check_Character_Select_Overflow_Up
-.Check_Cursor_Overflow_Down
-	; ld cursor_flags
-	; sub #1
-	; bp acc, 7, .Check_Character_Select_Overflow_Up
-	; mov #2, cursor_flags ; #3?
-.Check_Character_Select_Overflow_Up
-	; ld character_flags
-	; sub #3
-	; bp acc, 7, .Check_Character_Select_Overflow_Down
-	; mov #0, character_flags
-	; jmpf .Check_Stage_Select_Overflow_Up
-.Check_Character_Select_Overflow_Down
-	; ld character_flags
-	; sub #1
-	; bn acc, 7, .Check_Stage_Select_Overflow_Up
-	; mov #2, character_flags
-.Check_Stage_Select_Overflow_Up
-	; ld stage_flags
-	; sub #3
-	; bp acc, 7, .Check_Stage_Select_Overflow_Down
-	; mov #0, stage_flags
-	; jmpf .Check_Up
-.Check_Stage_Select_Overflow_Down
-	; ld stage_flags
-	; sub #1
-	; bn acc, 7, .Check_Up
-	; mov #2, stage_flags
 ; Check Input
 .Check_Up
 	callf Get_Input ; Note To Self: Note To Users That you Only Wanna Call This Once Per Frame, For p3_Last_PRessed.
@@ -138,16 +104,11 @@ Main_Menu_Loop:
 	mov #0, cursor_flags
 	jmpf .Handle_Character_Selection_Text
 .Check_Left
-	; callf Get_Input ; This Function Is In LibKCommon.ASM
-	; ld p3
-	; bp acc, T_BTN_LEFT1, .Check_Right
-	; callf Get_Input
 	mov #Button_Left, acc
 	callf Check_Button_Pressed
 	bn acc, 2, .Check_Right ; bnz .Check_Right
 .Left_Character_Select
 	ld cursor_flags
-	; sub #1
 	bnz .Left_Stage_Select
 	ld character_flags
 	bnz .decrement_character_flags
@@ -158,7 +119,7 @@ Main_Menu_Loop:
 	jmpf .Handle_Character_Selection_Text
 .Left_Stage_Select
 	ld cursor_flags
-	sub #1 ; #2 ; WHY???
+	sub #1
 	bnz .Handle_Character_Selection_Text
 	ld stage_flags
 	bnz .decrement_stage_flags
@@ -168,16 +129,11 @@ Main_Menu_Loop:
 	dec stage_flags
 	jmpf .Handle_Character_Selection_Text
 .Check_Right
-	; callf Get_Input ; This Function Is In LibKCommon.ASM
-	; ld p3
-	; bp acc, T_BTN_RIGHT1, .Check_OK_Button
-	; callf Get_Input
 	mov #Button_Right, acc
 	callf Check_Button_Pressed
 	bn acc, 3, .Check_OK_Button ; bnz .Check_OK_Button
 .Right_Character_Select
 	ld cursor_flags
-	; sub #1
 	bnz .Right_Stage_Select
 	ld character_flags
 	sub #2
@@ -201,7 +157,7 @@ Main_Menu_Loop:
 .Check_OK_Button
 	ld cursor_flags
 	sub #2
-	; bnz .Handle_Character_Selection_Text
+	;bnz .Handle_Character_Selection_Text
 	
 	; callf Get_Input ; Will Change This To Get_Button_Pressed Later, Noting In The Article For Users That It Records The Button Press Once.
 	; bn acc, T_BTN_A1, .Click_OK
@@ -217,19 +173,24 @@ Main_Menu_Loop:
 ;.Click_OK
 	;ret
 
-	callf Get_Input
+	; callf Get_Input
 	ld p3
 	bn acc, T_BTN_A1, .Return_To_Menu
 	bn acc, T_BTN_B1, .Return_To_Menu
 	jmpf .Handle_Character_Selection_Text
+	
+	callf Check_Button_Pressed
+	bn acc, 4, .Return_To_Menu
+	bn acc, 5, .Return_To_Menu
+	jmpf .Handle_Character_Selection_Text
 .Return_To_Menu
-	mov #0, cursor_flags
+	; mov #0, cursor_flags
 	ret
 
 .Handle_Character_Selection_Text
 .Cursor_On_Character_Select
   ; bn  Cursor_Flags, 0, .Cursor_Not_On_Character_Select ; Load Flag -- Is It Selected? If So, Which Character?
-  ld Cursor_Flags
+  ld cursor_Flags
   bnz .Cursor_Not_On_Character_Select
 .Handle_Character_Highlighted_Text
 .Character_1_Highlighted
@@ -274,7 +235,7 @@ Main_Menu_Loop:
   mov #>Menu_Text_Character_3, character_selection_sprite_address+1
 .Handle_Stage_Selection_Text
 .Cursor_On_Stage_Select
-  ld Cursor_Flags
+  ld cursor_Flags
   sub #1
   bnz .Cursor_Not_On_Stage_Select
 .Stage_1_Highlighted
@@ -282,28 +243,28 @@ Main_Menu_Loop:
   bnz .Stage_2_Highlighted
   mov #<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
   mov #>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
-  jmpf .Draw_Screen
+  jmpf .Draw_OK_Button_Highlighted
 .Stage_2_Highlighted
   ld Stage_Flags
   sub #1
   bnz .Stage_3_Highlighted
   mov #<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
   mov #>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address+1
-  jmpf .Draw_Screen
+  jmpf .Draw_OK_Button_Highlighted
 .Stage_3_Highlighted
   ld Stage_Flags
   sub #2
   bnz .Draw_Screen ; Just In Case
   mov #<Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address
   mov #>Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address+1
-  jmpf .Draw_Screen
+  jmpf .Draw_OK_Button_Highlighted
 .Cursor_Not_On_Stage_Select  
 .Stage_1_Not_Highlighted
   ld Stage_Flags
   bnz .Stage_2_Not_Highlighted
   mov #<Menu_Text_Stage_1, stage_selection_sprite_address
   mov #>Menu_Text_Stage_1, stage_selection_sprite_address+1
-  jmpf .Draw_Screen
+  jmpf .Draw_OK_Button_Highlighted
 .Stage_2_Not_Highlighted
   ld Stage_Flags
   sub #1
@@ -314,19 +275,19 @@ Main_Menu_Loop:
 .Stage_3_Not_Highlighted
   ld Stage_Flags
   sub #2
-  bnz  .Draw_Screen
+  bnz  .Draw_OK_Button_Highlighted
   mov #<Menu_Text_Stage_3, stage_selection_sprite_address
   mov #>Menu_Text_Stage_3, stage_selection_sprite_address+1
 .Handle_OK_Button_Text ; Note: May Change These To "Start" And "Resume," Depending On If The User Has Come From Boot-Up Or From "Pausing."
 .Draw_OK_Button_Highlighted
-	ld Cursor_Flags
+	ld cursor_Flags
 	sub #2
 	bnz .Draw_OK_Button_Not_Highlighted
 	mov #<Menu_Text_OK_Button_Start_Highlighted, ok_button_sprite_address
 	mov #>Menu_Text_OK_Button_Start_Highlighted, ok_button_sprite_address+1
 	jmpf .Draw_Screen
 .Draw_OK_Button_Not_Highlighted
-	ld Cursor_Flags
+	ld cursor_Flags
 	sub #2
 	bz .Draw_Screen
 	; mov #<Menu_Text_OK_Button_Resume, menu_heading_message_sprite_address
@@ -348,9 +309,9 @@ Main_Menu_Loop:
 	mov #8, c
 	P_Draw_Sprite character_selection_sprite_address, b, c ; #8, #8 ; Change to b,c
 	mov #24, b
-	ld	b
-	add cursor_flags
-	st b
+	;ld	b
+	;add cursor_flags
+	;st b
 	mov #16, c
 	P_Draw_Sprite stage_selection_sprite_address, b, c ; #16, #16
 	mov #0, b
