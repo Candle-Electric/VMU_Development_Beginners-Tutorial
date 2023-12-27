@@ -129,8 +129,8 @@ This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of the
 		callf Get_Input ; This Function Is In LibKCommon.ASM
 		ld p3
 	.Check_B
-    		bp acc, T_BTN_B1, Check_Up
-      		ret
+		bp acc, T_BTN_B1, Check_Up
+		ret
 	.Check_Up
   		...
 
