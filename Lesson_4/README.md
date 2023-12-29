@@ -274,7 +274,7 @@ For this "Minimum + Maximum" style of menu, we can imagine Left/Right Arrows whe
  		mov #0, example_variable
 	.Example_Done
 
-Since our Characters and Stages are choices on a list, rather than numeric values with cutoff values, I think we'd prefer this style of Overflow Handling for our Menu in this lesson. So, now we can do both the Coding and Graphics for each Option. For The Input:
+Since our Characters and Stages are choices on a list, rather than numeric values with cutoff values, I think we'd prefer this style of Overflow Handling for our Menu in this lesson. So, now we can do both the Coding for each Option, before we move on to Drawing the Text Graphics. For The Input:
 
 	; Check Input
 	.Check_Up
@@ -366,7 +366,7 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 		mov #0, cursor_flags
 		ret
 
-And For The Graphics, we'll want to draw sprites depending on which options are highlighted. Speaking in Pseudo-Code, it will look something like this:
+And Now For The Graphics, we'll want to draw sprites depending on which options are highlighted. Speaking in Pseudo-Code, it will look something like this:
 
 * Is the "Character" Row Selected?
     * Yes:
