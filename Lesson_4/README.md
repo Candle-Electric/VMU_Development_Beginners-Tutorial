@@ -245,7 +245,7 @@ We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that
 		inc example_variable
 	.Example_Done
 
-For this style of menu, we can imagine Left/Right Arrows when our Options are Highlighted. At the Minimum, the Left Arrow would disappear. At the Maximum, the Right Arrow would no longer be visible. And now for the Latter, Looping Around, we could imagine that those Arrows are always present, and that we'd wrap around to the other end when going below or above our minimum or maximum: 
+For this "Minimum + Maximum" style of menu, we can imagine Left/Right Arrows when our Options are Highlighted. At the Minimum, the Left Arrow would disappear. At the Maximum, the Right Arrow would no longer be visible. This type works great when the Options themselves have minimum and maximum values -- think of a "Volume" Slider, for example, which we would want to max out at full volume as the user keeps pressing right. And now for the Latter style, a "Looping Around" method, we could imagine that those Arrows are always present, and that we'd wrap around to the other end when going below or above our minimum or maximum: 
 
 	; Check And Loop Around
 	.Check_Left
@@ -274,7 +274,7 @@ For this style of menu, we can imagine Left/Right Arrows when our Options are Hi
  		mov #0, example_variable
 	.Example_Done
 
-So, now we can do both the Coding and Graphics for each Option. For The Input:
+Since our Characters and Stages are choices on a list, rather than numeric values with cutoff values, I think we'd prefer this style of Overflow Handling for our Menu in this lesson. So, now we can do both the Coding and Graphics for each Option. For The Input:
 
 	; Check Input
 	.Check_Up
