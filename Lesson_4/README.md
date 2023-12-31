@@ -497,6 +497,12 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 	.Draw_Screen
     	...
 
+Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. We can use `b` and `c` to store our X- + Y-Coordinates.
+
+	mov #0, b
+ 	mov #0, c
+ 	P_Draw_Sprite state_selection_sprite_address, b, c
+
 Now that we have our Menu in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
 
 	Cursor_Gameplay:
