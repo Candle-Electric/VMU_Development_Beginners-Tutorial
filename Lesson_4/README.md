@@ -497,7 +497,7 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 	.Draw_Screen
     	...
 
-Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. We can use `b` and `c` to store our X- + Y-Coordinates.
+Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. We can use `b` and `c` to store our X- + Y-Coordinates.
 
 	mov #0, b
  	mov #0, c
