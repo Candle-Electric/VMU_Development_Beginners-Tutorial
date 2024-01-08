@@ -197,7 +197,7 @@ We can instantiate everything in the "Start" Section, which is the block after t
       stage_flag          =      $16 ; 1 Byte
       cursor_flag         =      $17 ; 1 Byte
 
-This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
+This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. `character_flag` and `stage_flag` can provide us with an opportunity to try something new. Here's an example of a few values that we'll want to assign as "Global Variables," since we will be using them across files -- both in the menu (to show which is selected.) and in the Gameplay (to pick which to draw onscreen.).So, we can move those two definitions to `main.asm`, while we can keep `cursor_flag` in here since the Cursor isn't shown during Gameplay. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
 
 		callf Get_Input
 	.Check_Example_Option
