@@ -51,10 +51,16 @@
 ;=======================;
 ;   Define Variables:   ;
 ;=======================;
-p3_pressed					=		$4		; 1 Byte (For LibKCommon)
-p3_last_input				=		$5		; 1 Byte (For LibKCommon)
-cursor_flags				=		$17	; 1 Byte
+p3_pressed				=		$4	; 1 Byte (For LibKCommon)
+p3_last_input				=		$5	; 1 Byte (For LibKCommon)
+character_flags				=		$17	; 1 Byte
 stage_flags				=		$18	; 1 Byte
+
+;=======================;
+; Initialize Variables: ;
+;=======================;
+mov #0, character_flags
+mov #0, stage_flags
 
 ;=======================;
 ;       Constants       ;
