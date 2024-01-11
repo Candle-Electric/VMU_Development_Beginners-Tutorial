@@ -197,7 +197,7 @@ We can instantiate everything in the "Start" Section, which is the block after t
       stage_flag          =      $16 ; 1 Byte
       cursor_flag         =      $17 ; 1 Byte
 
-This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. `character_flag` and `stage_flag` can provide us with an opportunity to try something new. Here's an example of a few values that we'll want to assign as "Global Variables," since we will be using them across files -- both in the menu (to show which is selected.) and in the Gameplay (to pick which to draw onscreen.).So, we can move those two definitions to `main.asm`, while we can keep `cursor_flag` in here since the Cursor isn't shown during Gameplay. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
+This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. `character_flag` and `stage_flag` can provide us with an opportunity to try something new. Here's an example of a few values that we'll want to assign as "Global Variables," since we will be using them across files -- both in the menu (to show which is selected.) and in the Gameplay (to pick which to draw onscreen.). So, we can move those two definitions to `main.asm`, while we can keep `cursor_flag` in here since the Cursor isn't shown during Gameplay. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
 
 		callf Get_Input
 	.Check_Example_Option
@@ -497,11 +497,11 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 	.Draw_Screen
     	...
 
-Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. We can use `b` and `c` to store our X- + Y-Coordinates.
+Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. For Static Text, I.E. anything that won't change, we can draw it as part of a BG Layer to call with `P_Draw_Background_Constant`. For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
 
-	mov #0, b
- 	mov #0, c
- 	P_Draw_Sprite state_selection_sprite_address, b, c
+	mov #16, b
+ 	mov #8, c
+ 	P_Draw_Sprite example_text_sprite_address, b, c
 
 Now that we have our Menu in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
 
