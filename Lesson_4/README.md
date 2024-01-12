@@ -497,9 +497,13 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 	.Draw_Screen
     	...
 
-Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. For Static Text, I.E. anything that won't change, we can draw it as part of a BG Layer to call with `P_Draw_Background_Constant`. For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
+Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. For Static Text, I.E. anything that won't change, we can draw it as part of a BG Layer to call with `P_Draw_Background_Constant`. For example, we could draw this static text: 
 
-	mov #16, b
+For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. Here's an example of filling them in over the layer we just drew:
+
+We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
+
+	mov #32, b
  	mov #8, c
  	P_Draw_Sprite example_text_sprite_address, b, c
 
