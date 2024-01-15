@@ -499,9 +499,14 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 
 Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Menu Screen. In fact, we'll want the vertical and horizontal dimensions to each be multiples of 8 for this menu. The reason for this is that we can then arrange the sprites in a grid on the 48*X*32 screen, saving us both the trouble of the sprite tearing issue from Lesson 2 and the hassle of masking the text sprite images. For Static Text, I.E. anything that won't change, we can draw it as part of a BG Layer to call with `P_Draw_Background_Constant`. For example, we could draw this static text: 
 
+![An Example Of A BackGround Of Static Text That Can Be Drawn With P_Draw_Background_Constant.](./Article_Images/Lesson4_BackGroundTextGraphic_Example.png)
+
 For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. Here's an example of filling them in over the layer we just drew:
 
-We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
+
+![Drawing Live Text In The Blank Spaces (Green And Yellow Boxes.), And Overwriting Static Text With A Live Sprite (Blue Box.).](./Article_Images/Lesson4_BackGroundTextGraphicPlusWithSprites_Example.png)
+
+In the example image above, we drew two sprites in the blank spaces, and overwrote the "Done" Button with a highlighted version, all drawn with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
 
 	mov #32, b
  	mov #8, c
