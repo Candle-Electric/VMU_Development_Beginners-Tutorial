@@ -501,17 +501,29 @@ Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Me
 
 ![An Example Of A BackGround Of Static Text That Can Be Drawn With P_Draw_Background_Constant.](./Article_Images/Lesson4_BackGroundTextGraphic_Example.png)
 
-For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. Here's an example of filling them in over the layer we just drew:
-
-
-![Drawing Live Text In The Blank Spaces (Green And Yellow Boxes.), And Overwriting Static Text With A Live Sprite (Blue Box.).](./Article_Images/Lesson4_BackGroundTextGraphicPlusWithSprites_Example.png)
-
-In the example image above, we drew two sprites in the blank spaces, and overwrote the "Done" Button with a highlighted version, all drawn with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
+For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
 
 	mov #32, b
  	mov #8, c
  	P_Draw_Sprite example_text_sprite_address, b, c
+  
+Here's an example of filling them in over the layer we just drew:
 
+![Drawing Live Text In The Blank Spaces (Green And Yellow Boxes.), And Overwriting Static Text With A Live Sprite (Blue Box.).](./Article_Images/Lesson4_BackGroundTextGraphicPlusWithSprites_Example.png)
+
+In the example image above, we drew two sprites in the blank spaces, and overwrote the "Done" Button with a highlighted version, all drawn with `P_Draw_Sprite`. In the same syntax as the previous code example, we'd draw it like so:
+
+	P_Draw_Background_Constant Example_Menu_Static_Text_BackGround
+	mov #24, b
+ 	mov #8, c
+ 	P_Draw_Sprite option1_text_sprite_address, b, c
+ 	mov #16, c
+ 	P_Draw_Sprite option2_text_sprite_address, b, c
+	mov #16, b
+ 	mov #24, c
+ 	P_Draw_Sprite donebutton_highlighted_text_sprite_address, b, c
+  	P_Blit_Screen
+ 
 Now that we have our Menu in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
 
 	Cursor_Gameplay:
