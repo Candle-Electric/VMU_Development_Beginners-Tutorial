@@ -524,7 +524,7 @@ In the example image above, we drew two sprites in the blank spaces, and overwro
  	P_Draw_Sprite donebutton_highlighted_text_sprite_address, b, c
   	P_Blit_Screen
  
-Now that we have our Menu in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
+We can edit this example BG to use our two Options, "Character" and "Stage," and we can put whatever we'd like as a Header while keeping the "Done" Button for when the User has finalized their Options. Now that we have our Menu Layout in place, let's wire everything up so that the Set Flags are reflected in `Cursor_Gameplay.asm`. We can do this by calling on those same Flags in `Cursor_Gameplay`'s starting code:
 
 	Cursor_Gameplay:
 		test_sprite_x			=		$6		; 1 Byte
