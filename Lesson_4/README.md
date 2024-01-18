@@ -170,7 +170,7 @@ This time, we'll be providing the button in question to the `acc` register, usin
 
 One important thing to note is that since `p3_pressed_last` is populated during the Get_Input call, we must make sure that we are only calling `Get_Input` once per frame, I.E. once per Loop (or `Main_Loop`, `Cursor_Gameplay_Loop`, Etc.). Otherwise, `p3_pressed_last` will be overwritten with the same button-press matrix twice in one frame, breaking the `Check_Button_Pressed` Function and effectively breaking every button. 
 
-### Drawing The Menu Text
+### Coding The Menu Variables And Inputs
 
 We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be storing our text as `.asm` sprites, and drawing them out in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
 
@@ -365,6 +365,8 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 	.Return_To_Menu
 		mov #0, cursor_flags
 		ret
+
+### Drawing The Menu Text
 
 And Now For The Graphics, we'll want to draw sprites depending on which options are highlighted. Speaking in Pseudo-Code, it will look something like this:
 
