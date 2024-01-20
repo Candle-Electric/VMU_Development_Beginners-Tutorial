@@ -137,6 +137,9 @@ This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of the
 So, if we don't press the B Button, we'll continue on with our `Cursor_Gameplay_Loop`, and if we do, we'll move on to the next call in our `Main_Loop`, which brings us back up to `Main_Menu`. Let's write up a new code file for `Main_Menu` next!
 
 ## Handling Menus
+
+We'll be drawing our menus using the same kind of Sprites we've been drawing with LibPerspective.
+
 ### Check_Button_Pressed
 
 For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`. We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
