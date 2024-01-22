@@ -142,7 +142,7 @@ We'll be drawing our menus using the same kind of Sprites we've been drawing wit
 
 ### Check_Button_Pressed
 
-For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`. We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
+For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`. Both come to us courtesy of Kresna's `LibKCommon.asm`; We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
 
 		callf	Get_Input
 		mov 	#Button_B, acc
@@ -175,11 +175,7 @@ One important thing to note is that since `p3_pressed_last` is populated during 
 
 ### Coding The Menu Variables And Inputs
 
-We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be storing our text as `.asm` sprites, and drawing them out in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities!
-
-Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. Before we code the menu, let's draw two more sprites and two more backgrounds.
-
-We can then draw up a "Header" Text for the top of the screen, and a "Go" Button at the bottom of the screen for when the User wants to confirm their choices and continue to the "Gameplay" Loop. Now that our New Graphics are ready, let's make a new "scene" in `Main_Menu.asm` for the menu, separate from our Gameplay Loop!
+With our newly-learned `Check_Button_Pressed` Function in tow, let's discover how we can edit the Option Values themselves. Let's have two options on our selection screen. We know how to draw sprites and backgrounds, right? So, let's try having a "Character Select" and a "Stage Select," allowing the Player to choose the former and the latter. We can then draw up a "Header" Text for the top of the screen, and a "Go" Button at the bottom of the screen for when the User wants to confirm their choices and continue to the "Gameplay" Loop. Before we draw those sprites and two more backgrounds, let's learn how to change their Flags' respective values. After all, if we can't change the options, we'll just be looking at a static screen! To start, let's make a new "scene" in `Main_Menu.asm` for the menu, separate from our Gameplay Loop:
 
 	Main_Menu:
 	; Initialiaze Variables
@@ -371,7 +367,7 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 
 ### Drawing The Menu Text
 
-And Now For The Graphics, we'll want to draw sprites depending on which options are highlighted. Speaking in Pseudo-Code, it will look something like this:
+And Now For The Graphics, we'll want to draw sprites depending on which options are highlighted. We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be storing our text as `.asm` sprites, and drawing them out in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities! An Options Menu has far less text though than a dialogue-based Game like that though, so the Sprites will certainly do for now. Speaking in Pseudo-Code, our setup will look something like this:
 
 * Is the "Character" Row Selected?
     * Yes:
