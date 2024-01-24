@@ -277,7 +277,7 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 
 	; Check Input
 	.Check_Up
-		callf Get_Input ; Only Call This Once Per Frame
+		callf Get_Input 
 		mov #Button_Up, acc
 		callf Check_Button_Pressed
 		bn acc, 0, .Check_Down
@@ -316,7 +316,7 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 		jmpf .Handle_Character_Selection_Text
 	.Left_Stage_Select
 		ld cursor_flags
-		sub #1 ; #2 ; WHY???
+		sub #1
 		bnz .Handle_Character_Selection_Text
 		ld stage_flags
 		bnz .decrement_stage_flags
@@ -331,7 +331,6 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 		bn acc, 3, .Check_OK_Button ; bnz .Check_OK_Button
 	.Right_Character_Select
 		ld cursor_flags
-		; sub #1
 		bnz .Right_Stage_Select
 		ld character_flags
 		sub #2
@@ -353,16 +352,17 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 	.increment_stage_flags
 		inc stage_flags
 	.Check_OK_Button
-		ld cursor_flags
-		sub #2
-		bnz .Handle_Character_Selection_Text
-		callf Get_Input
 		ld p3
-		bp acc, T_BTN_A1, .Return_To_Menu
-		bp acc, T_BTN_B1, .Return_To_Menu
+		bn acc, T_BTN_A1, .Return_To_Menu
+		bn acc, T_BTN_B1, .Return_To_Menu
+		jmpf .Handle_Character_Selection_Text
+		
+		callf Check_Button_Pressed
+		bn acc, 4, .Return_To_Menu
+		bn acc, 5, .Return_To_Menu
 		jmpf .Handle_Character_Selection_Text
 	.Return_To_Menu
-		mov #0, cursor_flags
+		; mov #0, cursor_flags
 		ret
 
 ### Drawing The Menu Text
