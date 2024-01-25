@@ -365,6 +365,8 @@ Since our Characters and Stages are choices on a list, rather than numeric value
 		; mov #0, cursor_flags
 		ret
 
+Now that we know how to handle the Options' variables, let's learn how to draw the text that they represent to the screen!
+
 ### Drawing The Menu Text
 
 And Now For The Graphics, we'll want to draw sprites depending on which options are highlighted. We're going to handle our menu with sprite images, in the same format we've been drawing them, as the text. In other words, we'll be storing our text as `.asm` sprites, and drawing them out in our selection slots. I'll be honest, I don't know how to draw text from strings to the screen. It certainly is possible though, as seen in titles like Chao Adventure 2; it's just outside my capabilities! An Options Menu has far less text though than a dialogue-based Game like that though, so the Sprites will certainly do for now. Speaking in Pseudo-Code, our setup will look something like this:
