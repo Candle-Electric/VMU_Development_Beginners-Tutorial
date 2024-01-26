@@ -142,7 +142,7 @@ We'll be drawing our menus using the same kind of Sprites we've been drawing wit
 
 ### Check_Button_Pressed
 
-For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`. Both come to us courtesy of Kresna's `LibKCommon.asm`; We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
+For menus, we're going to start off with a key distinction; namely, that between `Check_Button_Pressed` and `Get_Input`; We've been using the latter, which checks whether a button is "on" or "off" during the frame that it's called. This will reflect whether the user "holds" the button, as we've seen with our moving sprite onscreen -- when we hold a directional button, the sprite continues to move in that direction. The former, however, just checks for the press, and returns once -- this will be perfect for menus! Otherwise, the cursor will flash rapidly when pressing the button for anything more than one frame. For any normal user, that means the cursor would fly around the screen at the slightest press of a button. Both of these super useful Functions come to us courtesy of Kresna's `LibKCommon.asm`, which we're already `.include`ing for `Get_Input`. The syntax for `Check_Button_Pressed` is largely similar to that of `Get_Input`, specifiying a button and then providing a value that tells the code where to branch off to:
 
 		callf	Get_Input
 		mov 	#Button_B, acc
@@ -169,9 +169,42 @@ This time, we'll be providing the button in question to the `acc` register, usin
 	Button_Sleep            equ     %10000000
  </details>
 
-`Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. The Bit Numbers move up as seen above, from 0 to 7, and right-to-left. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. Looking at the code that Kresna wrote for this Function, we can get a nice glimpse into how it works. The `p3` register is complemented by `p3_pressed_last`, which stores which buttons were "On" during the last frame. A Bitwise "And" Call then determines which was pressed this frame, but not last frame, ensuring that held buttons are skipped over:
+`Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. The Bit Numbers move up as seen above, from 0 to 7, and right-to-left. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. Looking at the elegant code that Kresna wrote for this Function, we can get a nice glimpse into how it works:
 
-One important thing to note is that since `p3_pressed_last` is populated during the Get_Input call, we must make sure that we are only calling `Get_Input` once per frame, I.E. once per Loop (or `Main_Loop`, `Cursor_Gameplay_Loop`, Etc.). Otherwise, `p3_pressed_last` will be overwritten with the same button-press matrix twice in one frame, breaking the `Check_Button_Pressed` Function and effectively breaking every button. 
+	Check_Button_Pressed:
+		;----------------------------------------------------------------------
+		; Check if a button is pressed, not held, this cycle
+		;----------------------------------------------------------------------
+		; acc = button to check
+		;----------------------------------------------------------------------
+		st      c
+		ld      p3_pressed
+		xor     #%11111111
+		and     c
+		ret
+
+One question that might immediately pop up is, "What's in the `c` Register?" To find that answer, we'll have to look at `Get_Input`, which we're already calling once per frame:
+
+	Get_Input:
+		;----------------------------------------------------------------------
+		; Get input from P3, compare input to previous P3 input to get buttons
+		; pressed this cycle.
+		;----------------------------------------------------------------------
+		ld      p3_last_input
+		st      c
+		ld      p3
+		bn      acc, 6, .quit
+		bn      acc, 7, .sleep
+		st      p3_last_input
+		xor     #%11111111
+		and     c
+		xor     #%11111111
+		st      p3_pressed
+		ret
+	; Mode And Sleep Functions
+		...
+  
+The `p3` register is complemented by `p3_pressed_last`, which stores which buttons were "On" during the last frame. This is populated during the `Get_Input` Call, and then stored as `c`, which is then itself Referenced at the start of `Get_Button_Pressed`. We can see that A Bitwise "XOR" and "AND" Call then determine which was pressed this frame, but not last frame, ensuring that held buttons are skipped over. XOR means "Exclusive Or," requiring that one but _not_ the other of the operands is 1. The `#%11111111` represents every button being off during the last frame. The AND then fills the buttons of this frame. In other words, if a button was _not_ pressed last frame, but _is_ pressed this frame, `Get_Button_Pressed` will tell us. One important thing to note is that since `p3_pressed_last` is populated during the Get_Input call, we must make sure that we are only calling `Get_Input` once per frame, I.E. once per Loop (or `Main_Loop`, `Cursor_Gameplay_Loop`, Etc.). Otherwise, `p3_pressed_last` will be overwritten with the same button-press matrix twice in one frame, breaking the `Check_Button_Pressed` Function and effectively breaking every button. 
 
 ### Coding The Menu Variables And Inputs
 
