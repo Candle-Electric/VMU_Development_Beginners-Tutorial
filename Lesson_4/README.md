@@ -226,13 +226,45 @@ With our newly-learned `Check_Button_Pressed` Function in tow, let's discover ho
 	.keep_looping
 		jmpf Main_Menu_Loop
 
-We can instantiate everything in the "Start" Section, which in this instance is the block after the initial `Main_Menu:` Header, and then Create A New `Main_Menu_Loop` to Cycle through. We can then switch between this New File and `Cursor_Gameplay.asm` by calling the `ret` Command, which in this example is when the User has pressed the A Button, signifying that the requisite Loop is done. This will then take us to the next "Scene" in the List we have in `main.asm`. Next, let's start disucssing how we'll code the menu itself. Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. To determine where the Cursor is and what is selected, we'll use Flags. We could use one "Flag" variable, using each Bit to represent an option, but since we have three characters and three stages to choose from, rather than a binary "On/Off" switch for these options, we'll give each its own Flag, in addition to one more for the Menu's Cursor:
+We can instantiate everything in the "Start" Section, which in this instance is the block after the initial `Main_Menu:` Header, and then Create A New `Main_Menu_Loop` to Cycle through. We can then switch between this New File and `Cursor_Gameplay.asm` by calling the `ret` Command, which in this example is when the User has pressed the A Button, signifying that the requisite Loop is done. This will then take us to the next "Scene" in the List we have in `main.asm`. Next, let's start disucssing how we'll code the menu itself. Since we have 3 characters and 3 stages to choose from, let's create the logic for those now. To determine where the Cursor is and what is selected, we'll use Flags. We could use one "Flag" variable, using each Bit to represent an option, but since we have three characters and three stages to choose from, rather than a binary "On/Off" switch for these options, we'll give each its own Flag Variable, in addition to one more for the Menu's Cursor:
 
       character_flag      =      $15 ; 1 Byte
       stage_flag          =      $16 ; 1 Byte
       cursor_flag         =      $17 ; 1 Byte
 
-This way, we can increment our option flags using our newly-learned `Check_Button_Pressed` Function. `character_flag` and `stage_flag` can provide us with an opportunity to try something new. Here's an example of a few values that we'll want to assign as "Global Variables," since we will be using them across files -- both in the menu (to show which is selected.) and in the Gameplay (to pick which to draw onscreen.). So, we can move those two definitions to `main.asm`, while we can keep `cursor_flag` in here since the Cursor isn't shown during Gameplay. With our skeleton laid out, let's translate it into our Main Menu Assembly Code! Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list:
+These numeric values will reflect which option is selected. For example, values of 0, 1, and 2 for `character_flags` could represent each of the three character choices. This way, we can increment our option flags when the requisite button presses are detected, using our newly-learned `Check_Button_Pressed` Function. With "Up" and "Down" Button Presses, we can simply Decrement and Increment our `cursor_flag` Variable, respectively. For Left and Right, we can do the same for our Option Variables, but we'll first need to check where our `cursor_flag` is so we know which one to edit. `character_flag` and `stage_flag` can provide us with an opportunity to try something new. Here's an example of a few values that we'll want to assign as "Global Variables," since we will be using them across files -- both in the menu (to show which is selected.) and in the Gameplay (to pick which to draw onscreen.). So, we can move those two definitions to `main.asm`, while we can keep `cursor_flag` in here since the Cursor isn't shown during Gameplay. 
+
+<details>
+  <summary>Moving Those Two To Main.asm</summary>
+	
+	...
+	;=======================;
+	;   Define Variables:   ;
+	;=======================;
+	p3_pressed				=		$4	; 1 Byte (For LibKCommon)
+	p3_last_input				=		$5	; 1 Byte (For LibKCommon)
+	character_flags				=		$17	; 1 Byte
+	stage_flags				=		$18	; 1 Byte
+	...
+</details>
+
+<details>
+  <summary>Main_Menu.asm Variable Declarations</summary>
+	
+	;=======================;
+	;       Main Menu       ;
+	;=======================;
+
+	Main_Menu:
+
+	;=======================;
+	;   Define Variables:   ;
+	;=======================;
+	cursor_flags				= $26 ; 1 Byte
+	...
+</details>
+
+With our skeleton laid out, let's translate it into our Main Menu Assembly Code! First, we need the cursor flag to tell us which option we've highlighted. Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list, A.K.A. a cursor value of 2:
 
 		callf Get_Input
 	.Check_Example_Option
@@ -255,9 +287,7 @@ This way, we can increment our option flags using our newly-learned `Check_Butto
 		bnz .Check_Another_ANOTHER_Example_Option
 	...
 
-With that example under our belts, let's flesh it out with some additions by capturing some User Input and moving that Cursor to cycle through the "Characters" and "Stages" we'll be choosing from for our Example Code. With "Up" and "Down" Button Presses, we can simply Decrement and Increment our `cursor_flag` Variable, respectively. For Left and Right, we can do the same for our Option Variables, but we'll first need to check where our `cursor_flag` is so we know which one to edit.
-
-We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around. For the Former:
+With that example under our belts, let's flesh it out with a key addition. We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around. For the Former:
 
 	; Check Min/Max
 	.Check_Left
