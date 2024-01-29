@@ -264,7 +264,7 @@ These numeric values will reflect which option is selected. For example, values 
 	...
 </details>
 
-With our skeleton laid out, let's translate it into our Main Menu Assembly Code! First, we need the cursor flag to tell us which option we've highlighted. Let's say we have three rows of options on our menu; these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list, A.K.A. a cursor value of 2:
+With our skeleton laid out, let's translate it into our Main Menu Assembly Code! First, we need the cursor flag to tell us which option we've highlighted. Let's say we have three rows of options on our menu; since we start the registers at zero, these would be represented by our `example_cursor_flag` being a value of 0, 1, or 2. This is how we'd check User Input for the second one on our list, A.K.A. a cursor value of 1:
 
 		callf Get_Input
 	.Check_Example_Option
