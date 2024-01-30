@@ -287,7 +287,7 @@ With our skeleton laid out, let's translate it into our Main Menu Assembly Code!
 		bnz .Check_Another_ANOTHER_Example_Option
 	...
 
-With that example under our belts, let's flesh it out with a key addition. We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around. For the Former:
+With that example under our belts, let's flesh it out with a key addition. We'll also need to handle the "Overflow" of our Cursor Variables, to ensure that the Values don't exceed our Maximum, which is currently 2 (Since we have 3 options for Characters, Stages, and the Cursor, each can be set to 0, 1, or 2.). We can cut the cursor off at the Minimum/Maximum, or we can Loop it back around. For the Former, we can check if we are at that Min or Max Value before Decrementing + Incrementing, resepctively. That'd be coded like so:
 
 	; Check Min/Max
 	.Check_Left
