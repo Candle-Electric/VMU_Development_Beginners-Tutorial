@@ -570,7 +570,7 @@ Then, we'll want to use our Text Graphics, all 8-pixels tall, to populate the Me
 
 ![An Example Of A BackGround Of Static Text That Can Be Drawn With P_Draw_Background_Constant.](./Article_Images/Lesson4_BackGroundTextGraphic_Example.png)
 
-For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. We can use `b` and `c` to store our X- + Y-Coordinates. So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
+For Dynamic Text that will change, E.G. our Characters and Stages that we're scrolling through, we can use our aforementioned Sprites in conjunction with `P_Draw_Sprite`. We can make new variables to store the position locations, or we can use `b` and `c` to store our X- + Y-Coordinates (they're built-in variables -- more on these two later.). So, to draw a 16-pixel-wide word on the right side of the screen, in the second of four rows, we'd do:
 
 	mov #32, b
  	mov #8, c
