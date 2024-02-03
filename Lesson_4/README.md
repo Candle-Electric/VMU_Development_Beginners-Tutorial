@@ -628,6 +628,8 @@ We can edit this example BG to use our two Options, "Character" and "Stage," and
 	Cursor_Gameplay_Loop:
  		...
 
+After the values are populated in the Start Section, they will be reflected in the Sprites seen on-screen.
+
    ## Drawing Digits
 
 Although drawing alphabetic text is outside my skill level, I do know how to draw numbers on-the-fly from live values in memory. We can take our numbers, and calculate the Remainders of the Base-10 Digits to draw the Sprites accordingly. Caluclating these Remainders is easy thanks to LibPerspective's `div` [Function](https://wtetzner.github.io/waterbear/instructions.html#div), which as we can see from its Documentation stores the remainder of a division in the `b` Register. There are two new things we'll be learning by calling `div`; firstly, we'll be introduced to the `b` and `c` Registers, and secondly, we'll be dealing with a 16-Bit Number for the first time. Verbatim from [Walter](https://github.com/wtetzner)'s Documentation, "The div instruction treats the acc and c registers as a single 16-bit argument, where acc makes up the high 8 bits, and c the low 8 bits. This 16-bit argument is divided by the b register, resulting in 16-bit quotient and an 8-bit remainder. The high 8 bits of the quotient is stored in the acc register, and the low 8 bits is stored in the c register. The b register contains the remainder." So, as an example, to divide 100 by 10, we'd do:
