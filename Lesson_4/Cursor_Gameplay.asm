@@ -78,13 +78,13 @@ Cursor_Gameplay_Loop:
 .Draw_Example_Stage_1
 	ld stage_flags
 	bnz .Draw_Example_Stage_2
-	P_Draw_Background_Constant Hello_World_BackGround
+	P_Draw_Background_Constant ExampleBG_City
 	jmpf .Draw_Character
 .Draw_Example_Stage_2
 	ld stage_flags
 	sub #1
 	bnz .Draw_Example_Stage_3
-	P_Draw_Background_Constant Hello_World_BackGround
+	P_Draw_Background_Constant ExampleBG_Jungle
 	jmpf .Draw_Character
 .Draw_Example_Stage_3
 	ld stage_flags
