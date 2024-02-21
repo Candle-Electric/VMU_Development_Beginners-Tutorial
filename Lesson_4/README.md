@@ -714,7 +714,7 @@ With our digits stored in these four addresses, we can make our first Function a
   	.Digit_Decided
    		ret
 
-There are `%Macros` in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
+There are `%Macros` in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
 	ld ones_digit
 	st c
