@@ -724,6 +724,8 @@ There are `%Macros` in addition to Functions, which can have parameters as part 
 	st ones_digit_sprite_address
 	ld c
 	st ones_digit_sprite_address+1
+        ...
+	P_Draw_Sprite XPos, YPos, ones_digit_sprite_address
         %end%
  
 We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit. Let's assign a Sprite Address for each, as seen above:
