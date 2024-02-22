@@ -716,14 +716,16 @@ With our digits stored in these four addresses, we can make our first Function a
 
 There are `%Macros` in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
-	ld ones_digit
+	%macro% Draw_Score
+        ld ones_digit
 	st c
-	callf Draw_Digit
+        callf Draw_Digit
 	ld b
 	st ones_digit_sprite_address
 	ld c
 	st ones_digit_sprite_address+1
-	
+        %end%
+ 
 We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit. Let's assign a Sprite Address for each, as seen above:
 
 	thousands_digit_sprite_address = $2a 
