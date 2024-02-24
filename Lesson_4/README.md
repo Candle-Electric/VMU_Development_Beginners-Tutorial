@@ -693,7 +693,7 @@ To figure out how this works, we can look back at that Quote from the WaterBear 
 	ld b
 	st thousands_digit
 
-With our digits stored in these four addresses, we can make our first Function and call it for each of them to draw the full number. Much like a `Main_Loop`, we can do this by naming it and following it with a colon:
+With our digits stored in these four addresses, we can make our first Function and call it for each of them to draw the full number. Much like a `Main_Loop`, we can do this by naming it and following it with a colon, then closing it with a `ret`:
 
 	Draw_Digit:
 	.Digit_0  
