@@ -747,4 +747,4 @@ Then, we can draw each 8-Pixel * 8-Pixel Digit in a Row, keeping the Y-Position 
 	mov #32, b
 	P_Draw_Sprite ones_digit_sprite_address, b, c
 
- In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics.
+ In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics. In the Next Lesson, we'll be adding up all the skills we've learned to make a Game, so stay tuned!
