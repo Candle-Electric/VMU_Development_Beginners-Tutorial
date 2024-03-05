@@ -554,15 +554,15 @@ To Answer these Questions in Code, we can simply check our Flag Variables and as
 		ld Cursor_Flags
 		sub #2
 		bnz .Draw_OK_Button_Not_Highlighted
-		mov #<OK_Button_Highlighted, ok_button_sprite_address
-		mov #>OK_Button_Highlighted, ok_button_sprite_address+1
+		mov #<Menu_Text_OK_Button_Start_Highlighted, ok_button_sprite_address
+		mov #>Menu_Text_OK_Button_Start_Highlighted, ok_button_sprite_address+1
 		jmpf .Draw_Screen
 	.Draw_OK_Button_Not_Highlighted
 		ld Cursor_Flags
 		sub #2
 		bz .Draw_Screen
-		mov #<OK_Button, ok_button_sprite_address
-		mov #>OK_Button, ok_button_sprite_address+1
+		mov #<Menu_Text_OK_Button_Start, ok_button_sprite_address
+		mov #>Menu_Text_OK_Button_Start, ok_button_sprite_address+1
 	.Draw_Screen
     	...
 
