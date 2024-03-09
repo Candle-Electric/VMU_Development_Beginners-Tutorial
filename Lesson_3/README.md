@@ -39,11 +39,11 @@ The top half is the "Mask," which is surrounded by 1s/black pixels, conversely t
 
 ![Animation Detailing How To Draw A Masked Sprite In LibPerspective's Format.](./Article_Images/Sprite_Masking_Tutorial_Guide_Animation.gif)
 
-Usually, keeping the border boundaries at the edges of the masked sprite will work fine. However, notice the addendum at the end of the Animated Guide just above: sometimes, your masked sprite might look off as it's drawn to the screen, and adding a space around the border has helped alleviate this in the past for me. I've noticed that the right-side border sometimes needs a column of 1s to its right in the mask, or else the masked sprite won't be drawn properly. The other three sides -- top, bottom, and left -- usually all seem to be fine in my experience if the edges of the mask are at the dimensions' boundary. However, I've also had to Add a Column on the left-hand side a few times. So, if your Masked Sprite doesn't look quite right when you see it drawn onscreen, try adding an empty border around it in each direction, and that should fix it. In other words, visually speaking:
+Usually, keeping the border boundaries at the edges of the masked sprite will work fine. However, notice the addendum at the end of the Animated Guide just above: sometimes, your masked sprite might look off as it's drawn to the screen, and adding a space around the border has helped alleviate this in the past for me. I've noticed that sometimes only the right-side border needs a column of 1s to its right in the mask, and sometimes the other three sides -- top, bottom, and left -- have been fine with their the mask edges at the dimensions' boundary. However, I've also had to Add a Column on the left-hand side a few times. So, if your Masked Sprite doesn't look quite right when you see it drawn onscreen, try adding an empty border around it in each direction, and that should fix it. In other words, visually speaking:
 
 ![Graphic Detailing The Requirement For A Column To The Right Of The Masked Sprite.](./Article_Images/Masking_Example_Right_Column_Explanation_Graphic.png)
 
-Since we're dealing with a lot of Image Files now, let's make a New Folder for them. We can do this via the O.S. File Explorer or with Git Bash:
+This is a rare occurrence though, and usually having the mask fit snugly inside the boundaries is enough. If you ever have a masked sprite that just isn't drawing right, feel free to start a thread here on GitHub and I'll be happy to try and help! Since we're dealing with a lot of Image Files now, let's make a New Folder for them. We can do this via the O.S. File Explorer or with Git Bash:
 
 	; *Navigate To Your Root Directory*
 	mkdir img
