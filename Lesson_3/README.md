@@ -8,7 +8,7 @@ This makes sense when we think about how we drew our sprites:
 
 ![A Textual Representation Of Said Pixels, Shown Here As Those Highlighted Past The Comma.](./Article_Images/Lesson3_P_Draw_Sprite_Text_And_Commas_Example.png)
 
-This is what the above screenshot's sprite looks like on our "blank canvas" in that poisiton. If we shift everything around, whatever is past the commas won't be drawn, and the rest of the chunk will be empty. This is exemplified well by using an all-black background:
+This is what the above screenshot's sprite looks like on our "blank canvas" in that position. If we shift everything around, whatever is past the commas won't be drawn, and the rest of the chunk will be empty. This is exemplified well by using an all-black background:
 
 How can we circumvent this, and see our full sprite on screen whenever and wherever we move it? The answer lies in LibPerspective's `P_Draw_Sprite_Mask` command.
 
