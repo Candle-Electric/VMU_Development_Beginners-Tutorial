@@ -333,4 +333,6 @@ Our final `main.asm` should like this:
 
 Building our code with WaterBear like before and running it in ElysianVMU, you should now be able to move your Sprite with the Arrow Keys! 
 
+![An Animation Of The Final Assembled Code For Lesson 2. Thanks EZGIF.Com For The .MP4 To .GIF File Conversion!](./img/Lesson2_FinalAssembledCodeAnimation_ThanksEZGIF.gif)
+
 You'll notice that the Sprite draws oddly, with a white border chunk resizing around it, and part of its graphic cut off. This is due to the way the 8-Bit Words of the VMU Screen are arranged, and we'll find out how to work around that, along with much more, in Lesson 3!
