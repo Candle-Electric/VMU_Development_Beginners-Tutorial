@@ -10,6 +10,8 @@ This makes sense when we think about how we drew our sprites:
 
 This is what the above screenshot's sprite looks like on our "blank canvas" in that position. Vertically, the sprite will always draw properly as we move it up and down since the chunks, or `.byte` words in the .ASM, are only one pixel tall. If we move it left and right and shift everything around to the sides, however, whatever is past the commas won't be drawn, and the rest of the chunk will be empty. This is exemplified well by using an all-black background with vertical white stripes at the edge of each eight pixel interval:
 
+![An Animated Example Of How Sprites Can Get Cut Off When Pixels Go Past The 8th Dot Of A Screen Chunk. Thanks Again EZGIF!](./Article_Images/Un-Masked_Sprite_With_Black_BG+Vertical_White_Stripes.gif)
+
 How can we circumvent this, and see our full sprite on screen whenever and wherever we move it? The answer lies in LibPerspective's `P_Draw_Sprite_Mask` command.
 
 ## Masking Sprites
