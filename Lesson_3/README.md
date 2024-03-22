@@ -6,7 +6,7 @@ When we left off at Lesson 2, we learned how to draw a sprite onto the screen, b
 
 This makes sense when we think about how we drew our sprites:
 
-![A Textual Representation Of Said Pixels, Shown Here As Those Highlighted Past The Comma.](./Article_Images/Lesson3_P_Draw_Sprite_Text_And_Commas_Example.png)
+![A Textual Representation Of Said Pixels, Shown Here As Those Highlighted Past The Comma.](./Article_Images/Lesson3_P_Draw_Sprite_Text_And_Commas_Example_Smaller_Resized.png)
 
 This is what the above screenshot's sprite looks like on our "blank canvas" in that position. Vertically, the sprite will always draw properly as we move it up and down since the chunks, or `.byte` words in the .ASM, are only one pixel tall. If we move it left and right and shift everything around to the sides, however, whatever is past the commas won't be drawn, and the rest of the chunk will be empty. This is exemplified well by using an all-black background with vertical white stripes at the edge of each eight pixel interval:
 
