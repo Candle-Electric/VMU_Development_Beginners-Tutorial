@@ -648,11 +648,11 @@ Although drawing alphabetic text is outside my skill level, I do know how to dra
 
 This is a simple example though, since it makes use of neither the Remainder nor the Full 16-Bit Combined Dividend Value. An 8-Bit Number can span from 0 to 255. So, an example 16-Bit Number would be 302. Let's divide it by 3, since we will then have a remainder. We'll need to convert our Base-10 Numbers into Binary to do so, either via a handy converter online or by hand like this:
 
- 	255 | + 0 + 0 + 32 + 0 + 8 + 4 + 2 + 1 
+ 	256 | + 0 + 0 + 32 + 0 + 8 + 4 + 2 + 0 
  	______________________________________
-	..1 |	0   0    1   0   1   1   1   1
+	..1 |	0   0    1   0   1   1   1   0
 
-To figure out how this works, we can look back at that Quote from the WaterBear Documentation. Note the split between that "255" Bit and the other 8 -- `acc` is the high 8 bits and `c` is the low 8 bits of our 16-Bit Number. That means that of the total possible value of 65535 (2^16, minus one for 0), `c` represents the smallest 1-255, and `acc` represents the other 65,280. In other words, the 16-Bit Number is one long Binary Entry, and `c` represents the last 8 digits, on the right, whereas `acc` conversely represents the first 8 digits, on the left. 
+This results in a 16-bit binary number of 0000000100101110, which we can split then split into two 8-bit binary numbers. To figure out how this works, we can look back at that Quote from the WaterBear Documentation. Note the split between that "255" Bit and the other 8 -- `acc` is the high 8 bits and `c` is the low 8 bits of our 16-Bit Number. That means that of the total possible value of 65535 (2^16, minus one for 0), `c` represents the smallest 1-255, and `acc` represents the other 65,280. In other words, the 16-Bit Number is one long Binary Entry, and `c` represents the last 8 digits, on the right, whereas `acc` conversely represents the first 8 digits, on the left. In our case, we can split those 16 bits into 00000001 for the high bits, `acc` and 00101110 for the low bits, `c`.
    
 	mov %00000001, acc
 	mov %00101111, c
