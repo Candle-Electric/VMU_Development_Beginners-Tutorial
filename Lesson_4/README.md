@@ -662,7 +662,7 @@ This results in a 16-bit binary number of 0000000100101110, which we can split t
 	; c = 30
 	; b = 2
 
-So, to make our way up to 302 in the above code block, we used one bit of `acc` to get 255, and then the remaining 47 would be composed by the bits of `c`. If we had a much bigger number, say over 1,000, we'd need more of the `acc` bits than just that first one. E.G., 1,000 would be 00000011 for `acc` (512 + 256) and 11101000 for `c` (128 + 64 + 32 + 8.). For this example, we could use 4 Base-Ten Digits, allowing us to Go Up to 9,999. We can then draw up our 10 Digits, and call on them accordingly after running `div` with a Divisor of 10 for each "Column" of our Number.
+So, to make our way up to 302 in the above code block, we used one bit of `acc` to get 255, and then the remaining 47 would be composed by the bits of `c`. If we had a much bigger number, say over 1,000, we'd need more of the `acc` bits than just that first one. E.G., 1,000 would be 00000011 for `acc` (512 + 256) and 11101000 for `c` (128 + 64 + 32 + 8.). The Remainder Bit, `b`, is the one we'll be focusing on to draw digits to the screen, since every time we `div` by 10, the remainder will be the digit we draw in that column (hundreds, tens, ones, Etc.). For this example, we could use 4 Base-Ten Digits Onscreen, allowing us to Go Up to 9,999. We can then draw up our four Base-10 Digits, and call on them accordingly after running `div` with a Divisor of 10 for each "Column" of our Number.
 
 	ones_digit	=	$1a
 	tens_digit	=	$1b
