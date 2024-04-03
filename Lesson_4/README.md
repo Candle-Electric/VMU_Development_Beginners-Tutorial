@@ -726,6 +726,8 @@ There are `%macro`s in addition to Functions, which can have parameters as part 
 	st ones_digit_sprite_address
 	ld c
 	st ones_digit_sprite_address+1
+ 	ld tens_digit
+  	st c
 	...
 	P_Draw_Sprite XPos, YPos, ones_digit_sprite_address
 	%end
