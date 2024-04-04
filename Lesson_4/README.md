@@ -624,7 +624,7 @@ We can edit this example BG to use our two Options, "Character" and "Stage," and
 		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	.Set_Stage_Background
  		ld	stage_flags
-   		...
+   		... ; This will be the same as the above 3 Character Drawing Blocks, but Swapped to Assign the Stage BG instead.
 	Cursor_Gameplay_Loop:
  		...
 
