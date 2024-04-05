@@ -655,9 +655,11 @@ This is a simple example though, since it makes use of neither the Remainder nor
 This results in a 16-bit binary number of 0000000100101110, which we can split then split into two 8-bit binary numbers. To figure out how this works, we can look back at that Quote from the WaterBear Documentation. Note the split between that "256" Bit and the other 8 -- `acc` is the high 8 bits and `c` is the low 8 bits of our 16-Bit Number. That means that of the total possible value of 65535 (2^16, minus one for 0), `c` represents the smallest 1-255, and `acc` represents the other 65,280. In other words, the 16-Bit Number is one long Binary Entry, and `c` represents the last 8 digits, on the right, whereas `acc` conversely represents the first 8 digits, on the left. In our case, we can split those 16 bits into 00000001 for the high bits, `acc` and 00101110 for the low bits, `c`.
    
 	mov %00000001, acc
-	mov %00101111, c
+	mov %00101110, c
 	mov #3, b
 	div
+	; Results Will Be:
+	; ________________
 	; acc = 0
 	; c = 30
 	; b = 2
