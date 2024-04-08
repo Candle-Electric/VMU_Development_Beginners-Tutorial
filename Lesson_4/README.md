@@ -703,36 +703,42 @@ With our digits stored in these four addresses, we can make our first Function a
 	.Digit_0  
 		ld c
 		bnz .Digit_1
-		mov #<Digit_0, b
-		mov #>Digit_0, c
+		mov #<Digit_0, digit_sprite_address
+		mov #>Digit_0, digit_sprite_address+1
   		jmpf .Digit_Decided
 	.Digit_1
 		ld c
 		sub #1
 		bnz .Digit_2
-		mov #<Digit_1, b
-		mov #>Digit_1, c
+		mov #<Digit_1, digit_sprite_address
+		mov #>Digit_1, digit_sprite_address+1
   		jmpf .Digit_Decided
 	.Digit_2
 		...
   	.Digit_Decided
-   		P_Draw_Sprite acc, b, c ; Load in the X-Coordinate correlating to the desired digit before calling.
-   		ret
+		mov #0, c ; Every Digit will be at the top of the screen.
+		P_Draw_Sprite digit_sprite_address, b, c
+		ret
 
 There are `%macro`s in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
 	%macro Draw_Score
-	ld ones_digit
-	st c
-	callf Draw_Digit
-	ld b
-	st ones_digit_sprite_address
-	ld c
-	st ones_digit_sprite_address+1
- 	ld tens_digit
-  	st c
-	...
-	P_Draw_Sprite XPos, YPos, ones_digit_sprite_address
+		mov #16, b
+		ld ones_digit
+		st c
+		callf Draw_Digit
+		mov #24, b
+		ld tens_digit
+		st c
+		callf Draw_Digit
+		mov #32, b
+		ld hundreds_digit
+		st c
+		callf Draw_Digit
+		mov #40, b
+		ld thousands_digit
+		st c
+		callf Draw_Digit
 	%end
  
 We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit. Let's assign a Sprite Address for each, as seen above:
