@@ -95,3 +95,63 @@ Cursor_Gameplay_Loop:
 	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
 	P_Blit_Screen
 	jmpf Cursor_Gameplay_Loop
+
+Draw_Digit:
+	; b = the X-Position, c = the Number
+.Digit_0  
+	ld c
+	bnz .Digit_1
+	mov #<Digit_0, digit_sprite_address
+	mov #>Digit_0, digit_sprite_address+1
+	jmpf .Digit_Decided
+.Digit_1
+	ld c
+	sub #1
+	bnz .Digit_2
+	mov #<Digit_1, digit_sprite_address
+	mov #>Digit_1, digit_sprite_address+1
+	jmpf .Digit_Decided
+.Digit_2
+	ld c
+	sub #2
+	bnz .Digit_3
+	mov #<Digit_2, digit_sprite_address
+	mov #>Digit_2, digit_sprite_address+1
+	jmpf .Digit_Decided
+.Digit_3
+	ld c
+	sub #2
+	bnz .Digit_4
+	mov #<Digit_3, digit_sprite_address
+	mov #>Digit_3, digit_sprite_address+1
+	jmpf .Digit_Decided
+.Digit_4
+	ld c
+	sub #2
+	bnz .Digit_5
+	mov #<Digit_4, digit_sprite_address
+	mov #>Digit_4, digit_sprite_address+1
+	jmpf .Digit_Decided
+.Digit_Decided
+	mov #0, c ; Every Digit will be at the top of the screen.
+	P_Draw_Sprite digit_sprite_address, b, c
+	ret
+	
+%macro Draw_Score
+	mov #16, b
+	ld ones_digit
+	st c
+	callf Draw_Digit
+	mov #24, b
+	ld tens_digit
+	st c
+	callf Draw_Digit
+	mov #32, b
+	ld hundreds_digit
+	st c
+	callf Draw_Digit
+	mov #40, b
+	ld thousands_digit
+	st c
+	callf Draw_Digit
+%end
