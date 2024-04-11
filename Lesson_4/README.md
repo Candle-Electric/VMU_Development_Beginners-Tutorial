@@ -722,7 +722,7 @@ With our digits stored in these four addresses, we can make our first Function a
 
 There are `%macro`s in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
-	%macro Draw_Score
+	%macro Draw_Score input1, input2
 		mov #16, b
 		ld ones_digit
 		st c
