@@ -720,9 +720,9 @@ With our digits stored in these four addresses, we can make our first Function a
 		P_Draw_Sprite digit_sprite_address, b, c ; b will be populated with the X-Coordinate of the digit in the row that we're calling. Note to self: Explain that in the Article next.
 		ret
 
-We'll use the `b` and `c` Registers as the X- + Y-Coordinates, respectively. The Former will be populated before we make the call, while the latter will be hardcoded to the top of the screen since the digits that comprise our number will be in a horizontal line. There are `%macro`s in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
+We'll use the `b` and `c` Registers as the X- + Y-Coordinates, respectively. The Former will be populated before we make the call, while the latter will be hardcoded to the top of the screen since the digits that comprise our number will be in a horizontal line. By using these two as inputs, we can calculate through our function without needing to allocate space for more variables.  There are `%macro`s in addition to Functions, which can have parameters as part of the call, but can only be called once per frame. Since we are drawing 4 Digits to the Screen, we'll need to make a Function. We can then _Call_ said Function 4 times inside of a Macro, once each Frame to Draw the Whole Score. Since `b` and `c` are always available to us, we can use these as parameters by storing them before we make our Function Call.
 
-	%macro Draw_Score input1, input2
+	%macro Draw_Score # input1, input2
 		mov #16, b
 		ld ones_digit
 		st c
@@ -741,23 +741,6 @@ We'll use the `b` and `c` Registers as the X- + Y-Coordinates, respectively. The
 		callf Draw_Digit
 	%end
  
-We could similarly use `b` and `c` as return values, without needing to allocate space for more variables. Then, all we need to do is determine where to draw each digit. Let's assign a Sprite Address for each, as seen above:
+What we're doing is determining where to draw each digit by assigning `b`, and then calling the `Draw_Digit` function four times, drawing each number and then moving it over to the right to draw the next. We can draw each 8-Pixel * 8-Pixel Digit in a Row this way, keeping the Y-Position Constant while Moving the X-Position Over For Each Digit. This way, we can use just one Sprite Address for all four numbers! 
 
-	thousands_digit_sprite_address = $2a 
-	hundreds_digit_sprite_address  = $2c
-	tens_digit_sprite_address      = $2e
-	ones_digit_sprite_address      = $30
-
-Then, we can draw each 8-Pixel * 8-Pixel Digit in a Row, keeping the Y-Position Constant while Moving the X-Position Over For Each Digit:
-
-	mov #8, b
-	mov #0, c
-	P_Draw_Sprite thousands_digit_sprite_address, b, c
-	mov #16, b
-	P_Draw_Sprite hundreds_digit_sprite_address, b, c
-	mov #24, b
-	P_Draw_Sprite tens_digit_sprite_address, b, c
-	mov #32, b
-	P_Draw_Sprite ones_digit_sprite_address, b, c
-
- In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics. In the Next Lesson, we'll be adding up all the skills we've learned to make a Game, so stay tuned!
+In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics. In the Next Lesson, we'll be adding up all the skills we've learned to make a Game, so stay tuned!
