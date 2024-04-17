@@ -5,6 +5,7 @@ Cursor_Gameplay:
 	test_sprite_x			=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
 	test_sprite_y			=		$7		; 1 Byte
 	test_sprite_sprite_address	=		$8		; 2 Bytes
+	digit_sprite_address		=		$a		; 2 Bytes
 
 ; Populate Character And Stage Flags
 	ld cursor_flags
