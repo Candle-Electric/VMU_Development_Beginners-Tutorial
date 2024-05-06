@@ -23,4 +23,9 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
     st player_sprite_y
     ld player_y_velocity
     sub #1
+    st player_y_velocity
+    ld player_sprite_y
+    bn acc, 7, .skip_floor_collision
+    mov #0, player_sprite_y
+    .skip_Floor_Collision
     jmpf .Main_Gameplay_Loop
