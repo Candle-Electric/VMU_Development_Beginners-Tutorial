@@ -30,17 +30,27 @@
 .include		"./img/Menu_Text_Character_2_Highlighted.asm"
 .include		"./img/Menu_Text_Character_3.asm"
 .include		"./img/Menu_Text_Character_3_Highlighted.asm"
-.include		"./img/Menu_Text_Stage_1.asm"
-.include		"./img/Menu_Text_Stage_1_Highlighted.asm"
-.include		"./img/Menu_Text_Stage_2.asm"
-.include		"./img/Menu_Text_Stage_2_Highlighted.asm"
-.include		"./img/Menu_Text_Stage_3.asm"
-.include		"./img/Menu_Text_Stage_3_Highlighted.asm"
+;.include		"./img/Menu_Text_Stage_1.asm"
+;.include		"./img/Menu_Text_Stage_1_Highlighted.asm"
+;.include		"./img/Menu_Text_Stage_2.asm"
+;.include		"./img/Menu_Text_Stage_2_Highlighted.asm"
+;.include		"./img/Menu_Text_Stage_3.asm"
+;.include		"./img/Menu_Text_Stage_3_Highlighted.asm"
 .include		"./img/Menu_Text_OK_Button_Start.asm"
 .include		"./img/Menu_Text_OK_Button_Start_Highlighted.asm"
 .include		"./img/Menu_Text_OK_Button_Resume.asm"
 .include		"./img/Menu_Text_OK_Button_Resume_Highlighted.asm"
 .include		"./img/Menu_Text_Welcome_Message.asm"
+.include		"./img/Digit_0.asm"
+.include		"./img/Digit_1.asm"
+.include		"./img/Digit_2.asm"
+.include		"./img/Digit_3.asm"
+.include		"./img/Digit_4.asm"
+.include		"./img/Digit_5.asm"
+.include		"./img/Digit_6.asm"
+.include		"./img/Digit_7.asm"
+.include		"./img/Digit_8.asm"
+.include		"./img/Digit_9.asm"
 
 ;=======================;
 ;  Include  Code Files  ;
@@ -69,7 +79,7 @@ T_BTN_SLEEP				equ		7
 T_BTN_MODE				equ		6
 T_BTN_B1				equ		5
 T_BTN_A1				equ		4
-T_BTN_RIGHT1				equ		3
+T_BTN_RIGHT1			equ		3
 T_BTN_LEFT1				equ		2
 T_BTN_DOWN1				equ		1
 T_BTN_UP1				equ		0

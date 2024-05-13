@@ -5,7 +5,12 @@ Cursor_Gameplay:
 	test_sprite_x			=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
 	test_sprite_y			=		$7		; 1 Byte
 	test_sprite_sprite_address	=		$8		; 2 Bytes
-	digit_sprite_address		=		$a		; 2 Bytes
+	ones_digit	=	$1a
+	tens_digit	=	$1b
+	hundreds_digit	=	$1c
+	thousands_digit	=	$1d
+	score		=	$1e
+	digit_sprite_address = $1f
 
 ; Populate Character And Stage Flags
 	ld cursor_flags
@@ -85,7 +90,7 @@ Cursor_Gameplay_Loop:
 	ld stage_flags
 	sub #1
 	bnz .Draw_Example_Stage_3
-	P_Draw_Background_Constant ExampleBG_Jungle
+	; P_Draw_Background_Constant ExampleBG_Jungle
 	jmpf .Draw_Character
 .Draw_Example_Stage_3
 	ld stage_flags
@@ -121,34 +126,19 @@ Draw_Digit:
 	jmpf .Digit_Decided
 .Digit_3
 	ld c
-	sub #3
+	sub #2
 	bnz .Digit_4
 	mov #<Digit_3, digit_sprite_address
 	mov #>Digit_3, digit_sprite_address+1
 	jmpf .Digit_Decided
 .Digit_4
 	ld c
-	sub #4
+	sub #2
 	bnz .Digit_5
 	mov #<Digit_4, digit_sprite_address
 	mov #>Digit_4, digit_sprite_address+1
 	jmpf .Digit_Decided
 .Digit_5
-
-.Digit_8
-	ld c
-	sub #8
-	bnz .Digit_9
-	mov #<Digit_8, digit_sprite_address
-	mov #>Digit_8, digit_sprite_address+1
-	jmpf .Digit_Decided
-.Digit_9
-	ld c
-	sub #9
-	bnz .Digit_Decided
-	mov #<Digit_9, digit_sprite_address
-	mov #>Digit_9, digit_sprite_address+1
-	jmpf .Digit_Decided
 .Digit_Decided
 	mov #0, c ; Every Digit will be at the top of the screen.
 	P_Draw_Sprite digit_sprite_address, b, c
@@ -171,4 +161,4 @@ Draw_Digit:
 	ld thousands_digit
 	st c
 	callf Draw_Digit
-%end
+%end	

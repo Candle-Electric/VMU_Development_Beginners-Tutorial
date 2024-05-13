@@ -10,17 +10,17 @@ cursor_flags				= $26 ; 1 Byte
 character_text_sprite_address		= $7 ; 2 Bytes
 character_selection_sprite_address 	= $9 ; 2 Bytes
 stage_text_sprite_address		= $11 ; 2 Bytes
-stage_selection_sprite_address		= $13 ; 2 Bytes
+stage_selection_sprite_address	= $13 ; 2 Bytes
 ok_button_sprite_address		= $15 ; 2 Bytes
-character_flags				= $17 ; 1 Byte
-stage_flags				= $18 ; 1 Byte
-menu_heading_message_sprite_address 	= $19 ; 2 Bytes
+;character_flags		=	$17 ; 1 Byte
+;stage_flags		=	$18 ; 1 Byte
+menu_heading_message_sprite_address = $19 ; 2 Bytes
 
 ;=======================;
 ; Initialize Variables  ;
 ;=======================;
 mov #0, cursor_flags ; When The User "Pauses" To The Menu, We'll Always Put The Cursor On The Top Option. Character_Flags And Stage_Flags Will Be Inherited, As They're Already Set In Memory In Main.ASM Or In Cursor_Gameplay.ASM.
-mov #0, character_flags ; Start With The Default Character & Stage.
+mov #0, character_flags
 mov #0, stage_flags
 
 ;=======================;
