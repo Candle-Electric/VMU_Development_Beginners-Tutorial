@@ -6,6 +6,7 @@ We can start off by editing our movable "Cursor" from the last lesson into our p
 
 Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Our "Jump" Button can increase the Y-Position, like pressing "Up" did before. Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position.
 
+        player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
         ...
     .GamePlay_Loop
