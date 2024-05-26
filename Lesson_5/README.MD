@@ -9,7 +9,7 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
         ...
-    .GamePlay_Loop
+    .Main_GamePlay_Loop
         callf Get_Input
         ld p3
         bn acc, BTN_B, .skip_jump
