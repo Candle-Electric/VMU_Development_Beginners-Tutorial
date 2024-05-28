@@ -30,4 +30,4 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         bn acc, 7, .skip_floor_collision
         mov #0, player_sprite_y
     .skip_Floor_Collision
-        jmpf .Main_Gameplay_Loop
+        jmpf .Main_GamePlay_Loop
