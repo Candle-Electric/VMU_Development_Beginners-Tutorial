@@ -15,7 +15,7 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         bn acc, BTN_B, .skip_jump
         ...
         ld player_sprite_y
-        bnz .skip_jump
+        bnz .skip_jump ; Only Jump IF Player Character's On The Ground.
         ; When Jumping:
         mov #3, player_y_velocity
     .skip_jump
