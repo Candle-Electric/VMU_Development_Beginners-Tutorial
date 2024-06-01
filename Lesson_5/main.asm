@@ -1,6 +1,8 @@
-player_sprite_y   = $19 ; 1 Byte
+; Lesson 5
+    player_sprite_y   = $19 ; 1 Byte
     player_y_velocity = $1a ; 1 Byte
-    ...
+    ; ...
+    ; start:
 .Main_GamePlay_Loop
     callf Get_Input
     ld p3
