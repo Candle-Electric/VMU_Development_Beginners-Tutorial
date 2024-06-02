@@ -2,18 +2,18 @@
     player_sprite_y   = $19 ; 1 Byte
     player_y_velocity = $1a ; 1 Byte
     ; ...
-    ; start:
-.Main_GamePlay_Loop
+    start:
+.Main_GamePlay_Loop ;:
     callf Get_Input
     ld p3
     bn acc, BTN_B, .skip_jump
-    ...
+    ; ...
     ld player_sprite_y
     bnz .skip_jump ; Only Jump IF Player Character's On The Ground.
     ; When Jumping:
     mov #3, player_y_velocity
 .skip_jump
-    ...
+    ; ...
     ld player_sprite_y
     add player_y_velocity
     st player_sprite_y
