@@ -24,4 +24,5 @@
     bn acc, 7, .skip_floor_collision
     mov #0, player_sprite_y
 .skip_Floor_Collision
+    ; Blit Screen, Etc.
     jmpf .Main_GamePlay_Loop
