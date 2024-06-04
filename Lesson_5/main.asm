@@ -1,4 +1,20 @@
-; Lesson 5
+;=======================;
+;Beginners' VMU Tutorial;
+;       Lesson 5        ;
+;=======================;
+
+;=======================;
+;VMU Application Header ;
+;=======================;
+.include "GameHeader.i"
+
+;=======================;
+;   Include Libraries   ;
+;=======================;
+.include "./lib/libperspective.asm"
+.include "./lib/libkcommon.asm"
+.include "./lib/sfr.i"
+
     player_sprite_y   = $19 ; 1 Byte
     player_y_velocity = $1a ; 1 Byte
     ; ...
