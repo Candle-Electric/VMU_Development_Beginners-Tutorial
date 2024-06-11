@@ -130,4 +130,5 @@ start:
     mov #0, player_sprite_y
 .skip_Floor_Collision
     ; Blit Screen, Etc.
+    P_Blit_Screen
     jmpf .Main_GamePlay_Loop
