@@ -106,6 +106,7 @@ goodbye:
 start:
     player_sprite_y   = $19 ; 1 Byte
     player_y_velocity = $1a ; 1 Byte
+    player_runner_sprite_addr = $1b; 2 Bytes
     ; ...
     start:
 .Main_GamePlay_Loop ;:
