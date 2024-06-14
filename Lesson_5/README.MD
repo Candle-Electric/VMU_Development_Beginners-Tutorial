@@ -31,3 +31,5 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         mov #0, player_sprite_y
     .skip_Floor_Collision
         jmpf .Main_GamePlay_Loop
+
+As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" 
