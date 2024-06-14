@@ -130,6 +130,12 @@ start:
     bn acc, 7, .skip_floor_collision
     mov #0, player_sprite_y
 .skip_Floor_Collision
+.check_Enemy_Collision
+    ; Load The Obstacle X First And Skip This If The Location Is On The Right Side Of The Screen, Since That's Way In Advance Of The Player.
+    ld player_sprite_x
+    ; sub obstacle_1_x
+    ; add #2
+    ; bp acc, 7, .Left_Collision_Yes ; Then Do The Same, Swap The Arithmetic, And Head To .Right_Collision_Yes And Set The Flag.
     ; Blit Screen, Etc.
     P_Blit_Screen
     jmpf .Main_GamePlay_Loop
