@@ -136,6 +136,11 @@ start:
     ; sub obstacle_1_x
     ; add #2
     ; bp acc, 7, .Left_Collision_Yes ; Then Do The Same, Swap The Arithmetic, And Head To .Right_Collision_Yes And Set The Flag.
+    ; .Left_Collision_Yes
+    ; sub #4
+    ; bp acc, 7, .Right_Collision_Yes
+    ; .Right_Collision_Yes
+    ; (Set The Flag To "Collided.").
     ; Blit Screen, Etc.
     P_Blit_Screen
     jmpf .Main_GamePlay_Loop
