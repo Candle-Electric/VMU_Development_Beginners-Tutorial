@@ -28,6 +28,7 @@ p3_pressed			=		$4	; 1 Byte (For LibKCommon)
 p3_last_input			=		$5	; 1 Byte (For LibKCommon)
 character_flags			=		$17	; 1 Byte
 stage_flags			=		$18	; 1 Byte
+; obstacle_collision_flags	=		$19	; 1 Byte
 
 ;=======================;
 ; Initialize Variables: ;
@@ -140,7 +141,7 @@ start:
     ; sub #4
     ; bp acc, 7, .Right_Collision_Yes
     ; .Right_Collision_Yes
-    ; (Set The Flag To "Collided.").
+    mov #1, obstacle_collision_flags ; (Set The Flag To "Collided.").
     ; Blit Screen, Etc.
     P_Blit_Screen
     jmpf .Main_GamePlay_Loop
