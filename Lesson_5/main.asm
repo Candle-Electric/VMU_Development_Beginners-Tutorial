@@ -146,5 +146,6 @@ start:
     mov #1, obstacle_collision_flags ; (Set The Flag To "Collided.").
     ; .Done_Colliding
     ; Blit Screen, Etc.
+    ; .Draw_Screen
     P_Blit_Screen
     jmpf .Main_GamePlay_Loop
