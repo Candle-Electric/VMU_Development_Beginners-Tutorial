@@ -144,6 +144,8 @@ start:
     ; jmpf .Done_Colliding
     ; .Right_Collision_Yes
     mov #1, obstacle_collision_flags ; (Set The Flag To "Collided.").
+    ; ldf obstacle_collision_flags
+    ; bz .Done_Colliding
     ; .Done_Colliding
     ; Blit Screen, Etc.
     ; .Draw_Screen
