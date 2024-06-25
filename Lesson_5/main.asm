@@ -110,6 +110,10 @@ start:
     player_runner_sprite_addr = $1b; 2 Bytes
     ; ...
     start:
+    mov #8, player_sprite_y
+    mov #0, player_y_velocity
+    ; mov #<Player_Runner_Sprite_Mask, player_runner_sprite_addr 
+    ; mov #>Player_Runner_Sprite_Mask, player_runner_sprite_addr+1
 .Main_GamePlay_Loop ;:
     callf Get_Input
     ld p3
