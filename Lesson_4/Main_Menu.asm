@@ -52,8 +52,10 @@ mov #0, stage_flags
 .Initialize_Stage_1
 	ld	stage_flags
 	bnz	.Initialize_Stage_2
-	mov	#<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
-	mov	#>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
+	; mov	#<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
+	mov	#<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
+	; mov	#>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
+	mov	#>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
 	mov	#<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
 	mov	#>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
 	jmpf	.Initialize_OK_Button
@@ -61,15 +63,19 @@ mov #0, stage_flags
 	ld	stage_flags
 	sub	#1
 	bnz	.Initialize_Stage_3
-	mov	#<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
-	mov	#>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address+1
+	; mov	#<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
+	; mov	#>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
+	mov	#<Menu_Text_Character_2_Highlighted, stage_selection_sprite_address
+	mov	#>Menu_Text_Character_2_Highlighted, stage_selection_sprite_address+1
 	jmpf	.Initialize_OK_Button
 .Initialize_Stage_3
 	ld	stage_flags
 	sub	#2
 	bnz	.Initialize_OK_Button
-	mov	#<Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address
-	mov	#>Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address+1
+	; mov	#<Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address
+	; mov	#>Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address+1
+	mov	#<Menu_Text_Character_3_Highlighted, stage_selection_sprite_address
+	mov	#>Menu_Text_Character_3_Highlighted, stage_selection_sprite_address+1
 .Initialize_OK_Button
 	mov	#<Menu_Text_OK_Button_Start, ok_button_sprite_address
 	mov	#>Menu_Text_OK_Button_Start, ok_button_sprite_address+1
@@ -241,43 +247,55 @@ Main_Menu_Loop:
 .Stage_1_Highlighted
   ld Stage_Flags
   bnz .Stage_2_Highlighted
-  mov #<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
+  ; mov #<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
+  ; mov #>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
+  mov #<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
+  mov #>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
   jmpf .Draw_OK_Button_Highlighted
 .Stage_2_Highlighted
   ld Stage_Flags
   sub #1
   bnz .Stage_3_Highlighted
-  mov #<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address+1
+  ; mov #<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
+  ; mov #>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address+1
+  mov #<Menu_Text_Character_2_Highlighted, stage_selection_sprite_address
+  mov #>Menu_Text_Character_2_Highlighted, stage_selection_sprite_address+1
   jmpf .Draw_OK_Button_Highlighted
 .Stage_3_Highlighted
   ld Stage_Flags
   sub #2
   bnz .Draw_Screen ; Just In Case
-  mov #<Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address+1
+  ; mov #<Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address
+  ; mov #>Menu_Text_Stage_3_Highlighted, stage_selection_sprite_address+1
+  mov #<Menu_Text_Character_3_Highlighted, stage_selection_sprite_address
+  mov #>Menu_Text_Character_3_Highlighted, stage_selection_sprite_address+1
   jmpf .Draw_OK_Button_Highlighted
 .Cursor_Not_On_Stage_Select  
 .Stage_1_Not_Highlighted
   ld Stage_Flags
   bnz .Stage_2_Not_Highlighted
-  mov #<Menu_Text_Stage_1, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_1, stage_selection_sprite_address+1
+  mov #<Menu_Text_Stage_1_City, stage_selection_sprite_address
+  mov #>Menu_Text_Stage_1_City, stage_selection_sprite_address+1
+  ; mov #<Menu_Text_Character_1, stage_selection_sprite_address
+  ; mov #>Menu_Text_Character_1, stage_selection_sprite_address+1
   jmpf .Draw_OK_Button_Highlighted
 .Stage_2_Not_Highlighted
   ld Stage_Flags
   sub #1
   bnz .Stage_3_Not_Highlighted
-  mov #<Menu_Text_Stage_2, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_2, stage_selection_sprite_address+1
+  ; mov #<Menu_Text_Stage_2, stage_selection_sprite_address
+  ; mov #>Menu_Text_Stage_2, stage_selection_sprite_address+1
+  mov #<Menu_Text_Character_2, stage_selection_sprite_address
+  mov #>Menu_Text_Character_2, stage_selection_sprite_address+1
   jmpf .Draw_Screen
 .Stage_3_Not_Highlighted
   ld Stage_Flags
   sub #2
   bnz  .Draw_OK_Button_Highlighted
-  mov #<Menu_Text_Stage_3, stage_selection_sprite_address
-  mov #>Menu_Text_Stage_3, stage_selection_sprite_address+1
+   ;mov #<Menu_Text_Stage_3, stage_selection_sprite_address
+   ;mov #>Menu_Text_Stage_3, stage_selection_sprite_address+1
+  mov #<Menu_Text_Character_3, stage_selection_sprite_address
+  mov #>Menu_Text_Character_3, stage_selection_sprite_address+1
 .Handle_OK_Button_Text ; Note: May Change These To "Start" And "Resume," Depending On If The User Has Come From Boot-Up Or From "Pausing."
 .Draw_OK_Button_Highlighted
 	ld cursor_Flags
