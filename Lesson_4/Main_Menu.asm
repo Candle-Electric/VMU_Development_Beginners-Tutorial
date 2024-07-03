@@ -52,10 +52,10 @@ mov #0, stage_flags
 .Initialize_Stage_1
 	ld	stage_flags
 	bnz	.Initialize_Stage_2
-	; mov	#<Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address
-	mov	#<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
-	; mov	#>Menu_Text_Stage_1_Highlighted, stage_selection_sprite_address+1
-	mov	#>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
+	mov	#<Menu_Text_Stage_1_City_Highlighted, stage_selection_sprite_address
+	; mov	#<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
+	mov	#>Menu_Text_Stage_1_City_Highlighted, stage_selection_sprite_address+1
+	; mov	#>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
 	mov	#<Menu_Text_Character_1_Highlighted, stage_selection_sprite_address
 	mov	#>Menu_Text_Character_1_Highlighted, stage_selection_sprite_address+1
 	jmpf	.Initialize_OK_Button
