@@ -1,0 +1,1 @@
+Menu_Text_Stage_2_Jungle:
