@@ -35,7 +35,7 @@
 ;.include		"./img/Menu_Text_Stage_1_Highlighted.asm"
 .include		"./img/Menu_Text_Stage_1_City_Highlighted.asm"
 ;.include		"./img/Menu_Text_Stage_2_Jungle.asm"
-;.include		"./img/Menu_Text_Stage_2_Highlighted.asm"
+;.include		"./img/Menu_Text_Stage_2_Jungle_Highlighted.asm"
 ;.include		"./img/Menu_Text_Stage_3.asm"
 ;.include		"./img/Menu_Text_Stage_3_Highlighted.asm"
 .include		"./img/Menu_Text_OK_Button_Start.asm"
