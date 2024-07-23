@@ -258,8 +258,8 @@ Main_Menu_Loop:
   bnz .Stage_3_Highlighted
   ; mov #<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
   ; mov #>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address+1
-  mov #<Menu_Text_Character_2_Highlighted, stage_selection_sprite_address
-  mov #>Menu_Text_Character_2_Highlighted, stage_selection_sprite_address+1
+  mov #<Menu_Text_Stage_2_Jungle_Highlighted, stage_selection_sprite_address
+  mov #>Menu_Text_Stage_2_Jungle_Highlighted, stage_selection_sprite_address+1
   jmpf .Draw_OK_Button_Highlighted
 .Stage_3_Highlighted
   ld Stage_Flags
@@ -283,10 +283,8 @@ Main_Menu_Loop:
   ld Stage_Flags
   sub #1
   bnz .Stage_3_Not_Highlighted
-  ; mov #<Menu_Text_Stage_2, stage_selection_sprite_address
-  ; mov #>Menu_Text_Stage_2, stage_selection_sprite_address+1
-  mov #<Menu_Text_Character_2, stage_selection_sprite_address
-  mov #>Menu_Text_Character_2, stage_selection_sprite_address+1
+  mov #<Menu_Text_Stage_2_Jungle, stage_selection_sprite_address
+  mov #>Menu_Text_Stage_2_Jungle, stage_selection_sprite_address+1
   jmpf .Draw_Screen
 .Stage_3_Not_Highlighted
   ld Stage_Flags
