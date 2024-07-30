@@ -44,3 +44,5 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
                 ld player_sprite_y
                 sub obstacle_sprite_y
                 bp acc, 7, .Check_Left ; .Check_Sides
+        .Check_Left
+        .Check_Right
