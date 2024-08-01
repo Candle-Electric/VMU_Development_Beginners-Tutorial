@@ -50,3 +50,6 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
                 sub obstacle_size_x
                 bp acc, 7, .Check_Right
         .Check_Right
+                ld player_sprite_x
+                sub obstacle_sprite_x
+                bn acc, 7, .Collision_Done
