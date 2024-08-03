@@ -55,3 +55,5 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
                 bn acc, 7, .Collision_Done
                 ; Set The Collision Flag
         .Collision_Done
+
+While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set.
