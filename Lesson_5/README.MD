@@ -56,4 +56,4 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
                 ; Set The Collision Flag
         .Collision_Done
 
-While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set.
+While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
