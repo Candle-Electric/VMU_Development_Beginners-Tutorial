@@ -59,3 +59,10 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
 While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
 
         collision_flags = $1b ; 1 Byte
+        ...
+        mov #0, collision_flags
+        ...
+        bn acc, 7, .Collision_Done
+        mov #1, collision_flags ; Set The Collision Flag
+
+
