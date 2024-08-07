@@ -65,4 +65,5 @@ While for collision before, we would simply move the Player Object back in bound
         bn acc, 7, .Collision_Done
         mov #1, collision_flags ; Set The Collision Flag
 
+Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set.
 
