@@ -68,4 +68,5 @@ While for collision before, we would simply move the Player Object back in bound
 Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set.
 
         ld collision_flags
+        bnz .Collison_Flag_Not_Set
 
