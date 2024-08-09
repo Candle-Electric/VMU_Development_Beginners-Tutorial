@@ -65,8 +65,10 @@ While for collision before, we would simply move the Player Object back in bound
         bn acc, 7, .Collision_Done
         mov #1, collision_flags ; Set The Collision Flag
 
-Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set.
+Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set. It basically works the same as checking for button presses did earlier:
 
         ld collision_flags
         bnz .Collison_Flag_Not_Set
+        ; Do whatever you'd like upon collision here!
+        .Collision_Flag_Not_Set
 
