@@ -34,6 +34,8 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
 
 As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" instead, with the range being determined by the height or width of the object being collided with. In Assembly, that'll look like this:
 
+        obstacle_sprite_x = $10
+        ...
         .Check_Up
                 ld player_sprite_y
                 sub obstacle_sprite_y
