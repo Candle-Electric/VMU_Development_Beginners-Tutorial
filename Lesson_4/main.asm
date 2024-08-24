@@ -28,7 +28,7 @@
 .include		"./img/Menu_Text_Character_1_Highlighted.asm"
 .include		"./img/Menu_Text_Character_2.asm"
 .include		"./img/Menu_Text_Character_2_Smiley.asm"
-.include		"./img/Menu_Text_Character_2_Highlighted.asm"
+.include		"./img/Menu_Text_Character_2_Smiley_Highlighted.asm"
 .include		"./img/Menu_Text_Character_3.asm"
 .include		"./img/Menu_Text_Character_3_Highlighted.asm"
 ;.include		"./img/Menu_Text_Stage_1.asm"
