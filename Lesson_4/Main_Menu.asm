@@ -65,8 +65,8 @@ mov #0, stage_flags
 	bnz	.Initialize_Stage_3
 	; mov	#<Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
 	; mov	#>Menu_Text_Stage_2_Highlighted, stage_selection_sprite_address
-	mov	#<Menu_Text_Character_2_Highlighted, stage_selection_sprite_address
-	mov	#>Menu_Text_Character_2_Highlighted, stage_selection_sprite_address+1
+	mov	#<Menu_Text_Character_2_Smiley_Highlighted, stage_selection_sprite_address
+	mov	#>Menu_Text_Character_2_Smiley_Highlighted, stage_selection_sprite_address+1
 	jmpf	.Initialize_OK_Button
 .Initialize_Stage_3
 	ld	stage_flags
