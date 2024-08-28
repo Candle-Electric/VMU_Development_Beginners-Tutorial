@@ -40,8 +40,8 @@ mov #0, stage_flags
 	ld	character_flags
 	sub	#1
 	bnz	.Initialize_Character_3
-	mov	#<Menu_Text_Character_2_Highlighted, character_selection_sprite_address
-	mov	#>Menu_Text_Character_2_Highlighted, character_selection_sprite_address+1
+	mov	#<Menu_Text_Character_2_Smiley_Highlighted, character_selection_sprite_address
+	mov	#>Menu_Text_Character_2_Smiley_Highlighted, character_selection_sprite_address+1
 	jmpf 	.Initialize_Stage_1
 .Initialize_Character_3
 	ld	character_flags
