@@ -209,8 +209,8 @@ Main_Menu_Loop:
   ld Character_Flags
   sub #1
   bnz .Character_3_Highlighted
-  mov #<Menu_Text_Character_2_Highlighted, character_selection_sprite_address
-  mov #>Menu_Text_Character_2_Highlighted, character_selection_sprite_address+1
+  mov #<Menu_Text_Character_2_Smiley_Highlighted, character_selection_sprite_address
+  mov #>Menu_Text_Character_2_Smiley_Highlighted, character_selection_sprite_address+1
   jmpf .Handle_Stage_Selection_Text
 .Character_3_Highlighted
   ld Character_Flags
