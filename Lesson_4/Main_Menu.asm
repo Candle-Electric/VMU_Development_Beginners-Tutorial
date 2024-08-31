@@ -176,8 +176,8 @@ Main_Menu_Loop:
 	;callf Check_Button_Pressed
 	;bn acc, 5, .Click_OK ; bnz .Click_OK
 	;jmpf .Handle_Character_Selection_Text
-;.Click_OK
-	;ret
+.Click_OK
+	ret
 
 	; callf Get_Input
 	ld p3
