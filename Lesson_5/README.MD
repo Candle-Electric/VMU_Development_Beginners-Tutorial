@@ -2,7 +2,7 @@
 
 Now, let's try adding up everything we've learned so far, and upgrade our Program from "Dragging A Cursor Around" to something more akin to a Full Game. In the vein of the phenomenal [MegaRunner](https://www.ohsat.com/tutorial/megarunner/megarunner-1/) by Andrej Preradovic (A.K.A. [Ohsat](https://www.ohsat.com/).), let's try making it a Side-Scrolling, Infinite Runner type of Game!
 
-## Calculation Collision Within A Range
+## Collision Calculation Within A Range
 
 We can start off by editing our movable "Cursor" from the last lesson into our playable "Character" in this one. Rather than colliding with the edges of the screen, we'll want to check collision with both the floor and our obstacles; the former will be calculated similarly, and the latter will be a new thing for us to learn. Rather than cycling between the .ASM Files on every press as last time, we'll swap our Face Buttons to Jump now. We'll also "Animate" our Character Sprite now, with Different Graphics For Different Actions. We'll Comment Out our Menu, and Jump straight into our Gameplay while we Code it Up.
 
