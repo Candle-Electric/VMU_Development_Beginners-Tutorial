@@ -66,6 +66,7 @@ While for collision before, we would simply move the Player Object back in bound
         ...
         mov #0, collision_flags
         ...
+        ld collision_flags
         bn acc, 7, .Collision_Done
         mov #1, collision_flags ; Set The Collision Flag
 
