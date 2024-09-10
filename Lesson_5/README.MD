@@ -77,5 +77,5 @@ Then, with that Collision Flag Set, we can decide what to do with it, or continu
         ; Do whatever you'd like upon collision here!
         .Collision_Flag_Not_Set
 
-There are several things we can do when Collision is Detected for this Auto Runner.
+There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter.
 
