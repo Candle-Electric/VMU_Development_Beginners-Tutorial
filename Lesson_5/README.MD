@@ -83,6 +83,6 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ...
         ld num_lives
         bz .Continue_Playing
-        ret
+        ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
