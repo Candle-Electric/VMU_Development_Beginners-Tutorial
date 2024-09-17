@@ -83,7 +83,7 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ...
         ld num_lives
         bz .Continue_Playing
-        ; Could Play a "Game Over" Animation here, if you'd like!
+        mov #<Game_Over_Text, acc ; Could Play a "Game Over" Animation here, if you'd like!
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
