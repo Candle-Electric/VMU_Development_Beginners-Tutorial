@@ -38,6 +38,7 @@ As mentioned before, Collision Detection with Obstacles will be a little differe
 
         obstacle_sprite_x = $10
         ...
+        .Check_Obstacle_Collision
         .Check_Up
                 ld player_sprite_y
                 sub obstacle_sprite_y
