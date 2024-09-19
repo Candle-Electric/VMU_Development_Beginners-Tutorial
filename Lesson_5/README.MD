@@ -88,3 +88,5 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
+Animating the Sprites will be a fun process. While we won't have animation files, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it.
+
