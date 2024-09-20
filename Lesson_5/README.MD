@@ -90,3 +90,12 @@ There are several things we can do when Collision is Detected for this Auto Runn
 
 Animating the Sprites will be a fun process. While we won't have animation files, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in.
 
+        run_frame = $1d
+        ...
+        inc run_frame
+        bp run_frame, 2, .Reset_Run_Frame
+        jmpf .Continue_Running
+        .Rest_Run_Frame
+        mov #0, run_frame
+        .Continue_Running
+
