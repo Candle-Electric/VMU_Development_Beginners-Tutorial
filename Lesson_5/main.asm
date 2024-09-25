@@ -18,7 +18,7 @@
 ;=======================;
 ;  Include  Code Files  ;
 ;=======================;
-; .include		"./Runner_Gameplay.asm"
+.include		"./src/Runner_Gameplay.asm"
 ; .include		"./Main_Menu.asm"
 
 ;=======================;
