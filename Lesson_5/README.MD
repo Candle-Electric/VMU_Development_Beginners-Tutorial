@@ -11,27 +11,50 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
         ...
-    .Main_GamePlay_Loop
-        callf Get_Input
-        ld p3
-        bn acc, BTN_B, .skip_jump
-        ...
-        ld player_sprite_y
-        bnz .skip_jump ; Only Jump IF Player Character's On The Ground.
-        ; When Jumping:
-        mov #3, player_y_velocity
-    .skip_jump
-        ...
-        ld player_sprite_y
-        add player_y_velocity
-        st player_sprite_y
-        ld player_y_velocity
-        sub #1
-        st player_y_velocity
-        ld player_sprite_y
-        bn acc, 7, .skip_floor_collision
-        mov #0, player_sprite_y
-    .skip_Floor_Collision
+        Runner_Gameplay_Loop:
+                ; Check Input
+	        callf Get_Input ; This Function Is In LibKCommon.ASM
+	        ld p3
+        .Check_Up
+	        ; bp acc, T_BTN_UP1, .Check_Down ; Commenting the Up and Down Buttons out for now.
+        .Check_Down
+	        ;ld p3
+	        ;bp acc, T_BTN_DOWN1, .Check_Left
+        .Check_Left
+	        ld p3
+	        bp acc, T_BTN_LEFT1, .Check_Right
+	        ld test_sprite_x
+	        sub #2
+	        bp acc, 7, .Check_Right
+	        dec test_sprite_x
+        .Check_Right
+	        ld p3
+	        bp acc, T_BTN_RIGHT1, .Check_Buttons
+	        ld test_sprite_x
+	        sub #40
+	        bn acc, 7, .Draw_Screen
+	        inc test_sprite_x
+        .Check_Buttons
+	        ld p3
+	        bp acc, T_BTN_A1, .Skip_Jump
+        	ld test_sprite_y
+	        sub #24
+	        bnz .Skip_Jump
+	        mov #5, runner_jump_acceleration
+	.Skip_Jump
+	        ld test_sprite_y
+	        sub runner_jump_acceleration
+	        st test_sprite_y
+	        dec runner_jump_acceleration
+	        ld runner_jump_acceleration
+        .Check_Ground
+	        ld test_sprite_y
+	        sub #24
+	        bp acc, 7, .Skip_Grounded
+	        mov #24, test_sprite_y
+	        mov #0, runner_jump_acceleration
+        .Skip_Grounded
+        .skip_Floor_Collision
         jmpf .Main_GamePlay_Loop
 
 As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" instead, with the range being determined by the height or width of the object being collided with. In Assembly, that'll look like this:
