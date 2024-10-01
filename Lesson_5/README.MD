@@ -121,4 +121,10 @@ Animating the Sprites will be a fun process. While we won't have animation files
         .Rest_Run_Frame
         mov #0, run_frame
         .Continue_Running
+	...
+	.Run_Frame_0
+	ld run_frame
+	bnz .Run_Frame_1
+	mov #<Run_Frame_0, acc
+	st Player_Sprite_Address
 
