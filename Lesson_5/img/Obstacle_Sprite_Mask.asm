@@ -1,5 +1,5 @@
 Obstacle_Sprite_Mask:
-	.byte	12,7
+	.byte	13,7
 	.byte	%11101111,%01011111
 	.byte	%11000110,%00001111
 	.byte	%10000000,%00011111
