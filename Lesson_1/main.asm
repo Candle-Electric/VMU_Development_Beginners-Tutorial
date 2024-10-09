@@ -4,27 +4,9 @@
 ;=======================;
 
 ;=======================;
-;VMU Application Header ;
-;=======================;
-.include "GameHeader.i"
-
-;=======================;
-;   Include Libraries   ;
-;=======================;
-.include "./lib/libperspective.asm"
-.include "./lib/libkcommon.asm"
-.include "./lib/sfr.i"
-
-;=======================;
-;   Define Variables:   ;
-;=======================;
-p3_pressed              =       $4      ; 1 Byte (For LibKCommon)
-p3_last_input           =       $5      ; 1 Byte (For LibKCommon)
-
-;=======================;
 ;  Prepare Application  ;
 ;=======================;
-	.org	$00
+	.org	$00 ; Thanks To TheCBarpsch For Explaining The Address Order Here!
 	jmpf	start
 
 	.org	$03
@@ -76,6 +58,24 @@ t1int:
 goodbye:	
 	not1	ext,0
 	jmpf	goodbye
+
+;=======================;
+;VMU Application Header ;
+;=======================;
+.include "GameHeader.i"
+
+;=======================;
+;   Include Libraries   ;
+;=======================;
+.include "./lib/libperspective.asm"
+.include "./lib/libkcommon.asm"
+.include "./lib/sfr.i"
+
+;=======================;
+;   Define Variables:   ;
+;=======================;
+p3_pressed              =       $4      ; 1 Byte (For LibKCommon)
+p3_last_input           =       $5      ; 1 Byte (For LibKCommon)
 
 ;=======================;
 ;     Main Program      ;
