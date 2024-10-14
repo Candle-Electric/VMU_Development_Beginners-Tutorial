@@ -4,51 +4,6 @@
 ;=======================;
 
 ;=======================;
-;VMU Application Header ;
-;=======================;
-.include "GameHeader.i"
-
-;=======================;
-;   Include Libraries   ;
-;=======================;
-.include "./lib/libperspective.asm"
-.include "./lib/libkcommon.asm"
-.include "./lib/sfr.i"
-
-;=======================;
-;  Include  Code Files  ;
-;=======================;
-.include		"./src/Runner_Gameplay.asm"
-; .include		"./Main_Menu.asm"
-
-;=======================;
-;   Define Variables:   ;
-;=======================;
-p3_pressed			=		$4	; 1 Byte (For LibKCommon)
-p3_last_input			=		$5	; 1 Byte (For LibKCommon)
-character_flags			=		$17	; 1 Byte
-stage_flags			=		$18	; 1 Byte
-; obstacle_collision_flags	=		$19	; 1 Byte
-
-;=======================;
-; Initialize Variables: ;
-;=======================;
-; mov #0, character_flags
-; mov #0, stage_flags
-
-;=======================;
-;       Constants       ;
-;=======================;
-T_BTN_SLEEP				equ		7
-T_BTN_MODE				equ		6
-T_BTN_B1				equ		5
-T_BTN_A1				equ		4
-T_BTN_RIGHT1				equ		3
-T_BTN_LEFT1				equ		2
-T_BTN_DOWN1				equ		1
-T_BTN_UP1				equ		0
-
-;=======================;
 ;  Prepare Application  ;
 ;=======================;
 	.org	$00
@@ -101,6 +56,50 @@ goodbye:
 	not1	ext,0
 	jmpf	goodbye
 
+;=======================;
+;VMU Application Header ;
+;=======================;
+.include "GameHeader.i"
+
+;=======================;
+;   Include Libraries   ;
+;=======================;
+.include "./lib/libperspective.asm"
+.include "./lib/libkcommon.asm"
+.include "./lib/sfr.i"
+
+;=======================;
+;  Include  Code Files  ;
+;=======================;
+.include		"./src/Runner_Gameplay.asm"
+; .include		"./Main_Menu.asm"
+
+;=======================;
+;   Define Variables:   ;
+;=======================;
+p3_pressed			=		$4	; 1 Byte (For LibKCommon)
+p3_last_input			=		$5	; 1 Byte (For LibKCommon)
+character_flags			=		$17	; 1 Byte
+stage_flags			=		$18	; 1 Byte
+; obstacle_collision_flags	=		$19	; 1 Byte
+
+;=======================;
+; Initialize Variables: ;
+;=======================;
+; mov #0, character_flags
+; mov #0, stage_flags
+
+;=======================;
+;       Constants       ;
+;=======================;
+T_BTN_SLEEP				equ		7
+T_BTN_MODE				equ		6
+T_BTN_B1				equ		5
+T_BTN_A1				equ		4
+T_BTN_RIGHT1				equ		3
+T_BTN_LEFT1				equ		2
+T_BTN_DOWN1				equ		1
+T_BTN_UP1				equ		0
 ;=======================;
 ;     Main Program      ;
 ;=======================;
