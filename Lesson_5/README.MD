@@ -111,7 +111,7 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
-Animating the Sprites will be a fun process. While we won't have animation files, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in.
+Animating the Sprites will be a fun process. While we won't have animation files, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in, and that requisite image will be drawn when we blit the screen and call LibPerspective.
 
         run_frame = $1d
         ...
@@ -134,3 +134,5 @@ Animating the Sprites will be a fun process. While we won't have animation files
         mov #<Run_Frame_1, acc
         st Player_Sprite_Address
         .Run_Frame_2 ; And So On...
+	...
+	P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
