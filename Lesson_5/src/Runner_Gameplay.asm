@@ -11,6 +11,13 @@ Runner_Gameplay:
 	thousands_digit	=	$1d
 	score		=	$1e
 	digit_sprite_address = $1f
+	runner_jump_acceleration = $21
+	jump_accel_positive = $22
+	obstacle_sprite_address = $23
+	obstacle_sprite_x = $25
+	obstacle_sprite_y = $26
+	frame_counter = $27
+	collision_flags = $28
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
@@ -18,33 +25,40 @@ Runner_Gameplay:
 ; Set Sprite Addresses
 	mov	#20, test_sprite_x
 	mov	#12, test_sprite_y
+	mov #32, obstacle_sprite_x
+	mov #12, obstacle_sprite_y
+	mov #0, runner_jump_acceleration
+	mov #0, jump_accel_positive
+	mov #0, frame_counter
 .Draw_Example_Character
 	; ld	character_flags
 	; bnz	.Draw_Example_Character_2
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	; jmpf	Runner_Gameplay_Loop
+	mov	#<obstacle_sprite_mask, obstacle_sprite_address
+	mov	#>obstacle_sprite_mask, obstacle_sprite_address+1
 
 Runner_Gameplay_Loop:
 ; Check Input
 	callf Get_Input ; This Function Is In LibKCommon.ASM
 	ld p3
 .Check_Up
-	bp acc, T_BTN_UP1, .Check_Down
-	ld test_sprite_y
-	sub #1
-	bp acc, 7, .Check_Down
-	dec test_sprite_y
+	; bp acc, T_BTN_UP1, .Check_Down
+	; ld test_sprite_y
+	; sub #1
+	; bp acc, 7, .Check_Down
+	; dec test_sprite_y
 .Check_Down
-	callf Get_Input
-	ld p3
-	bp acc, T_BTN_DOWN1, .Check_Left
-	ld test_sprite_y
-	sub #24
-	bn acc, 7, .Check_Left
-	inc test_sprite_y
+	;callf Get_Input
+	;ld p3
+	;bp acc, T_BTN_DOWN1, .Check_Left
+	;ld test_sprite_y
+	;sub #24
+	; bn acc, 7, .Check_Left
+	; inc test_sprite_y
 .Check_Left
-	callf Get_Input
+	; callf Get_Input
 	ld p3
 	bp acc, T_BTN_LEFT1, .Check_Right
 	ld test_sprite_x
@@ -52,7 +66,7 @@ Runner_Gameplay_Loop:
 	bp acc, 7, .Check_Right
 	dec test_sprite_x
 .Check_Right
-	callf Get_Input
+	; callf Get_Input
 	ld p3
 	bp acc, T_BTN_RIGHT1, .Check_Buttons
 	ld test_sprite_x
@@ -60,13 +74,80 @@ Runner_Gameplay_Loop:
 	bn acc, 7, .Draw_Screen
 	inc test_sprite_x
 .Check_Buttons
-	callf Get_Input
+	; callf Get_Input
 	ld p3
-	; bn acc, T_BTN_A1, .Return_To_Menu
+	bp acc, T_BTN_A1, .Skip_Jump
 	; bn acc, T_BTN_B1, .Return_To_Menu
+	ld test_sprite_y
+	sub #24
+	bnz .Skip_Jump
+	mov #5, runner_jump_acceleration
+	; jmpf .Draw_Screen
+.Skip_Jump ; .Return_To_Menu
+	ld test_sprite_y
+	sub runner_jump_acceleration
+	st test_sprite_y
+	; ld runner_jump_acceleration
+	dec runner_jump_acceleration
+	ld runner_jump_acceleration
+	
+	; bp acc, 7, .Check_Ground
+	; sub #1
+	; st runner_jump_acceleration
+.Check_Ground
+	ld test_sprite_y
+	sub #24
+	bp acc, 7, .Skip_Grounded
+	mov #24, test_sprite_y
+	mov #0, runner_jump_acceleration
+.Skip_Grounded
+	inc frame_counter
+	dec obstacle_sprite_x;
+	bn obstacle_sprite_x, 7, .Skip_Arrow_Reset
+	mov #47, obstacle_sprite_x
+	ld frame_counter
+	st c
+	mov #0, acc
+	mov #7, b
+	div
+	ld c
+	add #20
+	st obstacle_sprite_y
+.Skip_Arrow_Reset
+.Check_Obstacle_Collision
+	mov #0, collision_flags
+.Check_Up_Collision
+		ld test_sprite_y
+		sub obstacle_sprite_y
+		sub #3 ; obstacle_size_y
+		bp acc, 7, .Check_Left_Collision
+.Check_Bottom_Collision
+		ld test_sprite_y
+		sub obstacle_sprite_y
+		bn acc, 7, .Check_Left_Collision ; .Check_Sides
+		set1 collision_flags, 0 ; Set The Collision Flag
+.Check_Left_Collision
+		ld test_sprite_x
+		sub obstacle_sprite_x
+		sub #3 ; obstacle_size_x
+		bp acc, 7, .Check_Right_Collision
+.Check_Right_Collision
+		ld test_sprite_x
+		sub obstacle_sprite_x
+		add #3
+		bn acc, 7, .Collision_Done
+		set1 collision_flags, 1		; Set The Collision Flag
+.Collision_Done
+	ld collision_flags
+	sub #3
+	bnz .Collision_No
+.Collision_Yes
+	mov #<Example_Sprite_Mask, test_sprite_sprite_address
+	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	jmpf .Draw_Screen
-.Return_To_Menu
-	ret
+.Collision_No
+	mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
+	mov	#>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
 .Draw_Screen
 .Draw_Example_Stage_1
 	; ld stage_flags
@@ -86,6 +167,8 @@ Runner_Gameplay_Loop:
 	; P_Draw_Background_Constant Hello_World_BackGround
 .Draw_Character
 	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
+.Draw_Obstacle
+	P_Draw_Sprite_Mask obstacle_sprite_address, obstacle_sprite_x, obstacle_sprite_y
 	P_Blit_Screen
 	jmpf Runner_Gameplay_Loop
 
