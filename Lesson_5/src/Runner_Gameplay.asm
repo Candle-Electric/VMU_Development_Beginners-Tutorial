@@ -71,7 +71,9 @@ Runner_Gameplay_Loop:
 	bp acc, T_BTN_RIGHT1, .Check_Buttons
 	ld test_sprite_x
 	sub #40
-	bn acc, 7, .Draw_Screen
+	bp acc, 7, .Build_Error_1; bn.Draw_Screen
+	jmpf .Draw_Screen
+.Build_Error_1
 	inc test_sprite_x
 .Check_Buttons
 	; callf Get_Input
@@ -120,7 +122,7 @@ Runner_Gameplay_Loop:
 		ld test_sprite_y
 		sub obstacle_sprite_y
 		sub #3 ; obstacle_size_y
-		bp acc, 7, .Check_Left_Collision
+		bn acc, 7, .Check_Left_Collision
 .Check_Bottom_Collision
 		ld test_sprite_y
 		sub obstacle_sprite_y
@@ -142,12 +144,12 @@ Runner_Gameplay_Loop:
 	sub #3
 	bnz .Collision_No
 .Collision_Yes
-	mov #<Example_Sprite_Mask, test_sprite_sprite_address
-	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
-	jmpf .Draw_Screen
-.Collision_No
 	mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
+	jmpf .Draw_Screen
+.Collision_No
+	mov #<Example_Sprite_Mask, test_sprite_sprite_address
+	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 .Draw_Screen
 .Draw_Example_Stage_1
 	; ld stage_flags
