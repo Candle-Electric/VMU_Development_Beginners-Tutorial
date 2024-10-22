@@ -103,8 +103,18 @@ Runner_Gameplay_Loop:
 	mov #24, test_sprite_y
 	mov #0, runner_jump_acceleration
 .Skip_Grounded
+	; ld test_sprite_y
+	mov #22, obstacle_sprite_y ; st obstacle_sprite_y
+	mov #20, obstacle_sprite_x
+	jmpf .Skip_Arrow_Reset
 	inc frame_counter
+	mov #22, obstacle_sprite_y
 	dec obstacle_sprite_x;
+	bp obstacle_sprite_x, 7, .Do_Arrow_Reset
+	jmpf .Skip_Arrow_Reset
+.Do_Arrow_Reset
+	mov #48, obstacle_sprite_x
+	jmpf .Skip_Arrow_Reset
 	bn obstacle_sprite_x, 7, .Skip_Arrow_Reset
 	mov #47, obstacle_sprite_x
 	ld frame_counter
@@ -121,23 +131,24 @@ Runner_Gameplay_Loop:
 .Check_Up_Collision
 		ld test_sprite_y
 		sub obstacle_sprite_y
-		sub #3 ; obstacle_size_y
-		bn acc, 7, .Check_Left_Collision
+		add #7 ; obstacle_size_y
+		bp acc, 7, .Check_Left_Collision
 .Check_Bottom_Collision
 		ld test_sprite_y
+		add #8
 		sub obstacle_sprite_y
-		bn acc, 7, .Check_Left_Collision ; .Check_Sides
+		bp acc, 7, .Check_Left_Collision ; .Check_Sides
 		set1 collision_flags, 0 ; Set The Collision Flag
 .Check_Left_Collision
 		ld test_sprite_x
 		sub obstacle_sprite_x
-		sub #3 ; obstacle_size_x
-		bp acc, 7, .Check_Right_Collision
+		add #13 ; obstacle_size_x
+		bp acc, 7, .Collision_Done
 .Check_Right_Collision
 		ld test_sprite_x
+		add #8
 		sub obstacle_sprite_x
-		add #3
-		bn acc, 7, .Collision_Done
+		bp acc, 7, .Collision_Done
 		set1 collision_flags, 1		; Set The Collision Flag
 .Collision_Done
 	ld collision_flags
