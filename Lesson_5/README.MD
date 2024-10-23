@@ -4,9 +4,9 @@ Now, let's try adding up everything we've learned so far, and upgrade our Progra
 
 ## Collision Calculation Within A Range
 
-We can start off by editing our movable "Cursor" from the last lesson into our playable "Character" in this one. Rather than colliding with the edges of the screen, we'll want to check collision with both the floor and our obstacles; the former will be calculated similarly, and the latter will be a new thing for us to learn. Rather than cycling between the .ASM Files on every press as last time, we'll swap our Face Buttons to Jump now. We'll also "Animate" our Character Sprite now, with Different Graphics For Different Actions. We'll Comment Out our Menu, and Jump straight into our Gameplay while we Code it Up.
+We can start off by editing our movable "Cursor" from the last lesson into our playable "Character" in this one. Rather than colliding with just the edges of the screen, we'll want to check collision with both the floor and our obstacles; the former will be calculated similarly, and the latter will be a new thing for us to learn. Rather than cycling between the .ASM Files on every press as last time, we'll swap our Face Buttons to Jump now. We'll also "Animate" our Character Sprite later, with Different Graphics For Different Actions. We'll Comment Out our Menu, and Jump straight into our Gameplay while we Code it Up.
 
-Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Our "Jump" Button can increase the Y-Position, like pressing "Up" did before, but in a larger increment initially. Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position.
+Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Our "Jump" Button can increase the Y-Position (or technically decrease it, since 0 is at the top), like pressing "Up" did before, but in a larger increment initially. Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position.
 
         player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
