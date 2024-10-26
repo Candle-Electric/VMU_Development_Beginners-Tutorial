@@ -105,10 +105,10 @@ Runner_Gameplay_Loop:
 .Skip_Grounded
 	; ld test_sprite_y
 	mov #22, obstacle_sprite_y ; st obstacle_sprite_y
-	mov #20, obstacle_sprite_x
-	jmpf .Skip_Arrow_Reset
+	; mov #20, obstacle_sprite_x
+	; jmpf .Skip_Arrow_Reset
 	inc frame_counter
-	mov #22, obstacle_sprite_y
+	; mov #22, obstacle_sprite_y
 	dec obstacle_sprite_x;
 	bp obstacle_sprite_x, 7, .Do_Arrow_Reset
 	jmpf .Skip_Arrow_Reset
