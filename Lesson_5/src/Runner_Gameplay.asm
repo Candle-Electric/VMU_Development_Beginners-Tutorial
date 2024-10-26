@@ -142,12 +142,12 @@ Runner_Gameplay_Loop:
 .Check_Left_Collision
 		ld test_sprite_x
 		sub obstacle_sprite_x
-		add #13 ; obstacle_size_x
+		add #5 ; obstacle_size_x
 		bp acc, 7, .Collision_Done
 .Check_Right_Collision
-		ld test_sprite_x
+		ld obstacle_sprite_x
 		add #8
-		sub obstacle_sprite_x
+		sub test_sprite_x
 		bp acc, 7, .Collision_Done
 		set1 collision_flags, 1		; Set The Collision Flag
 .Collision_Done
