@@ -110,6 +110,7 @@ Runner_Gameplay_Loop:
 	inc frame_counter
 	; mov #22, obstacle_sprite_y
 	dec obstacle_sprite_x;
+	dec obstacle_sprite_x;
 	bp obstacle_sprite_x, 7, .Do_Arrow_Reset
 	jmpf .Skip_Arrow_Reset
 .Do_Arrow_Reset
