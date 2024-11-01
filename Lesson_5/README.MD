@@ -86,7 +86,10 @@ Next, let's make an "Obstacle" object for our Player Character to collide with a
 
 Then, we can have the obstacle move sideways across the screen for us to interact with:
 
-	dec obstacle_sprite_x
+	dec obstacle_sprite_x ; Single Speed
+	; dec obstacle_sprite_x ; Uncomment For Double Speed
+
+It's tough to jump over the obstacle if it's moving a 1 Pixel Per Second, so we can mess around with its speed value. For example, we can move it at single or double speed in the Code Block Above.
 
 While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
 
