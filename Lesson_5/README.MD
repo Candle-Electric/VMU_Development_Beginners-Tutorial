@@ -131,7 +131,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active, 
 		mov #<Example_Sprite_Mask, test_sprite_sprite_address
 		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 	.Draw_Screen
-	...
+		...
 
 Next, we can up this set of two images to a larger number, and think of them as the first two frames. Animating the Sprites will be a fun process. While we won't have animation files, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in, and that requisite image will be drawn when we blit the screen and call LibPerspective.
 
