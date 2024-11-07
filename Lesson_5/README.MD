@@ -118,7 +118,7 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
-We'll start by swapping the Player Character's Sprite when Collision is Active, to give us a start into our next.
+We'll start by swapping the Player Character's Sprite when Collision is Active. This is doubly helpful, because it gives us a great opportunity to test the "bounds" of the collision box. It will also give us a start into our next topic, sprite animation.
 
 		ld collision_flags
 		sub #3
