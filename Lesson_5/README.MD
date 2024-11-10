@@ -125,11 +125,11 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		bnz .Collision_No
 	.Collision_Yes
 		mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
-		mov	#>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
+		mov #>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
 		jmpf .Draw_Screen
 	.Collision_No
 		mov #<Example_Sprite_Mask, test_sprite_sprite_address
-		mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+		mov #>Example_Sprite_Mask, test_sprite_sprite_address+1
 	.Draw_Screen
 		...
 
