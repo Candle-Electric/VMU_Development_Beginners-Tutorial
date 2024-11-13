@@ -131,6 +131,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		mov #<Example_Sprite_Mask, test_sprite_sprite_address
 		mov #>Example_Sprite_Mask, test_sprite_sprite_address+1
 	.Draw_Screen
+		P_Draw_Sprite test_sprite_x, test_sprite_y, test_sprite_address ; This Address Will Be Filled In By The Above Code!
 		...
 
 ## Animating Sprites
