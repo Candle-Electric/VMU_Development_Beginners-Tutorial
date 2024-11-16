@@ -18,6 +18,10 @@ Runner_Gameplay:
 	obstacle_sprite_y = $26
 	frame_counter = $27
 	collision_flags = $28
+	dropping_obstacle = $29
+	obstacle_timer = $30
+	dropping_obstacle_x = $31
+	dropping_obstacle_y = $32
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
@@ -30,6 +34,8 @@ Runner_Gameplay:
 	mov #0, runner_jump_acceleration
 	mov #0, jump_accel_positive
 	mov #0, frame_counter
+	mov #0, dropping_obstacle_x
+	mov #0, dropping_obstacle_y
 .Draw_Example_Character
 	; ld	character_flags
 	; bnz	.Draw_Example_Character_2
@@ -110,7 +116,7 @@ Runner_Gameplay_Loop:
 	inc frame_counter
 	; mov #22, obstacle_sprite_y
 	dec obstacle_sprite_x;
-	dec obstacle_sprite_x;
+	dec obstacle_sprite_x
 	bp obstacle_sprite_x, 7, .Do_Arrow_Reset
 	jmpf .Skip_Arrow_Reset
 .Do_Arrow_Reset
@@ -163,6 +169,10 @@ Runner_Gameplay_Loop:
 	mov #<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
 .Draw_Screen
+.Random_Test
+	bn frame_counter, 3, .Draw_Example_Stage_1
+	callf random
+	mov #0, frame_counter
 .Draw_Example_Stage_1
 	; ld stage_flags
 	; bnz .Draw_Example_Stage_2
@@ -183,8 +193,15 @@ Runner_Gameplay_Loop:
 	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
 .Draw_Obstacle
 	P_Draw_Sprite_Mask obstacle_sprite_address, obstacle_sprite_x, obstacle_sprite_y
+	P_Draw_Sprite_Mask obstacle_sprite_address, dropping_obstacle_x, dropping_obstacle_y
 	P_Blit_Screen
 	jmpf Runner_Gameplay_Loop
+	
+random:
+	ld test_sprite_x
+	XOR frame_counter
+	st dropping_obstacle_x ; obstacle_sprite_x
+	ret
 
 ; Draw_Digit:
 ; 	; b = the X-Position, c = the Number
