@@ -69,6 +69,48 @@ goodbye:
 .include "./lib/sfr.i"
 
 ;=======================;
+;     Include Images    ;
+;=======================;
+.include		"./img/Hello_World_BackGround.asm"
+; .include		"./img/Example_Sprite.asm"
+.include		"./img/Example_Sprite_Mask.asm"
+; .include		"./img/Example_Sprite_HeroChao_Mask.asm"
+.include		"./img/ExampleBG_City.asm"
+.include		"./img/Obstacle_Sprite_Mask.asm"
+; .include		"./img/Main_Menu_BG.asm"
+; .include		"./img/Menu_Text_Character_1.asm"
+; .include		"./img/Menu_Text_Character_1_Highlighted.asm"
+; .include		"./img/Menu_Text_Character_2_Smiley.asm"
+; .include		"./img/Menu_Text_Character_2_Smiley_Highlighted.asm"
+; .include		"./img/Menu_Text_Character_3.asm"
+; .include		"./img/Menu_Text_Character_3_Highlighted.asm"
+; .include		"./img/Menu_Text_Stage_1.asm"
+; .include		"./img/Menu_Text_Stage_1_Highlighted.asm"
+; .include		"./img/Menu_Text_Stage_2.asm"
+; .include		"./img/Menu_Text_Stage_2_Highlighted.asm"
+; .include		"./img/Menu_Text_Stage_3.asm"
+; .include		"./img/Menu_Text_Stage_3_Highlighted.asm"
+; .include		"./img/Menu_Text_OK_Button_Start.asm"
+; .include		"./img/Menu_Text_OK_Button_Start_Highlighted.asm"
+; .include		"./img/Menu_Text_OK_Button_Resume.asm"
+; .include		"./img/Menu_Text_OK_Button_Resume_Highlighted.asm"
+; .include		"./img/Menu_Text_Welcome_Message.asm"
+; .include		"./img/Menu_Text_Stage_1_City.asm"
+; .include		"./img/Menu_Text_Stage_1_City_Highlighted.asm"
+; .include		"./img/Menu_Text_Stage_2_Jungle.asm"
+; .include		"./img/Menu_Text_Stage_2_Jungle_Highlighted.asm"
+; .include		"./img/Digit_0.asm"
+; .include		"./img/Digit_1.asm"
+; .include		"./img/Digit_2.asm"
+; .include		"./img/Digit_3.asm"
+; .include		"./img/Digit_4.asm"
+; .include		"./img/Digit_5.asm"
+; .include		"./img/Digit_6.asm"
+; .include		"./img/Digit_7.asm"
+; .include		"./img/Digit_8.asm"
+; .include		"./img/Digit_9.asm"
+
+;=======================;
 ;  Include  Code Files  ;
 ;=======================;
 .include		"./src/Runner_Gameplay.asm"
@@ -77,11 +119,10 @@ goodbye:
 ;=======================;
 ;   Define Variables:   ;
 ;=======================;
-p3_pressed			=		$4	; 1 Byte (For LibKCommon)
+p3_pressed				=		$4	; 1 Byte (For LibKCommon)
 p3_last_input			=		$5	; 1 Byte (For LibKCommon)
-character_flags			=		$17	; 1 Byte
-stage_flags			=		$18	; 1 Byte
-; obstacle_collision_flags	=		$19	; 1 Byte
+; character_flags			=		$17	; 1 Byte
+; stage_flags				=		$18	; 1 Byte
 
 ;=======================;
 ; Initialize Variables: ;
@@ -96,61 +137,27 @@ T_BTN_SLEEP				equ		7
 T_BTN_MODE				equ		6
 T_BTN_B1				equ		5
 T_BTN_A1				equ		4
-T_BTN_RIGHT1				equ		3
+T_BTN_RIGHT1			equ		3
 T_BTN_LEFT1				equ		2
 T_BTN_DOWN1				equ		1
 T_BTN_UP1				equ		0
+
 ;=======================;
 ;     Main Program      ;
 ;=======================;
 start:
-    player_sprite_y   = $19 ; 1 Byte
-    player_y_velocity = $1a ; 1 Byte
-    player_runner_sprite_addr = $1b; 2 Bytes
-    ; ...
-    start:
-    mov #8, player_sprite_y
-    mov #0, player_y_velocity
-    mov #<Player_Runner_Sprite_Mask, player_runner_sprite_addr 
-    mov #>Player_Runner_Sprite_Mask, player_runner_sprite_addr+1
-.Main_GamePlay_Loop ;:
-    callf Get_Input
-    ld p3
-    bn acc, BTN_B, .skip_jump
-    ; ...
-    ld player_sprite_y
-    bnz .skip_jump ; Only Jump IF Player Character's On The Ground.
-    ; When Jumping:
-    mov #3, player_y_velocity
-.skip_jump
-    ; ...
-    ld player_sprite_y
-    add player_y_velocity
-    st player_sprite_y
-    ld player_y_velocity
-    sub #1
-    st player_y_velocity
-    ld player_sprite_y
-    bn acc, 7, .skip_floor_collision
-    mov #0, player_sprite_y
-.skip_Floor_Collision
-.check_Enemy_Collision
-    ; Load The Obstacle X First And Skip This If The Location Is On The Right Side Of The Screen, Since That's Way In Advance Of The Player.
-    ld player_sprite_x
-    ; sub obstacle_1_x
-    ; add #2
-    ; bp acc, 7, .Left_Collision_Yes ; Then Do The Same, Swap The Arithmetic, And Head To .Right_Collision_Yes And Set The Flag.
-    ; jmpf .Done_Colliding
-    ; .Left_Collision_Yes
-    ; sub #4
-    ; bp acc, 7, .Right_Collision_Yes
-    ; jmpf .Done_Colliding
-    ; .Right_Collision_Yes
-    mov #1, obstacle_collision_flags ; (Set The Flag To "Collided.").
-    ; ldf obstacle_collision_flags
-    ; bz .Done_Colliding
-    ; .Done_Colliding
-    ; Blit Screen, Etc.
-    ; .Draw_Screen
-    P_Blit_Screen
-    jmpf .Main_GamePlay_Loop
+	clr1 ie,7
+	mov #$a1,ocr
+	mov #$09,mcr
+	mov #$80,vccr
+	clr1 p3int,0
+	clr1 p1,7
+	mov #$ff,p3
+	set1 ie,7
+
+Main_Loop:
+	; callf	Main_Menu
+	callf	Runner_Gameplay
+	jmpf Main_Loop
+
+	.cnop	0,$200		; Pad To An Even Number Of Blocks
