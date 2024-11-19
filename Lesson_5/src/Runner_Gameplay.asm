@@ -2,9 +2,9 @@
 ;       Gameplay        ;
 ;=======================;
 Runner_Gameplay:
-	test_sprite_x			=		$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
-	test_sprite_y			=		$7		; 1 Byte
-	test_sprite_sprite_address	=	$8		; 2 Bytes
+	player_sprite_x			=	$6		; 1 Byte ; Moving These Three To "Cursor_Gameplay."
+	playerer_sprite_y		=	$7		; 1 Byte
+	player_sprite_sprite_address	=	$8		; 2 Bytes
 	ones_digit	=	$1a
 	tens_digit	=	$1b
 	hundreds_digit	=	$1c
