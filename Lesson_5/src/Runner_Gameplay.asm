@@ -27,8 +27,8 @@ Runner_Gameplay:
 	; ld cursor_flags
 	; ld stage_flags
 ; Set Sprite Addresses
-	mov	#20, test_sprite_x
-	mov	#12, test_sprite_y
+	mov	#20, runner_sprite_x
+	mov	#12, runner_sprite_y
 	mov #32, obstacle_sprite_x
 	mov #12, obstacle_sprite_y
 	mov #0, runner_jump_acceleration
@@ -70,31 +70,31 @@ Runner_Gameplay_Loop:
 	ld test_sprite_x
 	sub #2
 	bp acc, 7, .Check_Right
-	dec test_sprite_x
+	dec runner_sprite_x
 .Check_Right
 	; callf Get_Input
 	ld p3
 	bp acc, T_BTN_RIGHT1, .Check_Buttons
-	ld test_sprite_x
+	ld runner_sprite_x
 	sub #40
 	bp acc, 7, .Build_Error_1; bn.Draw_Screen
 	jmpf .Draw_Screen
 .Build_Error_1
-	inc test_sprite_x
+	inc runner_sprite_x
 .Check_Buttons
 	; callf Get_Input
 	ld p3
 	bp acc, T_BTN_A1, .Skip_Jump
 	; bn acc, T_BTN_B1, .Return_To_Menu
-	ld test_sprite_y
+	ld runner_sprite_y
 	sub #24
 	bnz .Skip_Jump
 	mov #5, runner_jump_acceleration
 	; jmpf .Draw_Screen
 .Skip_Jump ; .Return_To_Menu
-	ld test_sprite_y
+	ld runner_sprite_y
 	sub runner_jump_acceleration
-	st test_sprite_y
+	st runner_sprite_y
 	; ld runner_jump_acceleration
 	dec runner_jump_acceleration
 	ld runner_jump_acceleration
@@ -103,10 +103,10 @@ Runner_Gameplay_Loop:
 	; sub #1
 	; st runner_jump_acceleration
 .Check_Ground
-	ld test_sprite_y
+	ld runner_sprite_y
 	sub #24
 	bp acc, 7, .Skip_Grounded
-	mov #24, test_sprite_y
+	mov #24, runner_sprite_y
 	mov #0, runner_jump_acceleration
 .Skip_Grounded
 	; ld test_sprite_y
