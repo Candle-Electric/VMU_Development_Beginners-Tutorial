@@ -136,25 +136,25 @@ Runner_Gameplay_Loop:
 .Check_Obstacle_Collision
 	mov #0, collision_flags
 .Check_Up_Collision
-		ld test_sprite_y
+		ld runner_sprite_y
 		sub obstacle_sprite_y
 		add #7 ; obstacle_size_y
 		bp acc, 7, .Check_Left_Collision
 .Check_Bottom_Collision
-		ld test_sprite_y
+		ld runner_sprite_y
 		add #8
 		sub obstacle_sprite_y
 		bp acc, 7, .Check_Left_Collision ; .Check_Sides
 		set1 collision_flags, 0 ; Set The Collision Flag
 .Check_Left_Collision
-		ld test_sprite_x
+		ld runner_sprite_x
 		sub obstacle_sprite_x
 		add #5 ; obstacle_size_x
 		bp acc, 7, .Collision_Done
 .Check_Right_Collision
 		ld obstacle_sprite_x
 		add #8
-		sub test_sprite_x
+		sub runner_sprite_x
 		bp acc, 7, .Collision_Done
 		set1 collision_flags, 1		; Set The Collision Flag
 .Collision_Done
@@ -162,12 +162,12 @@ Runner_Gameplay_Loop:
 	sub #3
 	bnz .Collision_No
 .Collision_Yes
-	mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
-	mov	#>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
+	mov #<Obstacle_Sprite_Mask, runner_sprite_address
+	mov	#>Obstacle_Sprite_Mask, runner_sprite_address+1
 	jmpf .Draw_Screen
 .Collision_No
-	mov #<Example_Sprite_Mask, test_sprite_sprite_address
-	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
+	mov #<Example_Sprite_Mask, runner_sprite_address
+	mov	#>Example_Sprite_Mask, runner_sprite_address+1
 .Draw_Screen
 .Random_Test
 	bn frame_counter, 3, .Draw_Example_Stage_1
@@ -190,7 +190,7 @@ Runner_Gameplay_Loop:
 	; bnz .Draw_Character
 	; P_Draw_Background_Constant Hello_World_BackGround
 .Draw_Character
-	P_Draw_Sprite_Mask test_sprite_sprite_address, test_sprite_x, test_sprite_y
+	P_Draw_Sprite_Mask runner_sprite_address, runner_sprite_x, runner_sprite_y
 .Draw_Obstacle
 	P_Draw_Sprite_Mask obstacle_sprite_address, obstacle_sprite_x, obstacle_sprite_y
 	P_Draw_Sprite_Mask obstacle_sprite_address, dropping_obstacle_x, dropping_obstacle_y
