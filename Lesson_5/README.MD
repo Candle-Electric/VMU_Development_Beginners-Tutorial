@@ -174,8 +174,8 @@ Then, we can add assign this animation as the "Running" state, and add another s
 	        bnz .Skip_Jump
 	        mov #5, runner_jump_acceleration
 		mov #1, player_state
-	...
-	.Check_Ground
+		...
+        .Check_Ground
 	        ld test_sprite_y
 	        sub #24
 	        bp acc, 7, .Skip_Grounded
