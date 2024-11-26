@@ -182,3 +182,7 @@ Then, we can add assign this animation as the "Running" state, and add another s
 	        mov #24, test_sprite_y
 	        mov #0, runner_jump_acceleration
 		mov #0, player_state
+
+With that State set, we can Call it and decide which Animation will show when we Draw the Player Sprite:
+
+	ld 
