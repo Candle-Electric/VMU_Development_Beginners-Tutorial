@@ -184,5 +184,13 @@ Then, we can add assign this animation as the "Running" state, and add another s
 		mov #0, player_state
 
 With that State set, we can Call it and decide which Animation will show when we Draw the Player Sprite:
-
-	ld 
+	.Draw_Player_Running
+		ld player_state
+		bnz .Draw_Player_Jumping
+		.Run_Frame_1
+		.Run_Frame_2
+		...
+	.Draw_Player_Jumping
+		ld player_state
+		sub #1
+		bnz .Draw_Third_State ; (If we have one)
