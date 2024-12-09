@@ -109,6 +109,10 @@ goodbye:
 ; .include		"./img/Digit_7.asm"
 ; .include		"./img/Digit_8.asm"
 ; .include		"./img/Digit_9.asm"
+.include		"./img/Runner_BackGround_1.asm"
+.include		"./img/Runner_BackGround_2.asm"
+.include		"./img/Runner_BackGround_3.asm"
+.include		"./img/Runner_BackGround_4.asm"
 
 ;=======================;
 ;  Include  Code Files  ;
