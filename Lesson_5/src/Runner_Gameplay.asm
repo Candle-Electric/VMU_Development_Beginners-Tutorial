@@ -173,18 +173,19 @@ Runner_Gameplay_Loop:
 	bn frame_counter, 3, .Draw_Example_Stage_1
 	callf random
 	mov #0, frame_counter
-.Draw_Example_Stage_1
-	; ld stage_flags
+.Draw_BG_Frame_1
+	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
+	bp frame_counter, 0, .Draw_BG_Frame_2
 	; bnz .Draw_Example_Stage_2
 	P_Draw_Background_Constant ExampleBG_City
 	jmpf .Draw_Character
-.Draw_Example_Stage_2
-	; ld stage_flags
+.Draw_BG_Frame_2
+	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
 	; sub #1
 	; bnz .Draw_Example_Stage_3
 	; P_Draw_Background_Constant ExampleBG_Jungle
 	jmpf .Draw_Character
-.Draw_Example_Stage_3
+.Draw_BG_Frame_3
 	; ld stage_flags
 	; sub #2
 	; bnz .Draw_Character
