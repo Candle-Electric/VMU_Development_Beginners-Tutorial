@@ -177,19 +177,27 @@ Runner_Gameplay_Loop:
 	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_2
 	; bnz .Draw_Example_Stage_2
-	P_Draw_Background_Constant ExampleBG_City
+	P_Draw_Background_Constant Runner_BackGround_1
 	jmpf .Draw_Character
 .Draw_BG_Frame_2
 	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
+	bn frame_counter, 0, .Draw_BG_Frame_3 ; Might Comment This One
+	P_Draw_Background_Constant Runner_BackGround_2
 	; sub #1
 	; bnz .Draw_Example_Stage_3
 	; P_Draw_Background_Constant ExampleBG_Jungle
 	jmpf .Draw_Character
 .Draw_BG_Frame_3
-	; ld stage_flags
-	; sub #2
+	bn frame_counter, 1, .Draw_BG_Frame_4 ; ld stage_flags
+	bp frame_counter, 0, .Draw_BG_Frame_4
+	P_Draw_Background_Constant Runner_BackGround_3
+	jmpf .Draw_Character ; sub #2
 	; bnz .Draw_Character
 	; P_Draw_Background_Constant Hello_World_BackGround
+.Draw_BG_Frame_4
+	bn frame_counter, 1, .Draw_Character ; ld stage_flags
+	bn frame_counter, 0, .Draw_Character
+	P_Draw_Background_Constant Runner_BackGround_4
 .Draw_Character
 	P_Draw_Sprite_Mask runner_sprite_address, runner_sprite_x, runner_sprite_y
 .Draw_Obstacle
