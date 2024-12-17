@@ -162,7 +162,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
         ...
         P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
 
-Then, we can add assign this animation as the "Running" state, and add another state on top of it, a "Jumping" one!
+Then, we can add assign this animation to a new "State #" Variable as the "Running" state, and add another state on top of it, a "Jumping" one!
 
 		player_state = $22 ; 1 Byte. 0 = Default Value (Running.).
 		...
