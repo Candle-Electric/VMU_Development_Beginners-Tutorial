@@ -22,6 +22,7 @@ Runner_Gameplay:
 	obstacle_timer = $30
 	dropping_obstacle_x = $31
 	dropping_obstacle_y = $32
+	player_animation_state = $33
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
