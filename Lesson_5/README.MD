@@ -120,8 +120,12 @@ There are several things we can do when Collision is Detected for this Auto Runn
 
 We'll start by swapping the Player Character's Sprite when Collision is Active. This is doubly helpful, because it gives us a great opportunity to test the "bounds" of the collision box by keeping the obstacle static and moving our player character around it, recompiling each time to test the coded values or alternatively introducing a new variable to change in each instance. It will also give us a start into our next topic, sprite animation.
 
+	 	player_width_x = $1a ; instantiate a "Player Sprite Width" variable
+		...
+		mov #3, player_width_x
+		...
 		ld collision_flags
-		sub #3 ; alternatively, could instantiate a variable called player_width_x
+		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
 		bnz .Collision_No
 	.Collision_Yes
 		mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
