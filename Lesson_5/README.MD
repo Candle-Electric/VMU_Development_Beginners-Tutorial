@@ -122,7 +122,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 
 	 	player_width_x = $1a ; instantiate a "Player Sprite Width" variable
 		...
-		mov #3, player_width_x
+		mov #3, player_width_x ; This can be changed before every Rebuild for easy tweaking!
 		...
 		ld collision_flags
 		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
