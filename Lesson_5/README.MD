@@ -41,20 +41,20 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
 	        sub #24
 	        bnz .Skip_Jump
 	        mov #5, runner_jump_acceleration
-	.Skip_Jump
+        .Skip_Jump
 	        ld test_sprite_y
 	        sub runner_jump_acceleration
 	        st test_sprite_y
 	        dec runner_jump_acceleration
 	        ld runner_jump_acceleration
-	.Check_Ground
+        .Check_Ground
 	        ld test_sprite_y
 	        sub #24
 	        bp acc, 7, .Skip_Grounded
 	        mov #24, test_sprite_y
 	        mov #0, runner_jump_acceleration
-	.Skip_Grounded
-	.skip_Floor_Collision
+        .Skip_Grounded
+        .skip_Floor_Collision
 		jmpf .Main_GamePlay_Loop
 
 Next, let's make an "Obstacle" object for our Player Character to collide with and jump over. As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" instead, with the range being determined by the height or width of the object and what it's being collided with. In Assembly, that'll look like this:
