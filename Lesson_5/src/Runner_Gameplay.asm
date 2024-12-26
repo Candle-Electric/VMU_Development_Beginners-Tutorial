@@ -45,6 +45,7 @@ Runner_Gameplay:
 	; jmpf	Runner_Gameplay_Loop
 	mov	#<obstacle_sprite_mask, obstacle_sprite_address
 	mov	#>obstacle_sprite_mask, obstacle_sprite_address+1
+	mov	#<>dropping_obstacle_sprite_mask, dropping_obstacle_sprite_address
 
 Runner_Gameplay_Loop:
 ; Check Input
