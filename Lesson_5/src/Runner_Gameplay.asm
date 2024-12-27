@@ -23,6 +23,7 @@ Runner_Gameplay:
 	dropping_obstacle_x = $31
 	dropping_obstacle_y = $32
 	player_animation_state = $33
+	dropping_obstacle_sprite_address = $34
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
@@ -45,7 +46,8 @@ Runner_Gameplay:
 	; jmpf	Runner_Gameplay_Loop
 	mov	#<obstacle_sprite_mask, obstacle_sprite_address
 	mov	#>obstacle_sprite_mask, obstacle_sprite_address+1
-	mov	#<>dropping_obstacle_sprite_mask, dropping_obstacle_sprite_address
+	mov	#<dropping_obstacle_sprite_mask, dropping_obstacle_sprite_address
+	mov	#>dropping_obstacle_sprite_mask, dropping_obstacle_sprite_address+1
 
 Runner_Gameplay_Loop:
 ; Check Input
