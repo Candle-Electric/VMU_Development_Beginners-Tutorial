@@ -202,9 +202,9 @@ One question that might immediately pop up is, "What's in the `c` Register?" To 
 		st      p3_pressed
 		ret
 	; Mode And Sleep Functions
- 		.quit
-   		...
-     		.sleep
+		.quit
+		...
+		.sleep
 		...
   
 The `p3` register is complemented by `p3_pressed_last`, which stores which buttons were "On" during the last frame. This is populated during the `Get_Input` Call, and then stored as `c`, which is then itself Referenced at the start of `Get_Button_Pressed`. We can see that A Bitwise "XOR" and "AND" Call then determine which was pressed this frame, but not last frame, ensuring that held buttons are skipped over. XOR means "Exclusive Or," requiring that one but _not_ the other of the operands is 1. The `#%11111111` represents every button being off during the last frame. The AND then fills the buttons of this frame. In other words, if a button was _not_ pressed last frame, but _is_ pressed this frame, `Get_Button_Pressed` will tell us. One important thing to note is that since `p3_pressed_last` is populated during the Get_Input call, we must make sure that we are only calling `Get_Input` once per frame, I.E. once per Loop (or `Main_Loop`, `Cursor_Gameplay_Loop`, Etc.). Otherwise, `p3_pressed_last` will be overwritten with the same button-press matrix twice in one frame, breaking the `Check_Button_Pressed` Function and effectively breaking every button. 
