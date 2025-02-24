@@ -100,7 +100,7 @@ goodbye:
 ; .include		"./img/Menu_Text_Stage_2_Jungle.asm"
 ; .include		"./img/Menu_Text_Stage_2_Jungle_Highlighted.asm"
 ; .include		"./img/Digit_0.asm"
-; .include		"./img/Digit_1.asm"
+.include		"./img/Digit_1.asm"
 .include		"./img/Digit_2.asm"
 .include		"./img/Digit_3.asm"
 ; .include		"./img/Digit_4.asm"
