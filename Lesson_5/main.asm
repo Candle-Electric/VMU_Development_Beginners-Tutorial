@@ -106,7 +106,7 @@ goodbye:
 ; .include		"./img/Digit_4.asm"
 ; .include		"./img/Digit_5.asm"
 ; .include		"./img/Digit_6.asm"
-; .include		"./img/Digit_7.asm"
+.include		"./img/Digit_7.asm"
 ; .include		"./img/Digit_8.asm"
 ; .include		"./img/Digit_9.asm"
 .include		"./img/Runner_BackGround_1.asm"
