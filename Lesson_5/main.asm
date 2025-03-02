@@ -103,7 +103,7 @@ goodbye:
 .include		"./img/Digit_1.asm"
 .include		"./img/Digit_2.asm"
 .include		"./img/Digit_3.asm"
-; .include		"./img/Digit_4.asm"
+.include		"./img/Digit_4.asm"
 ; .include		"./img/Digit_5.asm"
 ; .include		"./img/Digit_6.asm"
 .include		"./img/Digit_7.asm"
