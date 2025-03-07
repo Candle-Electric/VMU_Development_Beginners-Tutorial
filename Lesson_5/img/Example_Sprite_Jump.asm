@@ -1,0 +1,1 @@
+Example_Sprite_Jump_Mask:
