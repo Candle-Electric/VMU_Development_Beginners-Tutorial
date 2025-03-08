@@ -216,8 +216,11 @@ random:
 	st dropping_obstacle_x ; obstacle_sprite_x
 	ret
 
-; Draw_Digit:
-; 	; b = the X-Position, c = the Number
+Draw_Digit:
+ 	; b = the X-Position, c = the Number
+	mov #16, b
+	mov #0, c
+	P_Draw_Sprite digit_sprite_address, b, c
 ; .Digit_0  
 ; 	ld c
 ; 	bnz .Digit_1
