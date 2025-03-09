@@ -243,19 +243,39 @@ Draw_Digit:
 ; 	jmpf .Digit_Decided
 ; .Digit_3
 ; 	ld c
-; 	sub #2
+; 	sub #3
 ; 	bnz .Digit_4
 ; 	mov #<Digit_3, digit_sprite_address
 ; 	mov #>Digit_3, digit_sprite_address+1
 ; 	jmpf .Digit_Decided
 ; .Digit_4
 ; 	ld c
-; 	sub #2
+; 	sub #4
 ; 	bnz .Digit_5
 ; 	mov #<Digit_4, digit_sprite_address
 ; 	mov #>Digit_4, digit_sprite_address+1
 ; 	jmpf .Digit_Decided
 ; .Digit_5
+;       ld c
+; 	sub #5
+; 	bnz .Digit_6
+; 	mov #<Digit_5, digit_sprite_address
+; 	mov #>Digit_5, digit_sprite_address+1
+; 	jmpf .Digit_Decided
+; .Digit_6
+;	ld c
+; 	sub #6
+; 	bnz .Digit_7
+; 	mov #<Digit_6, digit_sprite_address
+; 	mov #>Digit_6, digit_sprite_address+1
+; 	jmpf .Digit_Decided
+; .Digit_7
+;	ld c
+; 	sub #7
+; 	bnz .Digit_8
+; 	mov #<Digit_7, digit_sprite_address
+; 	mov #>Digit_7, digit_sprite_address+1
+; 	jmpf .Digit_Decided
 ; .Digit_Decided
 ; 	mov #0, c ; Every Digit will be at the top of the screen.
 ; 	P_Draw_Sprite digit_sprite_address, b, c
