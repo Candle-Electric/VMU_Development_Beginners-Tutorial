@@ -221,6 +221,7 @@ Draw_Digit:
 	mov #16, b
 	mov #0, c
 	P_Draw_Sprite digit_sprite_address, b, c
+	mov #8, b
 ; .Digit_0  
 ; 	ld c
 ; 	bnz .Digit_1
