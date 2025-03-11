@@ -277,9 +277,9 @@ Draw_Digit:
 ; 	mov #<Digit_7, digit_sprite_address
 ; 	mov #>Digit_7, digit_sprite_address+1
 ; 	jmpf .Digit_Decided
-; .Digit_Decided
-; 	mov #0, c ; Every Digit will be at the top of the screen.
-; 	P_Draw_Sprite digit_sprite_address, b, c
+ .Digit_Decided
+ 	mov #0, c ; Every Digit will be at the top of the screen. ; To-Do: Store, Read, & Call B.
+ 	P_Draw_Sprite digit_sprite_address, b, c
 ; 	ret
 ; 	
 ; %macro Draw_Score
