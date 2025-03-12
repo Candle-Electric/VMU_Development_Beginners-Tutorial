@@ -216,6 +216,10 @@ random:
 	st dropping_obstacle_x ; obstacle_sprite_x
 	ret
 
+Draw_Score:
+	ld ones_digit ; mov the X-Position + Store As B Before The Draw?
+	callf Draw_Digit
+
 Draw_Digit:
  	; b = the X-Position, c = the Number
 	mov #16, b
