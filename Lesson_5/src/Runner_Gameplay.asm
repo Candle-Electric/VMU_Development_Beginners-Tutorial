@@ -218,21 +218,23 @@ random:
 
 Draw_Score:
 	ld ones_digit ; mov the X-Position + Store As B Before The Draw?
+	st c
+	mov #16, b
 	callf Draw_Digit
 
 Draw_Digit:
  	; b = the X-Position, c = the Number
-	mov #16, b
-	mov #0, c
-	P_Draw_Sprite digit_sprite_address, b, c
-	mov #8, b
-; .Digit_0  
-; 	ld c
-; 	bnz .Digit_1
-; 	mov #<Digit_0, digit_sprite_address
-; 	mov #>Digit_0, digit_sprite_address+1
-; 	jmpf .Digit_Decided
-; .Digit_1
+	; mov #16, b
+	; mov #0, c
+	; P_Draw_Sprite digit_sprite_address, b, c
+	; mov #8, b
+.Digit_0  
+ 	ld c
+ 	bnz .Digit_1
+ 	mov #<Digit_0, digit_sprite_address
+ 	mov #>Digit_0, digit_sprite_address+1
+ 	jmpf .Digit_Decided
+.Digit_1
 ; 	ld c
 ; 	sub #1
 ; 	bnz .Digit_2
