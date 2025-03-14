@@ -235,12 +235,12 @@ Draw_Digit:
  	mov #>Digit_0, digit_sprite_address+1
  	jmpf .Digit_Decided
 .Digit_1
-; 	ld c
-; 	sub #1
-; 	bnz .Digit_2
-; 	mov #<Digit_1, digit_sprite_address
-; 	mov #>Digit_1, digit_sprite_address+1
-; 	jmpf .Digit_Decided
+ 	ld c
+ 	sub #1
+ 	bnz .Digit_2
+ 	mov #<Digit_1, digit_sprite_address
+ 	mov #>Digit_1, digit_sprite_address+1
+ 	jmpf .Digit_Decided
 ; .Digit_2
 ; 	ld c
 ; 	sub #2
@@ -283,6 +283,13 @@ Draw_Digit:
 ; 	mov #<Digit_7, digit_sprite_address
 ; 	mov #>Digit_7, digit_sprite_address+1
 ; 	jmpf .Digit_Decided
+ .Digit_8
+	ld c
+ 	sub #8
+; 	bnz .Digit_9
+ 	mov #<Digit_8, digit_sprite_address
+ 	mov #>Digit_8, digit_sprite_address+1
+ 	jmpf .Digit_Decided
  .Digit_Decided
  	mov #0, c ; Every Digit will be at the top of the screen. ; To-Do: Store, Read, & Call B.
  	P_Draw_Sprite digit_sprite_address, b, c
