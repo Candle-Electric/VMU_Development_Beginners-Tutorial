@@ -291,6 +291,11 @@ Draw_Digit:
  	mov #>Digit_8, digit_sprite_address+1
  	jmpf .Digit_Decided
 .Digit_9
+	ld c
+	sub #9
+	bnz .Digit_Decided
+	mov #<Digit_9, digit_sprite_address
+	mov #>Digit_9, digit_sprite_address+1
 .Digit_Decided
  	mov #0, c ; Every Digit will be at the top of the screen. ; To-Do: Store, Read, & Call B.
  	P_Draw_Sprite digit_sprite_address, b, c
