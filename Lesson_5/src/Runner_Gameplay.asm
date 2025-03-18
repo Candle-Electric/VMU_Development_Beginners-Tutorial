@@ -248,14 +248,14 @@ Draw_Digit:
  	mov #<Digit_2, digit_sprite_address
  	mov #>Digit_2, digit_sprite_address+1
  	jmpf .Digit_Decided
-; .Digit_3
-; 	ld c
-; 	sub #3
-; 	bnz .Digit_4
-; 	mov #<Digit_3, digit_sprite_address
-; 	mov #>Digit_3, digit_sprite_address+1
-; 	jmpf .Digit_Decided
-; .Digit_4
+.Digit_3
+ 	ld c
+ 	sub #3
+ 	bnz .Digit_4
+ 	mov #<Digit_3, digit_sprite_address
+ 	mov #>Digit_3, digit_sprite_address+1
+ 	jmpf .Digit_Decided
+.Digit_4
 ; 	ld c
 ; 	sub #4
 ; 	bnz .Digit_5
