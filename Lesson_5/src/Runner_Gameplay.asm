@@ -282,7 +282,7 @@ Draw_Digit:
 ; 	bnz .Digit_8
 ; 	mov #<Digit_7, digit_sprite_address
 ; 	mov #>Digit_7, digit_sprite_address+1
-; 	jmpf .Digit_Decided
+	jmpf .Digit_Decided
  .Digit_8
 	ld c
  	sub #8
