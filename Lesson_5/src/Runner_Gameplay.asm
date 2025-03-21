@@ -217,6 +217,7 @@ random:
 	ret
 
 Draw_Score:
+	;LD Score, Then Div, Then Call Draw_Digit On Each Time? Saves On RAM. 
 	ld ones_digit ; mov the X-Position + Store As B Before The Draw?
 	st c
 	mov #16, b
