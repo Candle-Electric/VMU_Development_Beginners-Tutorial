@@ -218,7 +218,11 @@ random:
 
 Draw_Score:      
 	;LD Score, Then Div, Then Call Draw_Digit On Each Time? Saves On RAM.    
-	ld ones_digit ; mov the X-Position + Store As B Before The Draw?
+	; ld ones_digit ; mov the X-Position + Store As B Before The Draw?
+	ld score
+	mov #10, b
+	div
+	ld c
 	st c
 	mov #16, b
 	callf Draw_Digit
