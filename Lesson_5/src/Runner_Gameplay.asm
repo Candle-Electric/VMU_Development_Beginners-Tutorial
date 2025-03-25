@@ -226,6 +226,13 @@ Draw_Score:
 	st c
 	mov #16, b
 	callf Draw_Digit
+	ld score
+	mov #10, b
+	div
+	div
+	mov #24, b
+	callf Draw_Digit
+	ret
 
 Draw_Digit:
  	; b = the X-Position, c = the Number
