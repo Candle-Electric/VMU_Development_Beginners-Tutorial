@@ -232,6 +232,13 @@ Draw_Score:
 	div
 	mov #24, b
 	callf Draw_Digit
+	ld score
+	mov #10, b
+	div
+	div
+	div
+	mov #32, b
+	callf Draw_Digit
 	ret
 
 Draw_Digit:
