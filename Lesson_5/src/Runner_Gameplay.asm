@@ -277,17 +277,17 @@ Draw_Digit:
 .Digit_4
 ; 	ld c
 ; 	sub #4
-; 	bnz .Digit_5
+ 	bnz .Digit_5
 ; 	mov #<Digit_4, digit_sprite_address
 ; 	mov #>Digit_4, digit_sprite_address+1
 ; 	jmpf .Digit_Decided
-.Digit_5
-;       ld c
-; 	sub #5
-; 	bnz .Digit_6
-; 	mov #<Digit_5, digit_sprite_address
-; 	mov #>Digit_5, digit_sprite_address+1
-; 	jmpf .Digit_Decided
+Digit_5
+       ld c
+ 	sub #5
+ 	bnz .Digit_6
+ 	mov #<Digit_5, digit_sprite_address
+ 	mov #>Digit_5, digit_sprite_address+1
+ 	jmpf .Digit_Decided
 .Digit_6
 	ld c
  	sub #6
