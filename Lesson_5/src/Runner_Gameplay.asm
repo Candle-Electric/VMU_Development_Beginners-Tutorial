@@ -278,8 +278,8 @@ Draw_Digit:
  	ld c
  	sub #4
  	bnz .Digit_5
-; 	mov #<Digit_4, digit_sprite_address
-; 	mov #>Digit_4, digit_sprite_address+1
+ 	mov #<Digit_4, digit_sprite_address
+ 	mov #>Digit_4, digit_sprite_address+1
  	jmpf .Digit_Decided
 Digit_5
        ld c
