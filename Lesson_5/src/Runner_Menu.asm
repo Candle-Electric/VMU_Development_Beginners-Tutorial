@@ -16,7 +16,10 @@ Menu_Loop:
 	; jmpf .Input_DPad_Done
 .Check_Down
 	ld p3
+	mov #Button_Down, acc
 .Check_Left
+	ld p3
+	mov #Button_Left, acc
 .Check_Right
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	ret
