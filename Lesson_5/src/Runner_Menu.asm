@@ -17,10 +17,15 @@ Menu_Loop:
 .Check_Down
 	ld p3
 	mov #Button_Down, acc
+	callf Check_Button_Pressed
 .Check_Left
 	ld p3
 	mov #Button_Left, acc
+	callf Check_Button_Pressed
 .Check_Right
+	ld p3
+	mov #Button_Right, acc
+	callf Check_Button_Pressed
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	ret
 
