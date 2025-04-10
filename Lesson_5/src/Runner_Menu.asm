@@ -5,6 +5,7 @@ Runner_Menu:
 	cursor_1_val			=		$6
 	cursor_2_val			=		$7
 	cursor_y_pos			=		$8
+	option_1_sprite_address		=		$9
 Menu_Loop:
 	callf Get_Input
 .Check_Up 
