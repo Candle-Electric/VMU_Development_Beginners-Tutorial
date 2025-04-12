@@ -24,10 +24,12 @@ Menu_Loop:
 	ld p3
 	mov #Button_Left, acc
 	callf Check_Button_Pressed
+	bn acc, 2, .Check_Right
 .Check_Right
 	ld p3
 	mov #Button_Right, acc
 	callf Check_Button_Pressed
+	bn acc, 3, .Draw_Screen
 .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	ret
