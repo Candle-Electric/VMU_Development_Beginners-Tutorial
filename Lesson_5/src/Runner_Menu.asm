@@ -20,6 +20,7 @@ Menu_Loop:
 	mov #Button_Down, acc
 	callf Check_Button_Pressed
 	bn acc, 1, .Check_Left
+	inc cursor_y_pos
 .Check_Left
 	ld p3
 	mov #Button_Left, acc
