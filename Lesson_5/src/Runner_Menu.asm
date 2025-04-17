@@ -33,6 +33,7 @@ Menu_Loop:
 	callf Check_Button_Pressed
 	bn acc, 3, .Draw_Screen
 .Check_Buttons
+	ld p3
 .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
 	P_Draw_Sprite	cursor_sprite_address, b, c
