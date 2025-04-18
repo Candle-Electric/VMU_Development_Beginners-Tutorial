@@ -34,6 +34,8 @@ Menu_Loop:
 	bn acc, 3, .Draw_Screen
 .Check_Buttons
 	ld p3
+	mov #Button_B1, acc
+	mov #Button_A1, acc
 .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
 	P_Draw_Sprite	cursor_sprite_address, b, c
