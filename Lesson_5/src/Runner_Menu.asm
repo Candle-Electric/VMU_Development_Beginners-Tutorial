@@ -38,7 +38,8 @@ Menu_Loop:
 	mov #Button_A1, acc
 	ld cursor_y_pos
 	; sub #3
-	; bp/jmpf Options + Draw Screen
+	; bnz .Draw_Screen ; bp/jmpf Options + Draw Screen
+	; ret
 .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
 	P_Draw_Sprite	cursor_sprite_address, b, c
