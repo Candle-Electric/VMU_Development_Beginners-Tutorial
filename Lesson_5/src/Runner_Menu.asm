@@ -36,6 +36,8 @@ Menu_Loop:
 	ld p3
 	mov #Button_B1, acc
 	callf Check_Button_Pressed
+	bn acc, 6, .Check_A
+.Check_A ; B
 	mov #Button_A1, acc
 	ld cursor_y_pos
 	; sub #3
