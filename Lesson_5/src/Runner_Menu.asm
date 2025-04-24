@@ -33,6 +33,7 @@ Menu_Loop:
 	callf Check_Button_Pressed
 	bn acc, 3, .Draw_Screen
 .Check_Buttons
+.Check_B ; 
 	ld p3
 	mov #Button_B1, acc
 	callf Check_Button_Pressed
@@ -40,7 +41,7 @@ Menu_Loop:
 	ld cursor_y_pos
 	sub #2
 	bnz .Check_B
-.Check_A ; B
+.Check_A
 	mov #Button_A1, acc
 	ld cursor_y_pos
 	; sub #3
