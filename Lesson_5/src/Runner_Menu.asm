@@ -7,6 +7,7 @@ Runner_Menu:
 	cursor_y_pos			=		$8
 	option_1_sprite_address		=		$9
 	option_2_sprite_address		=		$a
+	Confirm_Button_Sprite_Address	=		$c
 Menu_Loop:
 	callf Get_Input
 .Check_Up 
