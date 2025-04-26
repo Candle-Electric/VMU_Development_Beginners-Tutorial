@@ -51,5 +51,6 @@ Menu_Loop:
 .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
 	P_Draw_Sprite	cursor_sprite_address, b, c
+	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c
 	ret
 
