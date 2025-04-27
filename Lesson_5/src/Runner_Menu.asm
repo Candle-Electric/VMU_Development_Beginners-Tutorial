@@ -41,7 +41,8 @@ Menu_Loop:
 	bn acc, 6, .Check_A
 	ld cursor_y_pos
 	sub #2
-	bnz .Check_B
+	bnz .Check_A
+	ret
 .Check_A
 	mov #Button_A1, acc
 	ld cursor_y_pos
