@@ -51,9 +51,12 @@ Menu_Loop:
 	; ret
 .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
+	; .Option_2_1
 	; ld option_2
 	; bnz ; .Option_2_2 ; Could Also Make A Variable If we Have The R.A.M. (Should.).
+	; mov #8, c
 	P_Draw_Sprite	option1_sprite_address, b, c ; Move These To A Separate Line/The End Of Their Respective Functions, Since The X-Coordinates Will Change?
+	; .Option_2_2
 	P_Draw_Sprite	option2_sprite_address, b, c
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c
