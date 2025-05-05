@@ -57,6 +57,8 @@ Menu_Loop:
 	; mov #8, c
 	P_Draw_Sprite	option1_sprite_address, b, c ; Move These To A Separate Line/The End Of Their Respective Functions, Since The X-Coordinates Will Change?
 	; .Option_2_2
+	; mov #16, c
+	; P_Draw_Sprite "" ""
 	P_Draw_Sprite	option2_sprite_address, b, c
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c
