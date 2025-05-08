@@ -45,6 +45,7 @@ Menu_Loop:
 	ret
 .Check_A
 	mov #Button_A1, acc
+	callf Check_Button_Pressed
 	ld cursor_y_pos
 	; sub #3
 	; bnz .Draw_Screen ; bp/jmpf Options + Draw Screen
