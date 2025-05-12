@@ -173,10 +173,15 @@ Runner_Gameplay_Loop:
 	mov #<Example_Sprite_Mask, runner_sprite_address
 	mov	#>Example_Sprite_Mask, runner_sprite_address+1
 .Draw_Screen
-.Random_Test
-	bn frame_counter, 3, .Draw_Example_Stage_1
+	bn dropping_obstacle_active, 0, .Drop_Bomb
+	mov #0, dropping_obstacle_y
+	; bn frame_counter, 4, .Draw_Example_Stage_1
 	callf random
 	mov #0, frame_counter
+	jmpf .Draw_BG_Frame_1 ; Example_Stage_1
+.Drop_Bomb
+	; bn frame_counter, 4, .Draw_Example_Stage_1
+	mov #1, dropping_obstacle_active
 .Draw_BG_Frame_1
 	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_2
