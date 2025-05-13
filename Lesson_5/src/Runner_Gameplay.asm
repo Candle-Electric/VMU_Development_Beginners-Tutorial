@@ -248,8 +248,8 @@ Draw_Score:
 
 Draw_Digit:
  	; b = the X-Position, c = the Number
-	; mov #16, b
-	; mov #0, c
+	mov #16, b
+	mov #0, c
 	; P_Draw_Sprite digit_sprite_address, b, c
 	; mov #8, b
 .Digit_0  
