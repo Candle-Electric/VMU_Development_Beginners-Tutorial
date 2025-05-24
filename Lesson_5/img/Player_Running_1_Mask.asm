@@ -4,7 +4,7 @@ Player_Running_1:
   .byte %11000011
   .byte %11000111
   .byte %10000000
-  .byte %00000111
+  .byte %00000001
   .byte %00000011
   .byte %11110001
   .byte %11111011
