@@ -1,5 +1,5 @@
 Player_Running_1:
-.byte 8, 8
+.byte 14, 11
   .byte %00000000
   .byte %00011000
   .byte %00010000
