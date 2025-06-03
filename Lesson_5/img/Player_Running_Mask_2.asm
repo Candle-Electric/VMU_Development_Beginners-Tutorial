@@ -17,3 +17,7 @@ Player_Running_Mask_2:
   .byte %00110000
   .byte %00010000
   .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
+  .byte %00000000
