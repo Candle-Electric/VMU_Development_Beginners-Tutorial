@@ -1,2 +1,2 @@
 Player_Running_4_Mask:
-.byte
+.byte 14,11
