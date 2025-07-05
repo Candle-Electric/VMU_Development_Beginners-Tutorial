@@ -138,7 +138,7 @@ So, if we don't press the B Button, we'll continue on with our `Cursor_Gameplay_
 
 ## Handling Menus
 
-We'll be drawing our menus using the same kind of Sprites we've been drawing with LibPerspective as the Text, along with the same type of Input Reading that we used to move in the past couple of lessons. Scrolling a Cursor in a List of Options works a bit differently than Moving an Object onscreen though, both in how it operates for the User and how it's programmed; let's take a look at that first.
+We'll be drawing our menus using LibPerspective Sprites as the Text, and moving along with the same type of Input Reading that we used to move our Character in the past couple of lessons. Scrolling a Cursor in a List of Options works a bit differently than Moving an Object onscreen though, both in how it operates for the User and how it's programmed; let's take a look at that first.
 
 ### Check_Button_Pressed
 
