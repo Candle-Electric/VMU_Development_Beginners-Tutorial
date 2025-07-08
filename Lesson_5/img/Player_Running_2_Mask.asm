@@ -1,4 +1,4 @@
-Player_Running_Mask_2:
+Player_Running_2_Mask:
   .byte 15,13
   .byte %11100111
   .byte %11000011
