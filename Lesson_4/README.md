@@ -122,7 +122,7 @@ Let's also move our Variable Declarations to our new `Cursor_Gameplay` File, whi
 		jmpf Cursor_Gameplay_Loop
 </details>
 
-This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of them as "Local Variables" in this sense (you only get 128 Addresses to use, so freeing them up can be very helpful depending on the size of your Project.). Keeping every Declaration in `main.asm` has its benefits as well though, similarly to "Global Variables," and we'll talk about that trade-off later in this lesson. Next, we'll learn how to switch between these code files that we've laid out in our `main.asm`. We'll be doing so with the `ret` Function. When `ret` is called inside one of our `.asm` Files, we'll move to the next one in our `main.asm` List. So, if we wanted to move out from `Cursor_Gameplay.asm` with the B Button, we'd do:
+This way, we can use Addresses `$6`, `$7`, and `$8` in other Files. Think of them as "Local Variables" in this sense (you only get 128 Addresses to use, so freeing them up can be very helpful depending on the size of your Project.). Keeping every Declaration in `main.asm` has its benefits as well though, similarly to "Global Variables," and we'll talk about that trade-off later in this lesson. Next, we'll learn how to switch between these code files that we've laid out in our `main.asm`. We'll be doing so with the `ret` Function. When `ret` is called inside one of our `.asm` Files, we'll move to the next one in our `main.asm`'s `Main_Loop` List. So, if we wanted to move out from `Cursor_Gameplay.asm` with the B Button, we'd do:
 
 	Cursor_Gameplay_Loop:
 		; Check Input
