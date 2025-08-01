@@ -118,7 +118,7 @@ There are several things we can do when Collision is Detected for this Auto Runn
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
-We'll start by swapping the Player Character's Sprite when Collision is Active. This is doubly helpful, because it gives us a great opportunity to test the "bounds" of the collision box by keeping the obstacle static and moving our player character around it, recompiling each time to test the coded values or alternatively introducing a new variable to change in each instance. It will also give us a start into our next topic, sprite animation.
+We'll start by swapping the Player Character's Sprite when Collision is Active. This is doubly helpful, because it gives us a great opportunity to test the "bounds" of the collision box by keeping the obstacle static and moving our player character around it, recompiling each time to test the coded values or alternatively introducing a new variable to change in each instance, as well as an easy visual indicator for Debugging. It will also give us a start into our next topic, sprite animation.
 
 	 	player_width_x = $1a ; instantiate a "Player Sprite Width" variable
 		...
