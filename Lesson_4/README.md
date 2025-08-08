@@ -339,7 +339,7 @@ For this "Minimum + Maximum" style of menu, we can imagine Left/Right Arrows whe
  		mov #0, example_variable
 	.Example_Done
 
-Since our Characters and Stages are choices on a list, rather than numeric values with cutoff values, I think we'd prefer this style of Overflow Handling for our Menu in this lesson. So, now we can do both the Coding for each Option, before we move on to Drawing the Text Graphics. For The Input:
+Since our Characters and Stages are choices on a list, rather than numeric values with cutoff values, I think we'd prefer this style of Overflow Handling for our Menu in this lesson. This way, Users can quickly cycle through the options without having to trace all the way back to the start. So, now we can do both the Coding for each Option, before we move on to Drawing the Text Graphics. For The Input:
 
 	; Check Input
 	.Check_Up
