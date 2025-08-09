@@ -460,7 +460,7 @@ And Now For The Graphics, we'll want to draw sprites depending on which options 
     * No:
         * `P_Draw_Sprite Done_Button_Not_Highlighted `
 
-To Answer these Questions in Code, we can simply check our Flag Variables and assign the Sprite Addresses from there. So, translating that pseudocode into our `Main_Menu.asm` Code, we'd have:
+To Answer these Questions in Code, we can check our Flag Variables and use `jmpf`s to decide our which spot we're at in that Flowchart, and assign the Sprite Addresses from there. So, translating that pseudocode into our `Main_Menu.asm` Code, we'd have:
 
 	.Character_1_Highlighted
 		ld Character_Flags
