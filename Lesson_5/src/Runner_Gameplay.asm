@@ -136,7 +136,7 @@ Runner_Gameplay_Loop:
 	ld c
 	add #20
 	st obstacle_sprite_y
-.Skip_Arrow_Reset
+.Skip_Arrow_Reset 
 .Check_Obstacle_Collision
 	mov #0, collision_flags
 .Check_Up_Collision
@@ -343,3 +343,4 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
