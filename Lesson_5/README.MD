@@ -203,4 +203,4 @@ With that State set, we can update those "Animation" Loops and Branches to Call 
 		.Jump_Frame_2
 		...
 
-Then, the Final P_Draw_Sprite will have the "Frame" of Animation.
+Then, the Final P_Draw_Sprite will have the "Frame" of Animation ready and stored in its Sprite Address.
