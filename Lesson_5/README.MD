@@ -144,26 +144,26 @@ Next, we can up this set of two images to a larger number, and think of them as 
 
         run_frame = $1d ; Frame Counter to determine which # Of Animation Images' Sequence to Draw.
         ...
-        inc run_frame
-        bp run_frame, 2, .Reset_Run_Frame
-        jmpf .Continue_Running
+        	inc run_frame
+        	bp run_frame, 2, .Reset_Run_Frame
+        	jmpf .Continue_Running
         .Rest_Run_Frame
-        mov #0, run_frame
+        	mov #0, run_frame
         .Continue_Running
-        ...
+        	...
         .Run_Frame_0
-        ld run_frame
-        bnz .Run_Frame_1
-        mov #<Run_Frame_0, Player_Sprite_Address
-        mov #>Run_Frame_0, Player_Sprite_Address
+        	ld run_frame
+        	bnz .Run_Frame_1
+        	mov #<Run_Frame_0, Player_Sprite_Address
+        	mov #>Run_Frame_0, Player_Sprite_Address
         .Run_Frame_1
-        ld run_frame
-        sub #1
-        bnz .Run_Frame_2
-        mov #<Run_Frame_1, Player_Sprite_Address
-        mov #>Run_Frame_1, Player_Sprite_Address
+        	ld run_frame
+        	sub #1
+        	bnz .Run_Frame_2
+        	mov #<Run_Frame_1, Player_Sprite_Address
+        	mov #>Run_Frame_1, Player_Sprite_Address
         .Run_Frame_2 ; And So On...
-        ...
+        	...
         P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
 
 Then, we can add assign this animation to a new "State #" Variable as the "Running" state, and add another state on top of it, a "Jumping" one!
