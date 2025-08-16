@@ -43,7 +43,7 @@ Runner_Gameplay:
 	; bnz	.Draw_Example_Character_2
 	mov	#<Example_Sprite_Mask, test_sprite_sprite_address
 	mov	#>Example_Sprite_Mask, test_sprite_sprite_address+1
-	; jmpf	Runner_Gameplay_Loop
+	; jmpf	Runner_Gameplay_Loop 
 	mov	#<obstacle_sprite_mask, obstacle_sprite_address
 	mov	#>obstacle_sprite_mask, obstacle_sprite_address+1
 	mov	#<dropping_obstacle_sprite_mask, dropping_obstacle_sprite_address
@@ -343,4 +343,5 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
