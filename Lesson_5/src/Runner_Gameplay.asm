@@ -54,16 +54,16 @@ Runner_Gameplay_Loop:
 	callf Get_Input ; This Function Is In LibKCommon.ASM
 	ld p3
 .Check_Up
-    callf Get_Input
-	; bp acc, T_BTN_UP1, .Check_Down
+    ; callf Get_Input
+	bp acc, T_BTN_UP1, .Check_Down
 	; ld test_sprite_y
 	; sub #1
 	; bp acc, 7, .Check_Down
 	; dec test_sprite_y
 .Check_Down
 	;callf Get_Input
-	;ld p3
-	;bp acc, T_BTN_DOWN1, .Check_Left
+	ld p3
+	bp acc, T_BTN_DOWN1, .Check_Left
 	;ld test_sprite_y
 	;sub #24
 	; bn acc, 7, .Check_Left
@@ -344,6 +344,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
