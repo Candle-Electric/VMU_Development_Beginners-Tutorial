@@ -56,7 +56,7 @@ Runner_Gameplay_Loop:
 .Check_Up
     ; callf Get_Input
 	bp acc, T_BTN_UP1, .Check_Down
-	; ld test_sprite_y
+	inc frame_counter ; For Debugging BackGround Scrolling. ; ld test_sprite_y
 	; sub #1
 	; bp acc, 7, .Check_Down
 	; dec test_sprite_y
@@ -344,6 +344,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
