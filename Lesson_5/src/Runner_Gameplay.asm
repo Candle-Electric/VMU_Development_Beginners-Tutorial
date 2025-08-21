@@ -39,6 +39,7 @@ Runner_Gameplay:
 	mov #0, frame_counter
 	mov #0, dropping_obstacle_x
 	mov #0, dropping_obstacle_y
+	mov #0, debugging_num
 .Draw_Example_Character
 	; ld	character_flags
 	; bnz	.Draw_Example_Character_2
@@ -57,7 +58,7 @@ Runner_Gameplay_Loop:
 .Check_Up
     ; callf Get_Input
 	bp acc, T_BTN_UP1, .Check_Down
-	inc frame_counter ; For Debugging BackGround Scrolling. ; ld test_sprite_y
+	inc debugging_num ; frame_counter ; For Debugging BackGround Scrolling. ; ld test_sprite_y
 	; sub #1
 	; bp acc, 7, .Check_Down
 	; dec test_sprite_y
@@ -345,6 +346,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
