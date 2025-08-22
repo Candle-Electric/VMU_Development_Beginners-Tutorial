@@ -186,6 +186,7 @@ Runner_Gameplay_Loop:
 	; bn frame_counter, 4, .Draw_Example_Stage_1
 	mov #1, dropping_obstacle_active
 .Draw_BG_Frame_1
+	ld debugging_number
 	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_2
 	; bnz .Draw_Example_Stage_2
@@ -346,6 +347,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
