@@ -194,6 +194,8 @@ Runner_Gameplay_Loop:
 	P_Draw_Background_Constant Runner_BackGround_1
 	jmpf .Draw_Character
 .Draw_BG_Frame_2
+	sub #1
+	bnz .Draw_BG_Frame_3
 	bp frame_counter, 1, .Draw_BG_Frame_3 ; ld stage_flags
 	bn frame_counter, 0, .Draw_BG_Frame_3 ; Might Comment This One
 	P_Draw_Background_Constant Runner_BackGround_2
@@ -348,6 +350,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
