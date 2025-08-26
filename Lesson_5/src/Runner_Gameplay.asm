@@ -206,6 +206,7 @@ Runner_Gameplay_Loop:
 .Draw_BG_Frame_3
 	sub #1
 	bnz .Draw_BG_Frame_4
+	; Draw Debugging Number, As Well.
 	bn frame_counter, 1, .Draw_BG_Frame_4 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_4
 	P_Draw_Background_Constant Runner_BackGround_3
@@ -352,6 +353,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
