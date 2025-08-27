@@ -25,6 +25,7 @@ Runner_Gameplay:
 	player_animation_state = $33
 	dropping_obstacle_sprite_address = $34
 	debugging_num = $35
+	Debugging_Number_Sprite_Address = $63
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
@@ -209,6 +210,7 @@ Runner_Gameplay_Loop:
 	; Draw Debugging Number, As Well.
 	st b
 	callf Draw_Digit
+	st Debugging_Number_Sprite_Address
 	bn frame_counter, 1, .Draw_BG_Frame_4 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_4
 	P_Draw_Background_Constant Runner_BackGround_3
@@ -356,6 +358,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
