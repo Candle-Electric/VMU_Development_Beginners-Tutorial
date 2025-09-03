@@ -211,7 +211,7 @@ Runner_Gameplay_Loop:
 	st b
 	callf Draw_Digit
 	st Debugging_Number_Sprite_Address
-	P_Draw_Sprite
+	P_Draw_Sprite Debugging_Number_Sprite_Address, b, c
 	bn frame_counter, 1, .Draw_BG_Frame_4 ; ld stage_flags
 	bp frame_counter, 0, .Draw_BG_Frame_4
 	; mov #28, Debugging_Graphic_Number_X
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
