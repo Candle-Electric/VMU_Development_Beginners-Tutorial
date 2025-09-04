@@ -216,7 +216,7 @@ Runner_Gameplay_Loop:
 	bp frame_counter, 0, .Draw_BG_Frame_4
 	; mov #28, Debugging_Graphic_Number_X
 	; mov #2, Debugging_Graphic_Number_Y
-	; P_Draw_Sprite Debugging_Graphic_Number_X, Y, Sprite_Address
+	; P_Draw_Sprite Debugging_Graphic_Number_X, Y, Debugging_Number_Sprite_Address
 	P_Draw_Background_Constant Runner_BackGround_3
 	mov #18, Debugging_Number
 	jmpf .Draw_Character ; sub #2
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
