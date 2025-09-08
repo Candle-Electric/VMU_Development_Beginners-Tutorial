@@ -342,7 +342,7 @@ Digit_5
 .Digit_Decided
  	mov #0, c ; Every Digit will be at the top of the screen. ; To-Do: Store, Read, & Call B.
  	P_Draw_Sprite digit_sprite_address, b, c
-; 	ret
+ 	ret
 ; 	
 ; %macro Draw_Score
 ; 	mov #16, b
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
