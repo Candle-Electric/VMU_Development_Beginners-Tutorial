@@ -224,7 +224,7 @@ Runner_Gameplay_Loop:
 	; P_Draw_Background_Constant Hello_World_BackGround
 .Draw_BG_Frame_4
 	bn frame_counter, 1, .Draw_Character ; ld stage_flags
-	bn frame_counter, 0, .Draw_Character
+	bn frame_counter, 0, .Draw_Character ; st BackGround_Sprite_Address+1
 	P_Draw_Background_Constant Runner_BackGround_4
 .Draw_Character
 	P_Draw_Sprite_Mask runner_sprite_address, runner_sprite_x, runner_sprite_y
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
