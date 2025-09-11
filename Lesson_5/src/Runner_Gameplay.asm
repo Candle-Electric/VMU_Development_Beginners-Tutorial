@@ -12,7 +12,7 @@ Runner_Gameplay:
 	score		=	$1e
 	digit_sprite_address = $1f
 	runner_jump_acceleration = $21
-	jump_accel_positive = $22
+	; jump_accel_positive = $22
 	obstacle_sprite_address = $23
 	obstacle_sprite_x = $25
 	obstacle_sprite_y = $26
@@ -36,7 +36,7 @@ Runner_Gameplay:
 	mov #32, obstacle_sprite_x
 	mov #12, obstacle_sprite_y
 	mov #0, runner_jump_acceleration
-	mov #0, jump_accel_positive
+	; mov #0, jump_accel_positive
 	mov #0, frame_counter
 	mov #0, dropping_obstacle_x
 	mov #0, dropping_obstacle_y
@@ -105,7 +105,7 @@ Runner_Gameplay_Loop:
 	st runner_sprite_y
 	; ld runner_jump_acceleration
 	dec runner_jump_acceleration
-	ld runner_jump_acceleration
+	ld runner_jump_acceleration ; Jump_Accel_Positive
 	
 	; bp acc, 7, .Check_Ground
 	; sub #1
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
