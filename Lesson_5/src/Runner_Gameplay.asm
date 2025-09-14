@@ -166,9 +166,9 @@ Runner_Gameplay_Loop:
 		bp acc, 7, .Collision_Done
 		set1 collision_flags, 1		; Set The Collision Flag
 .Collision_Done
-	ld collision_flags
-	sub #3
-	bnz .Collision_No
+		ld collision_flags
+		sub #3
+		bnz .Collision_No
 .Collision_Yes
 	mov #<Obstacle_Sprite_Mask, runner_sprite_address
 	mov	#>Obstacle_Sprite_Mask, runner_sprite_address+1
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
