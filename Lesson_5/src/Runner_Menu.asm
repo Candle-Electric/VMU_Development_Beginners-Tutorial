@@ -2,11 +2,11 @@
 ;         Menu          ;
 ;=======================;
 Runner_Menu:
-	cursor_1_val			=		$6
-	cursor_2_val			=		$7
-	cursor_y_pos			=		$8
-	option_1_sprite_address		=		$9
-	option_2_sprite_address		=		$a
+	cursor_1_val					=		$6
+	cursor_2_val					=		$7
+	cursor_y_pos					=		$8
+	option_1_sprite_address			=		$9
+	option_2_sprite_address			=		$a
 	Confirm_Button_Sprite_Address	=		$c
 Menu_Loop:
 	callf Get_Input
@@ -70,4 +70,5 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
