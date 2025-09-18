@@ -130,7 +130,7 @@ Runner_Gameplay_Loop:
 .Do_Arrow_Reset
 	mov #48, obstacle_sprite_x
 	jmpf .Skip_Arrow_Reset
-	bn obstacle_sprite_x, 7, .Skip_Arrow_Reset
+	bn obstacle_sprite_x, 7, .Skip_Arrow_Reset ; Check Bounds
 	mov #47, obstacle_sprite_x
 	ld frame_counter
 	st c
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
