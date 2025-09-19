@@ -12,7 +12,7 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         player_y_velocity = $1a ; 1 Byte
         ...
         Runner_Gameplay_Loop:
-                ; Check Input
+            ; Check Input
 	        callf Get_Input ; This Function Is In LibKCommon.ASM
 	        ld p3
         .Check_Up
