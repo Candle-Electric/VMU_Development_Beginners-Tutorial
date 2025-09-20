@@ -128,7 +128,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
 		bnz .Collision_No
 	.Collision_Yes
-		mov #<Obstacle_Sprite_Mask, test_sprite_sprite_address
+		mov #<Obstacle_Sprite_Hit, test_sprite_sprite_address
 		mov #>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
 		jmpf .Draw_Screen
 	.Collision_No
