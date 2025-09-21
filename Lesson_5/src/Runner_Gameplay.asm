@@ -139,7 +139,7 @@ Runner_Gameplay_Loop:
 	div
 	ld c
 	add #20
-	st obstacle_sprite_y
+	st obstacle_sprite_y ; Make A New "Random" Y-Position + Height For The Arrow.
 .Skip_Arrow_Reset 
 .Check_Obstacle_Collision
 	mov #0, collision_flags
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
