@@ -12,8 +12,8 @@ Runner_Gameplay:
 	score							=	$1e
 	digit_sprite_address 			= 	$1f
 	runner_jump_acceleration 		= 	$21
-	; jump_accel_positive = $22
-	obstacle_sprite_address = $23
+	; jump_accel_positive 			= 	$22
+	obstacle_sprite_address 		= 	$23
 	obstacle_sprite_x = $25
 	obstacle_sprite_y = $26
 	frame_counter = $27
@@ -123,7 +123,7 @@ Runner_Gameplay_Loop:
 	; jmpf .Skip_Arrow_Reset
 	inc frame_counter
 	; mov #22, obstacle_sprite_y
-	dec obstacle_sprite_x;
+	dec obstacle_sprite_x ; Double For Higher Gravity Speed
 	dec obstacle_sprite_x
 	bp obstacle_sprite_x, 7, .Do_Arrow_Reset
 	jmpf .Skip_Arrow_Reset
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
