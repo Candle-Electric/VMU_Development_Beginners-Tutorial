@@ -126,6 +126,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		...
 		ld collision_flags
 		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
+		; To-Do: Add Code + Explanation For Bounding Box.
 		bnz .Collision_No
 	.Collision_Yes
 		mov #<Obstacle_Sprite_Hit, test_sprite_sprite_address
