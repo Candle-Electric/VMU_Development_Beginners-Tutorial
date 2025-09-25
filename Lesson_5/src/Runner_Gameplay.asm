@@ -14,10 +14,10 @@ Runner_Gameplay:
 	runner_jump_acceleration 		= 	$21
 	; jump_accel_positive 			= 	$22
 	obstacle_sprite_address 		= 	$23
-	obstacle_sprite_x = $25
-	obstacle_sprite_y = $26
-	frame_counter = $27
-	collision_flags = $28
+	obstacle_sprite_x 				=	$25
+	obstacle_sprite_y 				=	$26
+	frame_counter 					=	$27
+	collision_flags 				=	$28
 	dropping_obstacle_active = $29
 	obstacle_timer = $30
 	dropping_obstacle_x = $31
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
