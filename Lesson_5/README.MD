@@ -196,6 +196,7 @@ With that State Variable set, we can update those "Animation" Loops and Branches
 		.Run_Frame_1
 		.Run_Frame_2
 		...
+		jmpf .Draw_Player_Sprite
 	.Draw_Player_Jumping
 		ld player_state
 		sub #1
