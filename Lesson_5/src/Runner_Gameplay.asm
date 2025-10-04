@@ -6,7 +6,7 @@ Runner_Gameplay:
 	playerer_sprite_y				=	$7		; 1 Byte
 	player_sprite_sprite_address	=	$8		; 2 Bytes
 	ones_digit						=	$1a		; 1 Byte
-	tens_digit						=	$1b
+	tens_digit						=	$1b		; 1 Byte
 	hundreds_digit					=	$1c
 	thousands_digit					=	$1d
 	score							=	$1e
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
