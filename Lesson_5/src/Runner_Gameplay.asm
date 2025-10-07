@@ -9,7 +9,7 @@ Runner_Gameplay:
 	tens_digit						=	$1b		; 1 Byte
 	hundreds_digit					=	$1c		; 1 Byte
 	thousands_digit					=	$1d		; 1 Byte
-	score							=	$1e
+	score							=	$1e		; 1 Byte
 	digit_sprite_address 			= 	$1f
 	runner_jump_acceleration 		= 	$21
 	; jump_accel_positive 			= 	$22
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
