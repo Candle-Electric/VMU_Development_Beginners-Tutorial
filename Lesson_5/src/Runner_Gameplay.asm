@@ -16,7 +16,7 @@ Runner_Gameplay:
 	obstacle_sprite_address 		= 	$23		; 2 Bytes
 	obstacle_sprite_x 				=	$25		; 1 Byte
 	obstacle_sprite_y 				=	$26		; 1 Byte
-	frame_counter 					=	$27
+	frame_counter 					=	$27		; 1 Byte
 	collision_flags 				=	$28
 	dropping_obstacle_active 		=	$29
 	obstacle_timer					= 	$30
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
