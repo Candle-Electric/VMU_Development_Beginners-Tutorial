@@ -19,7 +19,7 @@ Runner_Gameplay:
 	frame_counter 					=	$27		; 1 Byte
 	collision_flags 				=	$28		; 1 Byte
 	dropping_obstacle_active 		=	$29		; 1 Byte
-	obstacle_timer					= 	$30
+	obstacle_timer					= 	$30		; 1 Byte
 	dropping_obstacle_x 			=	$31
 	dropping_obstacle_y 			=	$32
 	player_animation_state 			= 	$33
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
