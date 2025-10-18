@@ -21,7 +21,7 @@ Runner_Gameplay:
 	dropping_obstacle_active 		=	$29		; 1 Byte
 	obstacle_timer					= 	$30		; 1 Byte
 	dropping_obstacle_x 			=	$31		; 1 Byte
-	dropping_obstacle_y 			=	$32
+	dropping_obstacle_y 			=	$32		; 1 Byte
 	player_animation_state 			= 	$33
 	dropping_obstacle_sprite_address =	$34
 	debugging_num 					=	$35
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
