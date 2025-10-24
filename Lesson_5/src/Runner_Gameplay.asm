@@ -25,7 +25,7 @@ Runner_Gameplay:
 	player_animation_state 			= 	$33		; 1 Byte
 	dropping_obstacle_sprite_address =	$34		; 2 Byte
 	debugging_num 					=	$35		; 1 Byte
-	Debugging_Number_Sprite_Address = 	$63
+	Debugging_Number_Sprite_Address = 	$63		; 2 Bytes
 
 ; Populate Character And Stage Flags
 	; ld cursor_flags
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
