@@ -85,7 +85,7 @@ Runner_Gameplay_Loop:
 	bp acc, T_BTN_RIGHT1, .Check_Buttons
 	ld runner_sprite_x
 	sub #40
-	bp acc, 7, .Build_Error_1; bn.Draw_Screen
+	bp acc, 7, .Build_Error_1 ; bn.Draw_Screen
 	jmpf .Draw_Screen
 .Build_Error_1
 	inc runner_sprite_x
@@ -362,6 +362,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
