@@ -207,4 +207,4 @@ With that State Variable set, we can update those "Animation" Loops and Branches
 
 Then, the Final P_Draw_Sprite will have the "Frame" of Animation, be it running or jumping, ready and stored in its Sprite Address.
 
-Next, now that we have our player character "moving" in an animated run cycle, we'll get them moving in a new way, jumping! This will be done with an "acceleration" sort of movement.
+Next, now that we have our player character "moving" in an animated run cycle, we'll get them moving in a new way, jumping! This will be done with an "acceleration" sort of movement. At the start of the Jump, it'll be high, representing the upward movement, and then we'll subtract for "Gravity" on each Frame.
