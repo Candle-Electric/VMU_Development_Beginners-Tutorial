@@ -222,3 +222,4 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 	        st test_sprite_y
 	        dec runner_jump_acceleration
 	        ld runner_jump_acceleration
+			; Check BoundS And Ground.
