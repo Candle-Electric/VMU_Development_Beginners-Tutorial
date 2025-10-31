@@ -225,3 +225,5 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 			; Check BoundS And Ground.
 
 We'll then use the Ground Collision to reset this value to Zero.
+
+	ld player_pos_y
