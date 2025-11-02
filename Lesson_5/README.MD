@@ -227,3 +227,5 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 We'll then use the Ground Collision to reset this value to Zero.
 
 	ld player_pos_y
+	sub #28
+	bp acc, 7, .Skip_Ground_Collision
