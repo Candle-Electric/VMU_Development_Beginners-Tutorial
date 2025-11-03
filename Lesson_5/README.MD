@@ -229,3 +229,6 @@ We'll then use the Ground Collision to reset this value to Zero.
 	ld player_pos_y
 	sub #28
 	bp acc, 7, .Skip_Ground_Collision
+	mov #0, runner_jump_acceleration
+	add #3
+	mov #28, player_pos_y ; Grounded Position.
