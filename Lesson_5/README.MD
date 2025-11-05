@@ -224,7 +224,7 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 	        ld runner_jump_acceleration
 			; Check BoundS And Ground.
 
-We'll then use the Ground Collision to reset this value to Zero.
+We'll then use the Ground Collision to reset this value to Zero once the Player's landed.
 
 	ld player_pos_y
 	sub #28
