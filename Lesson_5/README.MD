@@ -233,3 +233,5 @@ We'll then use the Ground Collision to reset this value to Zero once the Player'
 	add #3
 	mov #28, player_pos_y ; Grounded Position.
 	.Skip_Ground_Collision
+
+Also, we'll need to make sure the Player can only leap when their feet are on the ground.
