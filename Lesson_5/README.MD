@@ -235,3 +235,12 @@ We'll then use the Ground Collision to reset this value to Zero once the Player'
 	.Skip_Ground_Collision
 
 Also, we'll need to make sure the Player can only leap when their feet are on the ground.
+
+        .Check_Buttons
+	        ld p3
+	        bp acc, T_BTN_A1, .Skip_Jump
+        	ld test_sprite_y
+	        sub #24 ; Already Done Here.
+	        bnz .Skip_Jump
+	        mov #5, runner_jump_acceleration
+			mov #1, player_state
