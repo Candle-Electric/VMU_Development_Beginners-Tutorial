@@ -234,7 +234,7 @@ We'll then use the Ground Collision to reset this value to Zero once the Player'
 	mov #28, player_pos_y ; Grounded Position.
 	.Skip_Ground_Collision
 
-Also, we'll need to make sure the Player can only leap when their feet are on the ground.
+Also, we'll need to make sure the Player can only leap when their feet are on the ground. Without this check, the Player can jump inifnitely, which has its merits, as characters like Kirby floating, Flappy Bird, or the Ichidant-R Bird Mini Game control.
 
         .Check_Buttons
 	        ld p3
