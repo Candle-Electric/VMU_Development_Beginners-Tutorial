@@ -246,3 +246,4 @@ Also, we'll need to make sure the Player can only leap when their feet are on th
 	        bnz .Skip_Jump
 	        mov #5, runner_jump_acceleration
 			mov #1, player_state
+		.Skip_Jump
