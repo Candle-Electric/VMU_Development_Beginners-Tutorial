@@ -247,3 +247,5 @@ Also, we'll need to make sure the Player can only leap when their feet are on th
 	        mov #5, runner_jump_acceleration
 			mov #1, player_state
 		.Skip_Jump
+
+Venturing oneward, now that we're jumping, we can utilize this new action in conjunction with the range collision to interact with some obstacles on an X + Y-Position basis. Going towards it and over it are how we'll do that, respectively.
