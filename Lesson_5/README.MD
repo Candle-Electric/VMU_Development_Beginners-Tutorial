@@ -203,8 +203,8 @@ With that State Variable set, we can update those "Animation" Loops and Branches
 		ld player_state
 		sub #1
 		bnz .Draw_Third_State ; (If we have one)
-		.Jump_Frame_1
-		.Jump_Frame_2
+	.Jump_Frame_1
+	.Jump_Frame_2
 		...
 
 Then, the Final P_Draw_Sprite will have the "Frame" of Animation, be it running or jumping, ready and stored in its Sprite Address.
