@@ -158,6 +158,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
         	ld run_frame
         	bnz .Run_Frame_1
 			; bp Bits 0 & 1
+			; bp frame_counter, 1, .Run_Frame_2
         	mov #<Run_Frame_0, Player_Sprite_Address
         	mov #>Run_Frame_0, Player_Sprite_Address
         .Run_Frame_1
