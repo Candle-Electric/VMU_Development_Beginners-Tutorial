@@ -175,6 +175,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
 		.Run_Frame_3
 			mov #<Run_Frame_3, Player_Sprite_Address
         	mov #>Run_Frame_3, Player_Sprite_Address
+			jmpf .Draw_Player_Character
         	...
         P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
 
