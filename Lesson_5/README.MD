@@ -143,7 +143,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 
 ## Animating Sprites
 
-Next, we can up this set of two images to a larger number, and think of them as the first two frames in a larger sequence that we can build on. Animating the Sprites will be a fun process. While we won't have animation files per se, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in, in tandem with a Frame Counter, and that requisite image will be drawn when we blit the screen and call LibPerspective. Later, If we want to use more Bits of the Frame Counter than Just the number we have for the Animation, we can Do Bitwise Check Operands to do our Jumps.
+Next, we can up this set of two images to a larger number, and think of them as the first two frames in a larger sequence that we can build on. Animating the Sprites will be a fun process. While we won't have animation files per se, we will be using a "State Machine" similarly to how the many excellent tutorials for Unity and other Engines often handle it. Then, we can `#mov` each Frame for the Distinct Animations based on which State we're in, in tandem with a Frame Counter, and that requisite image will be drawn when we blit the screen and call LibPerspective. Later, If we want to use more Bits of the Frame Counter than Just the number we have for the Animation, we can Do Bitwise Check Operands to do our Jumps. For example, we can see if the Second Bit is Set to check #s 3 and 4.
 
         run_frame = $1d ; Frame Counter to determine which # Of Animation Images' Sequence to Draw.
         ...
