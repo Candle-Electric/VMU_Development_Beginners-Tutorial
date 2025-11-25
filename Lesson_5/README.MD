@@ -237,6 +237,7 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 	        dec runner_jump_acceleration
 	        ld runner_jump_acceleration
 			; Check BoundS And Ground.
+			; ld Test_Sprite_Y, Sub #24, BN Bit 7.
 
 We'll then use the Ground Collision to reset this value to Zero once the Player's landed.
 
