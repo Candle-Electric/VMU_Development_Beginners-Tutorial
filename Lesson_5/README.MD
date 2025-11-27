@@ -165,6 +165,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
         	ld run_frame
         	sub #1
         	bnz .Run_Frame_2
+			bn Frame_Counter, 0, .Drawing_Example_Done
         	mov #<Run_Frame_1, Player_Sprite_Address
         	mov #>Run_Frame_1, Player_Sprite_Address
         .Run_Frame_2 ; And So On...
