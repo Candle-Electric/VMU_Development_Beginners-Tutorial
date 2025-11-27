@@ -201,7 +201,7 @@ Then, we can add assign this animation to a new "State #" Variable as the "Runni
 	        mov #0, runner_jump_acceleration
 			mov #0, player_state
 
-With that State Variable set, we can update those "Animation" Loops and Branches to Call it and decide which Animation will show when we Draw the Player Sprite:
+With that State Variable set, we can update those "Animation" Loops and Branches to Call it and decide which Animation Frame will show when we Draw the Player Sprite:
 
 	.Draw_Player_Running
 		ld player_state
