@@ -6,7 +6,7 @@ Now, let's try adding up everything we've learned so far, and upgrade our Progra
 
 We can start off by editing our movable "Cursor" from the last lesson into our playable "Character" in this one. Rather than colliding with just the edges of the screen, we'll want to check collision with both the floor and our obstacles; the former will be calculated similarly, and the latter will be a new thing for us to learn. Rather than having them cycle between the .ASM Files on every press as last time, we'll swap our Face Buttons to Jump now, so that the player can avoid the Obstacle Object. We'll also "Animate" our Character Sprite later, with Different Graphics For Different Actions. To start out, we'll Comment Out our Menu, and Jump straight into our Gameplay while we Code it Up.
 
-Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Our "Jump" Button can increase the Y-Position (or technically decrease it, since 0 is at the top), like pressing "Up" did before, but in a larger increment initially. Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position.
+Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Our "Jump" Button can increase the Y-Position (or technically decrease it, since 0 is at the top), like pressing "Up" did before, but in a larger increment initially. 
 
         player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
@@ -42,11 +42,8 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
 	        bnz .Skip_Jump
 	        mov #5, runner_jump_acceleration
         .Skip_Jump
-	        ld test_sprite_y
-	        sub runner_jump_acceleration
-	        st test_sprite_y
-	        dec runner_jump_acceleration
-	        ld runner_jump_acceleration
+	    .Calculate_Gravity
+			; To-Do
         .Check_Ground
 	        ld test_sprite_y
 	        sub #24
@@ -56,6 +53,17 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         .Skip_Grounded
         .Skip_Floor_Collision
 		jmpf .Main_GamePlay_Loop
+
+Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position. Every Frame, we'll decrement this, and when it rolls over past zero, the overload will take care of it for us + have the Player change from rising to falling.
+
+	.Skip_Jump
+	.Calculate_Gravity
+		ld test_sprite_y
+		sub runner_jump_acceleration
+		st test_sprite_y
+		dec runner_jump_acceleration
+		ld runner_jump_acceleration
+	.Check_Ground
 
 Next, let's make an "Obstacle" object for our Player Character to collide with and jump over. As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" instead, with the range being determined by the height or width of the object and what it's being collided with. In Assembly, that'll look like this:
 
