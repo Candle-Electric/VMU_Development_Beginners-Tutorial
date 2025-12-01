@@ -53,7 +53,7 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         .Skip_Floor_Collision
 		jmpf .Main_GamePlay_Loop
 
-Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position. Every Frame, we'll decrement this, and when it rolls over past zero, the overload will take care of it for us + have the Player change from rising to falling.
+Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "Accelerated" Value from the Y-Position. To start, we'' instantiate a new variable. Every Frame, we'll decrement this, and when it rolls over past zero, the overload will take care of it for us + have the Player change from rising to falling.
 
 	.Skip_Jump
 	.Calculate_Gravity
