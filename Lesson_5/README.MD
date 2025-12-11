@@ -8,6 +8,7 @@ We can start off by editing our movable "Cursor" from the last lesson into our p
 
 Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision detection to now be the "Floor" of our Infinite Runner. Meanwhile, we'll keep the left and right "Walls" as boundaries for our player character to move within horizontally, as well as the same code for our left and right controls. Up and down are going to be commented out for now, since the character will be grounded while running. Button A can be our "Jump" Button to increase the Y-Position (or technically decrease it, since 0 is at the top), like pressing "Up" did before, but in a larger increment initially. 
 
+        player_sprite_x   = $18
         player_sprite_y   = $19 ; 1 Byte
         player_y_velocity = $1a ; 1 Byte
         ...
