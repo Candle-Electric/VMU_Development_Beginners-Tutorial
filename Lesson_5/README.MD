@@ -83,11 +83,12 @@ Next, let's make an "Obstacle" object for our Player Character to collide with a
                 sub obstacle_sprite_y
                 sub obstacle_size_y
                 bp acc, 7, .Check_Bottom
+				; Set Th eTop Collision Flag
         .Check_Bottom
                 ld player_sprite_y
                 sub obstacle_sprite_y
                 bp acc, 7, .Check_Left ; .Check_Sides
-                ; Set The Collision Flag
+                ; Set The Bottom Collision Flag
         .Check_Left
                 ld player_sprite_x
                 sub obstacle_sprite_x
@@ -100,7 +101,7 @@ Next, let's make an "Obstacle" object for our Player Character to collide with a
                 ; Set The Collision Flag
         .Collision_Done
 
-While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
+Before each next direction's section is started, you may notice the Comments to set the Collision Flags. While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
 
         collision_flags = $1b ; 1 Byte
         ...
