@@ -101,7 +101,7 @@ Next, let's make an "Obstacle" object for our Player Character to collide with a
                 ; Set The Collision Flag
         .Collision_Done
 
-Before each next direction's section is started, you may notice the Comments to set the Collision Flags. What this means is, that since we're now looking for a range of collision, both of the flags for a given direction have to be set for the collision boolean to be true. So, for the "21 < X < 23" example above, X needs to be larger than 21 _and_ smaller than 23. While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
+Before each next direction's section is started, you may notice the Comments to set the Collision Flags. What this means is, that since we're now looking for a range of collision, both of the flags for a given direction have to be set for the collision boolean to be true. So, for the "21 < X < 23" example above, X needs to be larger than 21 _and_ smaller than 23. This means that it's in the X-Range of collision. Then, we can do the same + see if it's between 14 and 16 for Y.While for collision before, we would simply move the Player Object back in bounds, now we will be setting a Flag and then deciding what to do when it's set. Since collision is a Binary "On" or "Off" Value right now, we could use All 8 Bits of a Variable for Different Flags, but for now we'll simply have a Value Assigned as "0" or "1" and compute from there.
 
         collision_flags = $1b ; 1 Byte
         ...
