@@ -118,19 +118,12 @@ Then, with that Collision Flag Set, we can decide what to do with it, or continu
         ; Do whatever you'd like upon collision here!
         .Collision_Flag_Not_Set
 
-Then, we can have the obstacle move sideways across the screen for us to interact with:
-
-	dec obstacle_sprite_x ; Single Speed
-	; dec obstacle_sprite_x ; Uncomment For Double Speed
-
-It's tough to jump over the obstacle if it's moving a 1 Pixel Per Second, so we can mess around with its speed value. For example, we can move it at single or double speed in the Code Block Above.
-
 There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter, or Display an Animation, or do all of the above.
 
         num_lives = $1c
         ...
         ld num_lives
-        bz .Continue_Playing
+        bnz .Continue_Playing
         mov #<Game_Over_Text, acc ; Could Play a "Game Over" Animation here, if you'd like!
         ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
@@ -157,6 +150,13 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 	.Draw_Screen
 		P_Draw_Sprite test_sprite_x, test_sprite_y, test_sprite_address ; This Address Will Be Filled In By The Above Code!
 		...
+
+Then, we can have the obstacle move sideways across the screen for us to interact with:
+
+	dec obstacle_sprite_x ; Single Speed
+	; dec obstacle_sprite_x ; Uncomment For Double Speed
+
+It's tough to jump over the obstacle if it's moving a 1 Pixel Per Second, so we can mess around with its speed value. For example, we can move it at single or double speed in the Code Block Above.
 
 ## Animating Sprites
 
