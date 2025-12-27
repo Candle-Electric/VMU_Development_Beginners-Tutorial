@@ -114,6 +114,35 @@ Before each next direction's section is started, you may notice the Comments to 
 To start, we'll have that Flag as 1, meaning a Collision is Active. If any of the Collision Range checks aren't met, then we'll reset it to 0.
 
 	; PseudoCode Goes Here
+		top_collision_flag = $1f ; 1 Byte
+		bottom_collision_flag = $20 ; 1 Byte
+		left_collision_flag = $21 ; 1 Byte
+		right_collision_flag = $27 ; 1 Byte
+        .Check_Obstacle_Collision ; Note: See If this Works with 1 Flag And Jumps Only.
+			mov #0, top_collision_flag ; And The Rest!
+        .Check_Up
+                ld player_sprite_y
+                sub obstacle_sprite_y
+                sub obstacle_size_y
+                bp acc, 7, .Check_Bottom
+				mov #1, top_collision_flag ; Set The Top Collision Flag
+        .Check_Bottom
+                ld player_sprite_y
+                sub obstacle_sprite_y
+                bp acc, 7, .Check_Left ; .Check_Sides
+                mov #1, bottom_collision_flag ; Set The Bottom Collision Flag
+        .Check_Left
+                ld player_sprite_x
+                sub obstacle_sprite_x
+                sub obstacle_size_x
+                bp acc, 7, .Check_Right
+				mov #1, left_collision_flag ; Set The Bottom Collision Flag
+        .Check_Right
+                ld player_sprite_x
+                sub obstacle_sprite_x
+                bn acc, 7, .Collision_Done
+                mov #1, right_collision_flag ; Set The Collision Flag
+        .Collision_Done
 
 Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set. It basically works the same as checking for button presses did earlier:
 
