@@ -111,6 +111,10 @@ Before each next direction's section is started, you may notice the Comments to 
         bn acc, 7, .Collision_Done ; BNZ
         mov #1, collision_flags ; Set The Collision Flag
 
+To start, we'll have that Flag as 1, meaning a Collision is Active. If any of the Collision Range checks aren't met, then we'll reset it to 0.
+
+	; PseudoCode Goes Here
+
 Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set. It basically works the same as checking for button presses did earlier:
 
         ld collision_flags
