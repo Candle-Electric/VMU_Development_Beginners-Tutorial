@@ -120,7 +120,10 @@ To start, we'll have that Flag as 1, meaning a Collision is Active. If any of th
 			right_collision_flag = $27 ; 1 Byte
 		.....
         .Check_Obstacle_Collision ; Note: See If this Works with 1 Flag And Jumps Only.
-			mov #0, top_collision_flag ; And The Rest!
+				mov #0, top_collision_flag ; And The Rest!
+				mov #0, bottom_collision_flag
+				mov #0, left_collision_flag
+				mov #0, right_collision_flag
         .Check_Up
                 ld player_sprite_y
                 sub obstacle_sprite_y
