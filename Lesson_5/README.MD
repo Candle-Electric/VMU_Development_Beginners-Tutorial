@@ -114,10 +114,11 @@ Before each next direction's section is started, you may notice the Comments to 
 To start, we'll have that Flag as 1, meaning a Collision is Active. If any of the Collision Range checks aren't met, then we'll reset it to 0.
 
 	; PseudoCode Goes Here
-		top_collision_flag = $1f ; 1 Byte
-		bottom_collision_flag = $20 ; 1 Byte
-		left_collision_flag = $21 ; 1 Byte
-		right_collision_flag = $27 ; 1 Byte
+			top_collision_flag = $1f ; 1 Byte
+			bottom_collision_flag = $20 ; 1 Byte
+			left_collision_flag = $21 ; 1 Byte
+			right_collision_flag = $27 ; 1 Byte
+		.....
         .Check_Obstacle_Collision ; Note: See If this Works with 1 Flag And Jumps Only.
 			mov #0, top_collision_flag ; And The Rest!
         .Check_Up
@@ -150,6 +151,13 @@ Then, with that Collision Flag Set, we can decide what to do with it, or continu
         bnz .Collison_Flag_Not_Set
         ; Do whatever you'd like upon collision here!
         .Collision_Flag_Not_Set
+		; Alternatively,
+		ld top_collision_flag
+		add bottom_collision_flag
+		add left_collision_flag
+		add right_collision_flag
+		ld acc
+		bnz .Collision_Flag_Not_Set
 
 There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter, or Display an Animation, or do all of the above.
 
