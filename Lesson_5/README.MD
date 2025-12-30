@@ -161,6 +161,7 @@ Then, with that Collision Flag Set, we can decide what to do with it, or continu
 		add right_collision_flag
 		ld acc
 		bnz .Collision_Flag_Not_Set
+		.Collision_Flag_Alternatively_Not_Set
 
 There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter, or Display an Animation, or do all of the above.
 
