@@ -223,6 +223,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
 			; bp frame_counter, 1, .Run_Frame_2
         	mov #<Run_Frame_0, Player_Sprite_Address
         	mov #>Run_Frame_0, Player_Sprite_Address
+			jmpf .Draw_Player_Character
         .Run_Frame_1
         	ld run_frame
         	sub #1
