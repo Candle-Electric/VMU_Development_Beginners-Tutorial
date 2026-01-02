@@ -150,17 +150,19 @@ To start, we'll have that Flag as 1, meaning a Collision is Active. If any of th
 
 Then, with that Collision Flag Set, we can decide what to do with it, or continue on like nothing happened (because nothing _did_ happen!) if it's Not Set. It basically works the same as checking for button presses did earlier:
 
-        ld collision_flags
-        bnz .Collison_Flag_Not_Set
-        ; Do whatever you'd like upon collision here!
+        	ld collision_flags
+        	bnz .Collison_Flag_Not_Set
+        	; Do whatever you'd like upon collision here!
         .Collision_Flag_Not_Set
-		; Alternatively,
-		ld top_collision_flag
-		add bottom_collision_flag
-		add left_collision_flag
-		add right_collision_flag
-		ld acc
-		bnz .Collision_Flag_Not_Set
+
+
+			; Alternatively,
+			ld top_collision_flag
+			add bottom_collision_flag
+			add left_collision_flag
+			add right_collision_flag
+			ld acc
+			bnz .Collision_Flag_Not_Set
 		.Collision_Flag_Alternatively_Not_Set
 
 There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter, or Display an Animation, or do all of the above.
