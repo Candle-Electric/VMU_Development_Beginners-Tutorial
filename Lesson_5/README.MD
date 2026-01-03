@@ -286,6 +286,9 @@ With that State Variable set, we can update those "Animation" Loops and Branches
 
 Then, the Final P_Draw_Sprite will have the "Frame" of Animation, be it running or jumping, ready and stored in its Sprite Address.
 
+	.Draw_Player_Sprite
+		P_Draw_Sprite_Mask Player_Sprite_Address, player_sprite_x, player_sprite_y
+
 Next, with one Animation under our belts, we can make another for when the player is hit, and circle back to when we swapped the Graphics on Collision before.
 
 Next, now that we have our player character "moving" in an animated run cycle, we'll get them moving in a new way, jumping! This will be done with an "acceleration" sort of movement. At the start of the Jump, it'll be high, representing the upward movement, and then we'll subtract for "Gravity" on each Frame.
