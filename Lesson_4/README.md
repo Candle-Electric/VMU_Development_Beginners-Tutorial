@@ -743,4 +743,4 @@ We'll use the `b` and `c` Registers as the X- + Y-Coordinates, respectively. The
  
 What we're doing in the `%macro` comprising this code snippet above is determining where to draw each digit by assigning `b`, and then calling the `Draw_Digit` function four times, drawing each number and then moving it over to the right to draw the next. We can draw each 8-Pixel * 8-Pixel Digit in a Row this way, keeping the Y-Position Constant while Moving the X-Position Over For Each Digit. This way, we can use just one Sprite Address for all four numbers! 
 
-In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics. In the Next Lesson, we'll be adding up all the skills we've learned to make a Game, so stay tuned!
+In theory, we'd be able to draw text in the same way, by mapping Alphabetic Letter Graphics; I'm unsure of how to encode the letters into a parsable format like the numbers though. In the Next Lesson, we'll be adding up all the skills we've learned to make a Game, so stay tuned!
