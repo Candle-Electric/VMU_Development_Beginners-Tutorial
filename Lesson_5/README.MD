@@ -311,12 +311,12 @@ Next, now that we have our player character "moving" in an animated run cycle, w
 
 We'll then use the Ground Collision to reset this value to Zero once the Player's landed.
 
-	ld player_pos_y
-	sub #28
-	bp acc, 7, .Skip_Ground_Collision
-	mov #0, runner_jump_acceleration
-	add #3
-	mov #28, player_pos_y ; Grounded Position.
+		ld player_pos_y
+		sub #28
+		bp acc, 7, .Skip_Ground_Collision
+		mov #0, runner_jump_acceleration
+		add #3
+		mov #28, player_pos_y ; Grounded Position.
 	.Skip_Ground_Collision
 
 Also, we'll need to make sure the Player can only leap when their feet are on the ground. Without this check, the Player can jump inifnitely, which has its merits, as characters like Kirby floating, Flappy Bird, or the Ichidant-R Bird Mini Game control. For this Infinite Runner style though, on leap at a time will suffice.
