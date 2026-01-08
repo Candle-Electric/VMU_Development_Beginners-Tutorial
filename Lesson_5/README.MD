@@ -74,8 +74,8 @@ Then, "Gravity" can pull the Sprite back down to the Floor, by subtracting an "A
 
 Next, let's make an "Obstacle" object for our Player Character to collide with and jump over. As mentioned before, Collision Detection with Obstacles will be a little different. This is because with boundaries such as the Walls and Floor, we're only worried about One Direction. Here, though, we need to worry about All 4 Cardinal Directions. In other words, before we had something like "is X < 48?" For the Right Wall, whereas now we'll have "Is 21 < X < 23 &AND& Is 14 < Y 16?" instead, with the range being determined by the height or width of the object and what it's being collided with. In Assembly, that'll look like this:
 
-        	obstacle_sprite_x = $10
-            onstacle_sprite_y = $11
+        	   obstacle_sprite_x = $10
+               onstacle_sprite_y = $11
         ...
         .Check_Obstacle_Collision
         .Check_Up
@@ -167,12 +167,12 @@ Then, with that Collision Flag Set, we can decide what to do with it, or continu
 
 There are several things we can do when Collision is Detected for this Auto Runner. For example, we could decrement a Health Bar or Lives Counter, or Display an Animation, or do all of the above.
 
-        num_lives = $1c
-        ...
-        ld num_lives
-        bnz .Continue_Playing
-        mov #<>Game_Over_Text, acc ; Could Play a "Game Over" Animation here, if you'd like!
-        ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
+        	num_lives = $1c
+        	...
+        	ld num_lives
+        	bnz .Continue_Playing
+        	mov #<>Game_Over_Text, acc ; Could Play a "Game Over" Animation here, if you'd like!
+        	ret ; This way, we can Return to the Title Screen when the Player's Game is Finished!
         .Continue_Playing
 
 We'll start by swapping the Player Character's Sprite when Collision is Active. This is doubly helpful, because it gives us a great opportunity to test the "bounds" of the collision box by keeping the obstacle static and moving our player character around it, recompiling each time to test the coded values or alternatively introducing a new variable to change in each instance, as well as an easy visual indicator for Debugging. It will also give us a start into our next topic, sprite animation.
@@ -181,8 +181,14 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		...
 		mov #3, player_width_x ; This can be changed before every Rebuild for easy tweaking!
 		...
-		ld collision_flags
+	.Collision_Up ; , Down, Left
+		; Left = Add
+	.Collision_Right
+		ld Player_Sprite_X ; collision_flags
+		sub Obstacle_Sprite_X
 		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
+		bn acc, 7, .Collision_Checks_Done
+		mov #1, Collision_Flag_Right
 		; To-Do: Add Code + Explanation For Bounding Box.
 		bnz .Collision_No
 		add #6
