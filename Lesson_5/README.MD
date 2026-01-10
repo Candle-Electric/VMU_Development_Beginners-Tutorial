@@ -182,6 +182,11 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		mov #3, player_width_x ; This can be changed before every Rebuild for easy tweaking!
 		...
 	.Collision_Up
+		ld Player_Sprite_X
+		sub Obstacle_Sprite_X
+		sub #3
+		bp acc, 7, .Collision_Down
+		; mov #1, Up_Collision_Flag
 	.Collision_Down
     .Collision_Left
         ld Player_Sprite_
