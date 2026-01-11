@@ -196,6 +196,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
         ld Player_Sprite_
         sub Obstacle_Sprite_X
         add #3
+        bn acc, 7, .Collision_Right
     ; Left = Add
 	.Collision_Right
 		ld Player_Sprite_X ; collision_flags
