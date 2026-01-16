@@ -240,7 +240,7 @@ Next, we can up this set of two images to a larger number, and think of them as 
         	inc run_frame
         	bp run_frame, 2, .Reset_Run_Frame
         	jmpf .Continue_Running
-        .Rest_Run_Frame
+        .Reset_Run_Frame
         	mov #0, run_frame
         .Continue_Running
         	...
