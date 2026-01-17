@@ -205,7 +205,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
 		bn acc, 7, .Collision_Checks_Done
 		mov #1, Collision_Flag_Right
-		; To-Do: Add Code + Explanation For Bounding Box.
+		; To-Do: Add Code + Explanation For Bounding Box Dimensions.
 		bnz .Collision_No
 		add #6
 		bp acc, 7, .Collision_No
