@@ -45,6 +45,7 @@ Inside our Gameplay Loop, we'll refactor the bottom of the screen's collision de
         .Skip_Jump
 	    .Calculate_Gravity
 			; To-Do
+            ld player_acceleration ; mov
         .Check_Ground
 	        ld test_sprite_y
 	        sub #24
