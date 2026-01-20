@@ -216,6 +216,8 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		add Down_Collision_Flag ; Add The Rest? Alternatively, Consider Having Each As Flags, Then If = 15 or 31, Collision Is Active, Etc.
 		add Left_Collision_Flag
 		add Right_Collision_Flag
+		sub #15; Alternatively,
+		bnz .Collision_No
 	.Collision_Yes
 		mov #<Obstacle_Sprite_Hit, test_sprite_sprite_address
 		mov #>Obstacle_Sprite_Mask, test_sprite_sprite_address+1
