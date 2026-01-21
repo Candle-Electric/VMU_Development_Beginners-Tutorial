@@ -134,6 +134,7 @@ To start, we'll have that Flag as 1, meaning a Collision is Active. If any of th
         .Check_Bottom
                 ld player_sprite_y
                 sub obstacle_sprite_y
+				add obstacle_size_y
                 bp acc, 7, .Check_Left ; .Check_Sides
                 mov #1, bottom_collision_flag ; Set The Bottom Collision Flag
         .Check_Left
