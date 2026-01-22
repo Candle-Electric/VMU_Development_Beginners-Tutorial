@@ -188,7 +188,7 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 		sub Obstacle_Sprite_X
 		sub #3
 		bp acc, 7, .Collision_Down
-		; mov #1, Up_Collision_Flag
+		mov #1, Up_Collision_Flag
 	.Collision_Down
 		ld Player_Sprite_X
 		sub Obstacle_Sprite_X
