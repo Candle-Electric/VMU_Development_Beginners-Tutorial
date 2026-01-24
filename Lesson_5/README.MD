@@ -276,7 +276,8 @@ Next, we can up this set of two images to a larger number, and think of them as 
         	mov #>Run_Frame_3, Player_Sprite_Address
 			jmpf .Draw_Player_Character
         	...
-        P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
+        .Draw_Player_Character
+			P_Draw_Sprite_Mask Player_Sprite_Address, player_Sprite_x, player_sprite_y
 
 Then, we can add assign this animation to a new "State #" Variable as the "Running" state, and add another state on top of it, a "Jumping" one!
 
