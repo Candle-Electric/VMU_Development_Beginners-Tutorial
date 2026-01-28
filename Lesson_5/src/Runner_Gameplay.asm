@@ -149,17 +149,19 @@ Runner_Gameplay_Loop:
 		sub obstacle_sprite_y
 		add #7 ; obstacle_size_y
 		bp acc, 7, .Check_Left_Collision
+		set1 collision_flags, 0 ; Set The Top Collision Flag
 .Check_Bottom_Collision
 		ld runner_sprite_y
 		add #8
 		sub obstacle_sprite_y
 		bp acc, 7, .Check_Left_Collision ; .Check_Sides
-		set1 collision_flags, 0 ; Set The Collision Flag
+		set1 collision_flags, 1 ; Set The Bottom Collision Flag
 .Check_Left_Collision
 		ld runner_sprite_x
 		sub obstacle_sprite_x
 		add #5 ; obstacle_size_x
 		bp acc, 7, .Collision_Done
+		; L, R Next.
 .Check_Right_Collision
 		ld obstacle_sprite_x
 		add #8
@@ -363,6 +365,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
