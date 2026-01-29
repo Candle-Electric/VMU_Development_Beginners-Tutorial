@@ -161,13 +161,13 @@ Runner_Gameplay_Loop:
 		sub obstacle_sprite_x
 		add #5 ; obstacle_size_x
 		bp acc, 7, .Collision_Done
-		; L, R Next.
+		set1 collision_flags, 2 ; L, R Next.
 .Check_Right_Collision
 		ld obstacle_sprite_x
 		add #8
 		sub runner_sprite_x
 		bp acc, 7, .Collision_Done
-		set1 collision_flags, 1		; Set The Collision Flag
+		set1 collision_flags, 3		; Set The Collision Flag
 .Collision_Done
 		ld collision_flags
 		sub #3
@@ -365,6 +365,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
