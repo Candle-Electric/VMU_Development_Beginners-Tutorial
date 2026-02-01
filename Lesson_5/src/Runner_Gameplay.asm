@@ -182,7 +182,7 @@ Runner_Gameplay_Loop:
 .Draw_Screen
 	bn dropping_obstacle_active, 0, .Drop_Bomb
 	mov #0, dropping_obstacle_y
-	; bn frame_counter, 4, .Draw_Example_Stage_1
+	bn frame_counter, 4, .Draw_Example_Stage_1
 	callf random
 	mov #0, frame_counter
 	jmpf .Draw_BG_Frame_1 ; Example_Stage_1
@@ -365,6 +365,7 @@ Digit_5
 ; 	st c
 ; 	callf Draw_Digit
 ; %end	
+
 
 
 
