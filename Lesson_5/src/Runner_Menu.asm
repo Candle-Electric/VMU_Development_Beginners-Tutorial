@@ -27,7 +27,9 @@ Menu_Loop:
 	ld p3
 	mov #Button_Left, acc
 	callf Check_Button_Pressed
+	; If Check For Whether On Option 1 or 2, Inc Highlighted Option.
 	bn acc, 2, .Check_Right
+	ld cursor_y_pos
 .Check_Right
 	ld p3
 	mov #Button_Right, acc
@@ -70,5 +72,6 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
