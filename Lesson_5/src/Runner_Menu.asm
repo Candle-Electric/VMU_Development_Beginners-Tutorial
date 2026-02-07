@@ -35,6 +35,7 @@ Menu_Loop:
 	bnz .Decrement_Option_2
 	dec cursor_1_val ; "Option?"
 .Decrement_Option_2
+	sub #1
 ...
 .Check_Right
 	ld p3
@@ -78,6 +79,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
