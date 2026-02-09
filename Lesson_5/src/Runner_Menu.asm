@@ -43,7 +43,7 @@ Menu_Loop:
 	mov #Button_Right, acc
 	callf Check_Button_Pressed
 	bn acc, 3, .Draw_Screen
-.Check_Buttons ; D-Buttons + 
+.Check_Buttons ; D-Buttons + Up Top For Directions; Move Current Comment.
 .Check_B ; 
 	ld p3
 	mov #Button_B1, acc
@@ -80,6 +80,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
