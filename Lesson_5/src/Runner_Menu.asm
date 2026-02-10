@@ -10,7 +10,7 @@ Runner_Menu:
 	Confirm_Button_Sprite_Address	=		$c
 Menu_Loop:
 	callf Get_Input
-.Check_Up 
+.Check_Up ; Check D-Buttons + Move Cursor
 	ld p3
 	mov #Button_Up, acc ; bp acc, 7, ...
 	callf Check_Button_Pressed
@@ -80,6 +80,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
