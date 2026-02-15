@@ -47,6 +47,7 @@ Menu_Loop:
 .Increment_Option_1
     ld cursor_y_Pos ; Do Consider Moving Before The Dot Header Jumper To Match The Above Syntax.
 	sub #1
+    bnz .Increment_Option_2
 .Check_Buttons ; D-Buttons + Up Top For Directions; Move Current Comment.
 .Check_B ; 
 	ld p3
@@ -84,6 +85,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
