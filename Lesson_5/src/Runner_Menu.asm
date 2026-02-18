@@ -50,6 +50,7 @@ Menu_Loop:
     bnz .Increment_Option_2
 	inc cursor_1_val
 .Increment_Option_2
+    sub #1
 .Check_Buttons ; D-Buttons + Up Top For Directions; Move Current Comment.
 .Check_B ; 
 	ld p3
@@ -87,6 +88,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
