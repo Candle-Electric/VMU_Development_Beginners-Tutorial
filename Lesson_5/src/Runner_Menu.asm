@@ -79,7 +79,8 @@ jmpf .Draw_Screen
 	P_Draw_BackGround_Constant Menu_BG
 	; .Option_2_1
 	; mov #8, b ; Option #2'll Always Be At The Same Height On The Screen.
-	; ld option_2
+	ld option_2
+	mov #<>Sprite_Graphic, P_Spr_Address+1
 	; bnz ; .Option_2_2 ; Could Also Make A Variable If we Have The R.A.M. (Should.).
 	; mov #8, c
 	P_Draw_Sprite	option1_sprite_address, b, c ; Move These To A Separate Line/The End Of Their Respective Functions, Since The X-Coordinates Will Change?
@@ -91,6 +92,7 @@ jmpf .Draw_Screen
 	P_Draw_Sprite	cursor_sprite_address, b, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret
+
 
 
 
