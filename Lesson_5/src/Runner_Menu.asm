@@ -90,8 +90,10 @@ jmpf .Draw_Screen
 	; P_Draw_Sprite "" ""
 	P_Draw_Sprite	option2_sprite_address, b, c
 	P_Draw_Sprite	cursor_sprite_address, b, c
+    mov #24, c
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret ; J.M.P.F. Main_Loop_Menu
+
 
 
 
