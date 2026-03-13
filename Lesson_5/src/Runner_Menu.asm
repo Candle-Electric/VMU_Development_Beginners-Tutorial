@@ -67,6 +67,7 @@ Menu_Loop:
 .Check_A
 	mov #Button_A1, acc
 	callf Check_Button_Pressed
+	bn acc, 5, .Draw_Screen
 	ld cursor_y_pos
 	sub #2
 	bnz .Draw_Screen
@@ -95,6 +96,7 @@ jmpf .Draw_Screen
     ld 
 	P_Draw_Sprite	Confirm_Button_Sprite_Address, b, c ; Mov The "Highlighted" Or "Normal" Button To The Address.
 	ret ; J.M.P.F. Main_Loop_Menu
+
 
 
 
