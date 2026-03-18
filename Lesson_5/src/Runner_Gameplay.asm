@@ -271,7 +271,7 @@ Draw_Score:
 Draw_Digit:
  	; b = the X-Position, c = the Number
 	mov #16, b
-	mov #0, c
+	mov #0, c ; Consider Commenting this, Because it's Reassigned At the End (Line 346 Jump.).
 	; P_Draw_Sprite digit_sprite_address, b, c
 	; mov #8, b
 .Digit_0  
