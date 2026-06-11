@@ -143,7 +143,7 @@ These .ASM Images are a lot like ASCII Art. To fill in Pixels, simply replace th
 
 ![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_DrawingWithInsertKey.png)
 
-You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
+You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. It's O.K. if you're having a hard time with doing this dot by dot; it takes some getting used to. There's a translation program available that can do it for you from a .PNG input, but it's important to understand how Kresna's Library is working under the hood, so keep trying! Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
 
 	.include Hello_World_BackGround.asm
 
