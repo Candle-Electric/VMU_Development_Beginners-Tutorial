@@ -288,4 +288,4 @@ We'll be using ElysianVMU now to see our code in action! Simply open up the Emul
 
 Running it, you can now see the image that you drew!
 
-![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_YouDidIt.png)
+![Example Output Running In ElysianVMU After Building In WaterBear.](./article_images/Lesson1_YouDidIt.png)
