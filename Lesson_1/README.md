@@ -284,7 +284,7 @@ Similarly, the Compiler will be looking for `main.asm` in the Directory you're r
 
 We'll be using ElysianVMU now to see our code in action! Simply open up the Emulator, and "Open" the File we made:
 
-![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_ElysianVMU.png)
+![This is how I like to navigate to the WaterBear-Compiled Assembly Bitmaps.](./article_images/Lesson1_ElysianVMU.png)
 
 Running it, you can now see the image that you drew!
 
