@@ -145,7 +145,13 @@ These .ASM Images are a lot like ASCII Art. To fill in Pixels, simply replace th
 
 You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. It's O.K. if you're having a hard time with doing this dot by dot; it takes some getting used to. There's a [translation program](https://github.com/Candle-Electric/VMU_LibPerspective_Sprite_Generator) available that can do it for you from a .PNG input, but it's important to understand how Kresna's Library is working under the hood, so keep trying! 
 
-Whether or not you're a Pro with drawing your ASCII Art by hand Just yet though, we'll take a quick look at using the bitmap automation. Following the Link and Downloading it allows you to Call it from the Command Line. To use the translator program, you can make your Image as a 48 × 32 .PNG. If your Drawn Image File is named `InputFile.PNG`, the Command Lind Syntax is then `VMU_LibPerspective_Sprite_Generator.exe InputFile.PNG`. Then, the program Will output the .ASM for you in that Folder, with `InputFile.ASM` as the File Name.
+Whether or not you're a Pro with drawing your ASCII Art by hand Just yet though, we'll take a quick look at using the bitmap automation. 
+<details>
+  <summary>How To Use The LibPerspective VMU Image Generator</summary>
+Following the Link and Downloading it allows you to Call it from the Command Line. To use the translator program, you can make your Image as a 48 × 32 .PNG. If your Drawn Image File is named `InputFile.PNG`, the Command Lind Syntax is then `VMU_LibPerspective_Sprite_Generator.exe InputFile.PNG`. Then, the program Will output the .ASM for you in that Folder, with `InputFile.ASM` as the File Name.
+</details>
+
+([Thanks to Joshua Sullivan for the Spoiler Tag Markdown!](https://gist.github.com/jbsulli/03df3cdce94ee97937ebda0ffef28287))
 
 Let's change our Filename to "`Hello_World_BackGround.asm`" and save it. So, now that we have our Bitmap, we can add it to our program with .include, like we did before. This way, Libperspective will be able to access the data to draw it. 
 
