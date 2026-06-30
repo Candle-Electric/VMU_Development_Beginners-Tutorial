@@ -143,7 +143,7 @@ These .ASM Images are a lot like ASCII Art. To fill in Pixels, simply replace th
 
 ![This is how I like to draw the Assembly Bitmaps.](./article_images/Lesson1_DrawingWithInsertKey.png)
 
-You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. It's O.K. if you're having a hard time with doing this dot by dot; it takes some getting used to. There's a [translation program](https://github.com/Candle-Electric/VMU_LibPerspective_Sprite_Generator) available that can do it for you from a .PNG input, but it's important to understand how Kresna's Library is working under the hood, so keep trying! 
+You can draw whatever you like! Just make sure to only overwrite the zeroes; if you place a digit where a comma or a percent sign should be, the code will fail to Build and the WaterBear Assembler will tell you when trying to Compile. It's O.K. if you're having a hard time with doing this dot by dot; it takes some getting used to. There's a [translation program](https://github.com/Candle-Electric/VMU_LibPerspective_Sprite_Generator) available that can do it for you from a .PNG input, but it's important to understand how Kresna's Library is working under the hood, so keep trying! Feel free to ask a Question here on GitHub, or start off by picking any random 0 in that Blank Canvas and turning it into a 1 as a Test and using that.
 
 Whether or not you're a Pro with drawing your ASCII Art by hand Just yet though, we'll take a quick look at using the bitmap automation. 
 <details>
