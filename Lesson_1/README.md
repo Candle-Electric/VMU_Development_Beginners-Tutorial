@@ -274,7 +274,7 @@ Your Final `main.asm` File should now look something like this:
 	
 		.cnop	0,$200		; Pad To An Even Number Of Blocks
 	
-Now that our code is ready, let's [use WaterBear to build it](https://github.com/wtetzner/waterbear#Usage)! 
+Now that our code is ready, let's open up a Command Line Prompt and [use WaterBear to build it](https://github.com/wtetzner/waterbear#Usage)! 
 
 	waterbear assemble main.asm -o Lesson_1.vms
 
