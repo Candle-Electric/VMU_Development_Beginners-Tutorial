@@ -10,9 +10,10 @@ The Syntax to Draw A Sprite is as follows:
 
 The X-Coordinate and Y-Coordinate determine where onscreen our Sprite will be drawn. The Sprite Address is an assigned section of Memory that contains the Data for Image itself. We will head back to the "Start" Section of our Code, before the Main Loop, and assign the Memory Addresses for all three of these:
 
- 	;=======================;
-	;   Include Libraries   ;
- 	;=======================;
+	 
+	;==============================================================;
+	; Prepare Application, Header File,  ...  Include Libraries.   ;
+ 	;==============================================================;
 	...
  	
 	;=======================;
@@ -23,9 +24,9 @@ The X-Coordinate and Y-Coordinate determine where onscreen our Sprite will be dr
   	test_sprite_sprite_address	=	$8		; 2 Bytes
    
 	;=======================;
-	;  Prepare Application  ;
+	;  Main Program  ;
 	;=======================;
- 	.org	$00
+ 	start:
  	...
 
 Now that we have allocated where in Memory these will be, let's assign the actual Numbers and Image to them:
