@@ -73,45 +73,6 @@ Once we've made those changes, let's rebuild our code in WaterBear. As mentioned
 	;Beginners' VMU Tutorial;
 	;       Lesson 3        ;
 	;=======================;
-	
-	;=======================;
-	;VMU Application Header ;
-	;=======================;
-	.include "GameHeader.i"
-	
-	;=======================;
-	;   Include Libraries   ;
-	;=======================;
-	.include "./lib/libperspective.asm"
-	.include "./lib/libkcommon.asm"
-	.include "./lib/sfr.i"
-	
-	;=======================;
-	;     Include Images    ;
-	;=======================;
-	.include		"./img/Hello_World_BackGround.asm"
-	.include		"./img/Example_Sprite.asm"
- 
-	;=======================;
-	; Define Variables:   ;
-	;=======================;
-	p3_pressed =          $4 ; 1 Byte(For LibKCommon)
-	p3_last_input =       $5 ; 1 Byte(For LibKCommon)
-	test_sprite_x =       $6 ; 1 Byte
-	test_sprite_y =       $7 ; 1 Byte
-	test_sprite_sprite_address =   $8 ; 2 Bytes
-
-	;=======================;
-	; Constants;
-	;=======================;
-	T_BTN_SLEEP              equ     7
-	T_BTN_MODE               equ     6
-	T_BTN_B1                 equ	 5
-	T_BTN_A1                 equ	 4
-	T_BTN_RIGHT1             equ     3
-	T_BTN_LEFT1              equ     2
-	T_BTN_DOWN1              equ     1
-	T_BTN_UP1                equ     0
 
 	;=======================;
 	; Prepare Application;
@@ -168,6 +129,45 @@ Once we've made those changes, let's rebuild our code in WaterBear. As mentioned
 	goodbye:	
 		not1 ext,0
 		jmpf	goodbye
+	
+	;=======================;
+	;VMU Application Header ;
+	;=======================;
+	.include "GameHeader.i"
+	
+	;=======================;
+	;   Include Libraries   ;
+	;=======================;
+	.include "./lib/libperspective.asm"
+	.include "./lib/libkcommon.asm"
+	.include "./lib/sfr.i"
+	
+	;=======================;
+	;     Include Images    ;
+	;=======================;
+	.include		"./img/Hello_World_BackGround.asm"
+	.include		"./img/Example_Sprite.asm"
+ 
+	;=======================;
+	; Define Variables:   ;
+	;=======================;
+	p3_pressed =          $4 ; 1 Byte(For LibKCommon)
+	p3_last_input =       $5 ; 1 Byte(For LibKCommon)
+	test_sprite_x =       $6 ; 1 Byte
+	test_sprite_y =       $7 ; 1 Byte
+	test_sprite_sprite_address =   $8 ; 2 Bytes
+
+	;=======================;
+	; Constants;
+	;=======================;
+	T_BTN_SLEEP              equ     7
+	T_BTN_MODE               equ     6
+	T_BTN_B1                 equ	 5
+	T_BTN_A1                 equ	 4
+	T_BTN_RIGHT1             equ     3
+	T_BTN_LEFT1              equ     2
+	T_BTN_DOWN1              equ     1
+	T_BTN_UP1                equ     0
 
 	;=======================;
 	; Main Program;
