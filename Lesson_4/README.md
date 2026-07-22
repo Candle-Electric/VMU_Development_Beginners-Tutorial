@@ -169,7 +169,7 @@ This time, we'll be providing the button in question to the `acc` register, usin
 	Button_Sleep            equ     %10000000
  </details>
 
-`Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. The Bit Numbers move up as seen above, from 0 to 7, and right-to-left. We can think of this like a Boolean variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. This Syntax is all you need to know to start using the function in your own Code. We can learn some excellent skills from seeing how these Functions themselves were Coded, too. Looking at the elegant code that Kresna wrote for this Function, we can get a nice glimpse into how it works:
+`Check_Button_Pressed` will then overwrite `acc` with a 0 or 1 in each of its 8 Bits, representing the 8 Buttons, and reflecting whether or not the button is depressed. The Bit Numbers move up as seen above, from 0 to 7, and right-to-left. We can think of this like a Boolean Variable, and since it's already in `acc`, we can easily `bp` or `bn` with the requisite bit without sparing a single extra clock cycle. This Syntax is all you need to know to start using the function in your own Code. We can learn some excellent skills from seeing how these Functions themselves were Coded, too. Looking at the elegant code that Kresna wrote for this Function, we can get a nice glimpse into how it works:
 
 	Check_Button_Pressed:
 		;----------------------------------------------------------------------
