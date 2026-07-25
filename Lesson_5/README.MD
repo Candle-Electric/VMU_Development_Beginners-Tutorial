@@ -109,7 +109,7 @@ Before each next direction's section is started, you may notice the Comments to 
         mov #0, collision_flags
         ...
         ld collision_flags
-        bn acc, 7, .Collision_Done ; BNZ
+        bn acc, 7, .Collision_Done
         mov #1, collision_flags ; Set The Collision Flag
 
 To start, we'll have that Flag as 1, meaning a Collision is Active. If any of the Collision Range checks aren't met, then we'll reset it to 0.
