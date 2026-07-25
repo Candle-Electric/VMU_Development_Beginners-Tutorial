@@ -204,10 +204,11 @@ We'll start by swapping the Player Character's Sprite when Collision is Active. 
 	.Collision_Right
 		ld Player_Sprite_X ; collision_flags
 		sub Obstacle_Sprite_X
-		sub #3 ; alternatively, could call the assigned width above with "sub player_width_x"
+		sub #3 ; Alternatively To The Adding, could call the assigned width above with "sub player_width_x"
 		bn acc, 7, .Collision_Checks_Done
 		mov #1, Collision_Flag_Right
 		; To-Do: Add Code + Explanation For Bounding Box Dimensions.
+		; Add Here.
 		bnz .Collision_No
 		add #6
 		bp acc, 7, .Collision_No
