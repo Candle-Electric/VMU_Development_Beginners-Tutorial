@@ -167,7 +167,7 @@ Runner_Gameplay_Loop:
 		add #8
 		sub runner_sprite_x
 		bp acc, 7, .Collision_Done
-		set1 collision_flags, 3		; Set The Collision Flag
+		set1 collision_flags, 3		; Set Right-Side The Collision Flag, Before Checking All 4.
 .Collision_Done
 		ld collision_flags
 		sub #15 ; #3
