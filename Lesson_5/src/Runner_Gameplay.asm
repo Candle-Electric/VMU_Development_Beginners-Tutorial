@@ -12,7 +12,7 @@ Runner_Gameplay:
 	score							=	$1e		; 1 Byte
 	digit_sprite_address 			= 	$1f		; 2 Bytes
 	runner_jump_acceleration 		= 	$21		; 1 Byte
-	; jump_accel_positive 			= 	$22
+	jump_accel_positive 			= 	$22		; Move Score_Lo + Near Hi?
 	obstacle_sprite_address 		= 	$23		; 2 Bytes
 	obstacle_sprite_x 				=	$25		; 1 Byte
 	obstacle_sprite_y 				=	$26		; 1 Byte
