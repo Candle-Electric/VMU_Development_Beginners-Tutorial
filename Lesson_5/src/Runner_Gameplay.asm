@@ -68,7 +68,7 @@ Runner_Gameplay_Loop:
 	;callf Get_Input
 	ld p3
 	bp acc, T_BTN_DOWN1, .Check_Left
-	;ld test_sprite_y
+	;ld test_sprite_y ; Implement Slide
 	;sub #24
 	; bn acc, 7, .Check_Left
 	; inc test_sprite_y
