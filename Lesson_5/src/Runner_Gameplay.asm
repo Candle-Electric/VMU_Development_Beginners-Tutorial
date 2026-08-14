@@ -61,7 +61,7 @@ Runner_Gameplay_Loop:
     ; callf Get_Input
 	bp acc, T_BTN_UP1, .Check_Down
 	inc debugging_num ; frame_counter ; For Debugging BackGround Scrolling. ; ld test_sprite_y
-	; sub #1
+	; sub #1 ; store
 	bp acc, 7, .Check_Down
 	; dec test_sprite_y
 .Check_Down
